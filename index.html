@@ -246,7 +246,6 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 .corner{position:absolute;right:8px;bottom:8px;width:clamp(30px,2.6vw,42px);height:clamp(30px,2.6vw,42px);border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:clamp(14px,1.2vw,18px);transition:background .2s}
 .side.l:hover .corner{background:var(--orange)}
 .pcard-name{margin-top:.6rem;color:#374151;font-size:clamp(12px,.95vw,15px)}
-.pcard-price{color:var(--green);font-weight:700;font-size:clamp(14px,1.2vw,18px)}
 .vcard-img{position:relative;aspect-ratio:177/287;border-radius:16px;overflow:hidden;background:var(--green)}
 .vcard-img img{width:100%;height:100%;object-fit:cover}
 .vcard-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,30,10,.85),transparent 60%)}
@@ -408,8 +407,7 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 .fav.on svg{fill:currentColor}
 .prod h4{font-size:.93rem;font-weight:600;color:var(--ink);margin:.8rem .3rem .15rem;line-height:1.3}
 .prod .meta{font-size:.78rem;color:var(--muted);margin:0 .3rem}
-.prod-foot{display:flex;align-items:center;justify-content:space-between;margin:.8rem .3rem .2rem;margin-top:auto;padding-top:.8rem}
-.prod-foot b{color:var(--green);font-size:1.05rem}
+.prod-foot{display:flex;align-items:center;justify-content:flex-end;margin:.8rem .3rem .2rem;margin-top:auto;padding-top:.8rem}
 .add{width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:18px;transition:background .2s,transform .2s}
 .add:hover{background:var(--orange);transform:rotate(90deg)}
 .empty{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted)}
@@ -435,7 +433,6 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 .qty button:hover{background:var(--green-soft)}
 .qty span{min-width:18px;text-align:center;font-size:.85rem;font-weight:600}
 .dr-foot{padding:1.2rem 1.4rem;border-top:1px solid var(--line);background:#fff;display:flex;flex-direction:column;gap:.7rem}
-.dr-foot .tot{display:flex;justify-content:space-between;font-weight:600;color:var(--green);font-size:1.1rem}
 .dr-foot input,.dr-foot select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);outline:0}
 .dr-foot input:focus,.dr-foot select:focus{border-color:var(--green)}
 .dr-foot .row2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
@@ -492,6 +489,7 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 .hours li span:last-child{font-weight:500}
 .hours li.closed span:last-child{color:#9aa89c;font-weight:400}
 .hours li.today{color:var(--green);font-weight:600}
+.hours li.changed span:last-child{color:var(--orange);font-weight:600}
 .hours li.today span:first-child::after{content:" · heute";color:var(--orange);font-weight:500;font-size:.8rem}
 .hours .contact-lines{margin-top:1.4rem;display:flex;flex-direction:column;gap:.7rem;font-size:.93rem}
 .hours .contact-lines a,.hours .contact-lines div{display:flex;align-items:center;gap:.7rem}
@@ -604,7 +602,7 @@ footer{overflow:hidden}
 <div class="hero" id="start">
   <div class="notice animate-fade-in" id="notice" hidden>
     <i data-lucide="calendar-x"></i>
-    <span>Betriebsferien: <strong>25. September bis 2. Oktober 2026</strong> geschlossen. Vorbestellungen gerne per E-Mail.</span>
+    <span id="noticeText"></span>
   </div>
 
   <header class="hdr">
@@ -645,7 +643,6 @@ footer{overflow:hidden}
           <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         </div>
         <div class="pcard-name">BARF Komplettmenü Rind</div>
-        <div class="pcard-price">ab 3,49 €</div>
       </a>
 
       <a href="#beratung" class="side r px animate-slide-in-right delay-700" style="--k:-14px">
@@ -670,14 +667,14 @@ footer{overflow:hidden}
           </div>
         </div>
         <div class="ph c px animate-pet-pop delay-600" style="--k:4px">
-          <img src="https://polo-pecan-73837341.figma.site/_assets/v11/96745c4e72ad5c5208e53a885df797fd82cd854a.png?h=1024" alt="" />
+          <img src="hero-aussie.png" alt="" />
           <div class="ov ov-center animate-scale-in delay-1100">
             <h3>Gesund füttern.<br />Fair beraten.</h3>
             <a href="#sortiment" class="btn btn-orange">Sortiment entdecken <i data-lucide="arrow-right"></i></a>
           </div>
         </div>
         <div class="ph s px animate-pet-pop delay-800" style="--k:8px;--bd:.6s">
-          <img src="https://polo-pecan-73837341.figma.site/_assets/v11/81bd2e7a66b58f3d8f3ad78fd1ebf01af8dfdee1.png" alt="" />
+          <img src="hero-golden.png" alt="" />
           <a href="#bewertungen" class="ov ov-rate animate-scale-in delay-1200">
             <span class="star"><i data-lucide="star"></i></span>
             <b>4,9</b><span>Google</span>
@@ -700,7 +697,6 @@ footer{overflow:hidden}
             <span class="corner"><i data-lucide="arrow-up-right"></i></span>
           </div>
           <div class="pcard-name">BARF Menü Rind</div>
-          <div class="pcard-price">ab 3,49 €</div>
         </a>
         <a href="#beratung" class="animate-slide-in-right delay-600">
           <div class="vcard-img">
@@ -725,8 +721,8 @@ footer{overflow:hidden}
       </div>
       <div class="mob-photos">
         <div class="ph s px animate-pet-pop delay-800" style="--k:8px;--bd:.6s"><img src="https://polo-pecan-73837341.figma.site/_assets/v11/8d44b25186ef45a5789c74668fb781cea4e1ff49.png" alt="" /></div>
-        <div class="ph c animate-pet-pop delay-700"><img src="https://polo-pecan-73837341.figma.site/_assets/v11/96745c4e72ad5c5208e53a885df797fd82cd854a.png?h=1024" alt="" /></div>
-        <div class="ph s animate-pet-pop delay-900" style="--bd:.6s"><img src="https://polo-pecan-73837341.figma.site/_assets/v11/81bd2e7a66b58f3d8f3ad78fd1ebf01af8dfdee1.png" alt="" /></div>
+        <div class="ph c animate-pet-pop delay-700"><img src="hero-aussie.png" alt="" /></div>
+        <div class="ph s animate-pet-pop delay-900" style="--bd:.6s"><img src="hero-golden.png" alt="" /></div>
       </div>
     </div>
   </div>
@@ -882,7 +878,7 @@ footer{overflow:hidden}
       <span><i data-lucide="store"></i> Abholung zu den Öffnungszeiten</span>
       <span><i data-lucide="wallet"></i> Zahlung vor Ort</span>
       <span><i data-lucide="snowflake"></i> BARF tiefgekühlt bereitgestellt</span>
-      <span><i data-lucide="info"></i> Beispielsortiment und Beispielpreise</span>
+      <span><i data-lucide="info"></i> Beispielsortiment</span>
     </div>
   </div>
 </section>
@@ -1056,7 +1052,7 @@ footer{overflow:hidden}
       </div>
       <div>
         <h4>Öffnungszeiten</h4>
-        <ul><li>Di 16:00 bis 19:00</li><li>Mi 16:00 bis 20:00</li><li>Do 16:00 bis 18:00</li><li>Fr 16:00 bis 20:00</li></ul>
+        <ul id="footHours"><li>Di 16:00 bis 19:00</li><li>Mi 16:00 bis 20:00</li><li>Do 16:00 bis 18:00</li><li>Fr 16:00 bis 20:00</li></ul>
       </div>
       <div>
         <h4>Kontakt</h4>
@@ -1104,7 +1100,6 @@ footer{overflow:hidden}
   </div>
   <div class="dr-body" id="lines"></div>
   <form class="dr-foot" id="orderForm">
-    <div class="tot"><span>Summe</span><span id="sum">0,00 €</span></div>
     <input name="name" placeholder="Ihr Name" required autocomplete="name" />
     <div class="row2">
       <input name="tel" placeholder="Telefon" required autocomplete="tel" />
@@ -1121,7 +1116,6 @@ footer{overflow:hidden}
 (function(){
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
-  const euro = n => n.toFixed(2).replace('.', ',') + ' €';
   const store = {
     get(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d }catch(e){ return d } },
     set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)) }catch(e){} }
@@ -1143,43 +1137,72 @@ footer{overflow:hidden}
     const wd = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[g('weekday')];
     return { y:+g('year'), m:+g('month'), d:+g('day'), h:+g('hour')%24, min:+g('minute'), wd, ymd: g('year')+'-'+g('month')+'-'+g('day') };
   }
-  const HOURS = {2:[16,19],3:[16,20],4:[16,18],5:[16,20]};
+  /* ---------- Öffnungszeiten ----------
+     Minuten ab Mitternacht. Die festen Werte sind nur der Fallback: hours.json wird täglich per
+     GitHub Action aus dem Google-Unternehmensprofil erzeugt (.github/scripts/google-hours.js)
+     und enthält zusätzlich die tatsächlichen Zeiten der nächsten 7 Tage (Urlaub, Feiertage). */
+  let HOURS = {2:[960,1140],3:[960,1200],4:[960,1080],5:[960,1200]};
+  let SPECIAL = {};
   const DAYS = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
-  const CLOSED = { from:'2026-09-25', to:'2026-10-02' };
-  const isClosedDay = ymd => ymd >= CLOSED.from && ymd <= CLOSED.to;
+  const SHORT = ['So','Mo','Di','Mi','Do','Fr','Sa'];
+  const MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
   const now = berlinNow();
+  const nowMin = now.h*60 + now.min;
+  const base = Date.UTC(now.y, now.m-1, now.d);
+  const dayAt = i => { const dt = new Date(base + i*864e5); return { dt, wd: dt.getUTCDay(), ymd: dt.toISOString().slice(0,10) }; };
+  const hoursOn = d => d.ymd in SPECIAL ? SPECIAL[d.ymd] : (HOURS[d.wd] || null);
+  const hm = m => Math.floor(m/60) + ':' + String(m%60).padStart(2,'0');
+  const dd = d => String(d.dt.getUTCDate()).padStart(2,'0') + '.' + String(d.dt.getUTCMonth()+1).padStart(2,'0') + '.';
+  const dm = d => d.dt.getUTCDate() + '. ' + MONTHS[d.dt.getUTCMonth()];
 
-  // Hinweisleiste
-  if (now.ymd <= CLOSED.to) $('#notice').hidden = false;
+  function renderHours(){
+    // Liste: nächstes Vorkommen jedes Wochentags, Abweichungen vom regulären Plan markiert
+    const week = [0,1,2,3,4,5,6].map(dayAt);
+    $('#hoursList').innerHTML = [1,2,3,4,5,6,0].map(wd => {
+      const d = week.find(x => x.wd === wd), h = hoursOn(d), changed = String(h) !== String(HOURS[wd] || null);
+      return `<li class="${h?'':'closed'} ${wd===now.wd?'today':''} ${changed?'changed':''}"><span>${DAYS[wd]}</span><span>${h ? hm(h[0])+' bis '+hm(h[1])+' Uhr' : 'geschlossen'}${changed ? ' ('+dd(d)+')' : ''}</span></li>`;
+    }).join('');
 
-  // Öffnungszeiten-Liste
-  const order = [1,2,3,4,5,6,0];
-  $('#hoursList').innerHTML = order.map(d => {
-    const h = HOURS[d];
-    return `<li class="${h?'':'closed'} ${d===now.wd?'today':''}"><span>${DAYS[d]}</span><span>${h? h[0]+':00 bis '+h[1]+':00 Uhr' : 'geschlossen'}</span></li>`;
-  }).join('');
+    $('#footHours').innerHTML = [1,2,3,4,5,6,0].filter(wd => HOURS[wd]).map(wd => `<li>${SHORT[wd]} ${hm(HOURS[wd][0])} bis ${hm(HOURS[wd][1])}</li>`).join('');
 
-  // Status
-  (function(){
-    const el = $('#status'), txt = el.querySelector('span');
-    const mins = now.h*60 + now.min, h = HOURS[now.wd];
-    if (isClosedDay(now.ymd)) { txt.textContent = 'Betriebsferien bis 2. Oktober'; return; }
-    if (h && mins >= h[0]*60 && mins < h[1]*60) { el.classList.add('open'); txt.textContent = 'Jetzt geöffnet bis ' + h[1] + ':00 Uhr'; return; }
-    if (h && mins < h[0]*60) { txt.textContent = 'Heute ab ' + h[0] + ':00 Uhr geöffnet'; return; }
-    for (let i=1;i<=7;i++){ const d=(now.wd+i)%7; if (HOURS[d]) { txt.textContent = 'Geschlossen, öffnet ' + (i===1?'morgen':DAYS[d]) + ' um ' + HOURS[d][0] + ':00 Uhr'; break; } }
-  })();
-
-  // Abholtage (nächste Öffnungstage außerhalb der Ferien)
-  (function(){
-    const opts = []; const base = new Date(Date.UTC(now.y, now.m-1, now.d));
-    for (let i=0; opts.length<8 && i<40; i++){
-      const dt = new Date(base.getTime() + i*864e5), wd = dt.getUTCDay(), ymd = dt.toISOString().slice(0,10);
-      if (!HOURS[wd] || isClosedDay(ymd)) continue;
-      if (i===0 && now.h >= HOURS[wd][1]-1) continue;
-      opts.push(`<option>${DAYS[wd]}, ${String(dt.getUTCDate()).padStart(2,'0')}.${String(dt.getUTCMonth()+1).padStart(2,'0')}. ab ${HOURS[wd][0]}:00</option>`);
+    // Hinweisleiste: erste Schließung an einem regulären Öffnungstag
+    let a = -1, b = -1, reopens = false;
+    for (let i=0;i<14;i++){
+      const d = dayAt(i);
+      if (HOURS[d.wd] && !hoursOn(d)) { if (a<0) a=i; b=i; }
+      else if (a>=0 && hoursOn(d)) { reopens = true; break; }
     }
-    $('#pickup').innerHTML = '<option value="" disabled selected>Abholtag</option>' + opts.join('');
-  })();
+    if (a >= 0) {
+      const from = dayAt(a), to = dayAt(b);
+      const when = !reopens ? 'ab ' + dm(from) : a===b ? 'am ' + DAYS[from.wd] + ', ' + dm(from) : dm(from) + ' bis ' + dm(to);
+      $('#noticeText').innerHTML = `Bitte beachten: <strong>${when}</strong> geschlossen. Vorbestellungen gerne per E-Mail.`;
+    }
+    $('#notice').hidden = a < 0;
+
+    // Status
+    const el = $('#status'), txt = el.querySelector('span'), h = hoursOn(dayAt(0));
+    el.classList.toggle('open', !!h && nowMin >= h[0] && nowMin < h[1]);
+    if (el.classList.contains('open')) txt.textContent = 'Jetzt geöffnet bis ' + hm(h[1]) + ' Uhr';
+    else if (h && nowMin < h[0]) txt.textContent = 'Heute ab ' + hm(h[0]) + ' Uhr geöffnet';
+    else for (let i=1;i<=14;i++){ const d = dayAt(i), x = hoursOn(d); if (x) { txt.textContent = 'Geschlossen, öffnet ' + (i===1?'morgen':i<7?DAYS[d.wd]:DAYS[d.wd]+', '+dd(d)) + ' um ' + hm(x[0]) + ' Uhr'; break; } }
+
+    // Abholtage (nächste Öffnungstage); eine schon getroffene Auswahl bleibt stehen
+    const pk = $('#pickup');
+    if (pk.value) return;
+    const opts = [];
+    for (let i=0; opts.length<8 && i<40; i++){
+      const d = dayAt(i), x = hoursOn(d);
+      if (!x || (i===0 && nowMin >= x[1]-60)) continue;
+      opts.push(`<option>${DAYS[d.wd]}, ${dd(d)} ab ${hm(x[0])}</option>`);
+    }
+    pk.innerHTML = '<option value="" disabled selected>Abholtag</option>' + opts.join('');
+  }
+  renderHours();
+  fetch('hours.json', {cache:'no-cache'}).then(r => r.ok ? r.json() : null).then(g => {
+    if (!g || !g.weekly || !Object.keys(g.weekly).length) return;
+    HOURS = g.weekly; SPECIAL = g.days || {};
+    renderHours();
+  }).catch(() => {});
 
   /* ---------- Marquee ---------- */
   const words = ['BARF','Frischfleisch','Trockenfutter','Nassfutter','Kauartikel','Zubehör','Bienenfutter','Ehrliche Beratung'];
@@ -1189,18 +1212,18 @@ footer{overflow:hidden}
   /* ---------- Produkte (Beispieldaten) ---------- */
   const P = [
     // img = Unsplash-Foto-ID (freie Lizenz), Größe setzt pimg(); Icon bleibt als Fallback darunter
-    {id:1,cat:'barf',n:'BARF Komplettmenü Rind',m:'500 g, tiefgekühlt',p:3.49,i:'beef',bg:'#fde3cf',tag:'Beliebt',img:'1613454320437-0c228c8b1723'},
-    {id:2,cat:'barf',n:'Fleischmix mit Pansen',m:'1 kg, gewolft, tiefgekühlt',p:4.29,i:'drumstick',bg:'#dff3e0',img:'1690983323238-0b91789e1b5a'},
-    {id:3,cat:'barf',n:'Hühnerhälse',m:'1 kg, tiefgekühlt',p:3.99,i:'drumstick',bg:'#fdf1d6',img:'1587593810167-a84920ea0781'},
-    {id:4,cat:'barf',n:'Gemüse-Obst-Mix',m:'500 g, püriert',p:2.79,i:'carrot',bg:'#fde3cf',img:'1598295309854-cfa5819004d8'},
-    {id:5,cat:'futter',n:'Trockenfutter getreidefrei',m:'12 kg, Lamm und Kartoffel',p:54.90,i:'wheat-off',bg:'#e7ecf8',tag:'Tipp',img:'1682536192307-c25211b1d4ac'},
-    {id:6,cat:'futter',n:'Nassfutter Pute pur',m:'6 × 400 g',p:17.40,i:'package',bg:'#dff3e0',img:'1591946559594-8c6d3b7391eb'},
-    {id:7,cat:'snacks',n:'Kauknochen Rind',m:'5 Stück, getrocknet',p:6.90,i:'bone',bg:'#fdf1d6',img:'1592468257342-8375cb556a69'},
-    {id:8,cat:'snacks',n:'Hundekekse Knochenform',m:'500 g, gebacken',p:5.50,i:'bone',bg:'#fde3cf',img:'1568640347023-a616a30bc3bd'},
-    {id:9,cat:'futter',n:'Omega-3 Lachsölkapseln',m:'120 Stück',p:12.90,i:'droplet',bg:'#e7ecf8',img:'1670850757896-e1b6c3e311ea'},
-    {id:10,cat:'zubehoer',n:'Keramiknapf „Pfote“',m:'1,2 l, spülmaschinenfest',p:19.90,i:'soup',bg:'#dff3e0',img:'1676193866128-03a926df76ef'},
-    {id:11,cat:'zubehoer',n:'Führleine Biothane',m:'2 m, wetterfest',p:24.90,i:'link',bg:'#fdf1d6',img:'1708062270853-ee7c66b69f07'},
-    {id:12,cat:'bienen',n:'Bienen-Futtersirup',m:'14 kg Kanister',p:24.90,i:'hexagon',bg:'#f6e3b8',tag:'Saison',img:'1623018697148-8350cf18e64e'}
+    {id:1,cat:'barf',n:'BARF Komplettmenü Rind',m:'500 g, tiefgekühlt',i:'beef',bg:'#fde3cf',tag:'Beliebt',img:'1613454320437-0c228c8b1723'},
+    {id:2,cat:'barf',n:'Fleischmix mit Pansen',m:'1 kg, gewolft, tiefgekühlt',i:'drumstick',bg:'#dff3e0',img:'1690983323238-0b91789e1b5a'},
+    {id:3,cat:'barf',n:'Hühnerhälse',m:'1 kg, tiefgekühlt',i:'drumstick',bg:'#fdf1d6',img:'1587593810167-a84920ea0781'},
+    {id:4,cat:'barf',n:'Gemüse-Obst-Mix',m:'500 g, püriert',i:'carrot',bg:'#fde3cf',img:'1598295309854-cfa5819004d8'},
+    {id:5,cat:'futter',n:'Trockenfutter getreidefrei',m:'12 kg, Lamm und Kartoffel',i:'wheat-off',bg:'#e7ecf8',tag:'Tipp',img:'1682536192307-c25211b1d4ac'},
+    {id:6,cat:'futter',n:'Nassfutter Pute pur',m:'6 × 400 g',i:'package',bg:'#dff3e0',img:'1591946559594-8c6d3b7391eb'},
+    {id:7,cat:'snacks',n:'Kauknochen Rind',m:'5 Stück, getrocknet',i:'bone',bg:'#fdf1d6',img:'1592468257342-8375cb556a69'},
+    {id:8,cat:'snacks',n:'Hundekekse Knochenform',m:'500 g, gebacken',i:'bone',bg:'#fde3cf',img:'1568640347023-a616a30bc3bd'},
+    {id:9,cat:'futter',n:'Omega-3 Lachsölkapseln',m:'120 Stück',i:'droplet',bg:'#e7ecf8',img:'1670850757896-e1b6c3e311ea'},
+    {id:10,cat:'zubehoer',n:'Keramiknapf „Pfote“',m:'1,2 l, spülmaschinenfest',i:'soup',bg:'#dff3e0',img:'1676193866128-03a926df76ef'},
+    {id:11,cat:'zubehoer',n:'Führleine Biothane',m:'2 m, wetterfest',i:'link',bg:'#fdf1d6',img:'1708062270853-ee7c66b69f07'},
+    {id:12,cat:'bienen',n:'Bienen-Futtersirup',m:'14 kg Kanister',i:'hexagon',bg:'#f6e3b8',tag:'Saison',img:'1623018697148-8350cf18e64e'}
   ];
   const pimg = (x,w) => 'https://images.unsplash.com/photo-' + x.img + '?auto=format&fit=crop&w=' + w + '&h=' + w + '&q=70';
   let cat='alle', q='';
@@ -1218,7 +1241,7 @@ footer{overflow:hidden}
           <i data-lucide="${x.i}"></i>
         </div>
         <h4>${x.n}</h4><div class="meta">${x.m}</div>
-        <div class="prod-foot"><b>${euro(x.p)}</b><button class="add" data-add="${x.id}" aria-label="${x.n} hinzufügen"><i data-lucide="plus"></i></button></div>
+        <div class="prod-foot"><button class="add" data-add="${x.id}" aria-label="${x.n} hinzufügen"><i data-lucide="plus"></i></button></div>
       </article>`).join('') : `<div class="empty">${cat==='favs'?'Noch nichts gemerkt. Tippen Sie auf den Stern an einem Produkt.':'Kein Produkt gefunden. Fragen Sie uns gerne direkt.'}</div>`;
     lucide.createIcons();
     // Produkte ploppen gestaffelt auf
@@ -1253,14 +1276,12 @@ footer{overflow:hidden}
   }
   function renderCart(){
     const ids = Object.keys(cart);
-    let sum = 0;
     $('#lines').innerHTML = ids.length ? ids.map(id=>{
-      const x = P.find(p=>p.id==id); sum += x.p*cart[id];
+      const x = P.find(p=>p.id==id);
       return `<div class="line"><span class="li" style="background:${x.bg}"><img src="${pimg(x,120)}" alt="" onerror="this.remove()" /></span>
-        <div class="ln"><b>${x.n}</b><small>${euro(x.p)} · ${x.m}</small></div>
+        <div class="ln"><b>${x.n}</b><small>${x.m}</small></div>
         <div class="qty"><button data-dec="${id}" aria-label="weniger"><i data-lucide="minus"></i></button><span>${cart[id]}</span><button data-inc="${id}" aria-label="mehr"><i data-lucide="plus"></i></button></div></div>`;
     }).join('') : '<div class="empty" style="padding:4rem 1rem"><div style="font-size:48px;color:var(--line);display:flex;justify-content:center;margin-bottom:.8rem"><i data-lucide="package-open"></i></div>Ihre Futterkiste ist noch leer.</div>';
-    $('#sum').textContent = euro(sum);
     counts(); store.set('mfk-cart', cart); lucide.createIcons();
   }
 
@@ -1295,7 +1316,7 @@ footer{overflow:hidden}
     if (!Object.keys(cart).length){ toast('Bitte zuerst Produkte auswählen'); return; }
     const fd = new FormData(e.target);
     const lines = Object.keys(cart).map(id=>{ const x=P.find(p=>p.id==id); return `${cart[id]} × ${x.n} (${x.m})`; }).join('\n');
-    const body = `Hallo liebes Futterkiste-Team,\n\nich möchte folgende Produkte vorbestellen:\n\n${lines}\n\nSumme ca.: ${$('#sum').textContent}\nAbholung: ${fd.get('tag')}\n\nName: ${fd.get('name')}\nTelefon: ${fd.get('tel')}\n\nVielen Dank!`;
+    const body = `Hallo liebes Futterkiste-Team,\n\nich möchte folgende Produkte vorbestellen:\n\n${lines}\n\nAbholung: ${fd.get('tag')}\n\nName: ${fd.get('name')}\nTelefon: ${fd.get('tel')}\n\nVielen Dank!`;
     location.href = 'mailto:bestellungen@meine-futterkiste.de?subject=' + encodeURIComponent('Vorbestellung ' + fd.get('name')) + '&body=' + encodeURIComponent(body);
   });
 
