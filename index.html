@@ -323,7 +323,8 @@ section.block{padding:clamp(72px,10vw,130px) 0}
   .about-pic{max-width:620px;width:100%;margin:0 auto}
   .about-pic .beagle img{width:calc(100% + 40px);margin-left:-20px}
 }
-.about-tag .avatar{width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:600;flex-shrink:0}
+.about-tag .avatar{width:52px;height:52px;border-radius:50%;background:#fff;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 1px rgba(26,61,26,.08),0 6px 16px -8px rgba(26,61,26,.35)}
+.about-tag .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .about-tag b{color:var(--green);display:block}
 .about-tag small{color:var(--muted);line-height:1.45;display:block;margin-top:.15rem}
 .about-tag small.expert{margin-top:.45rem;padding-top:.45rem;border-top:1px dashed var(--line)}
@@ -492,10 +493,9 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 .dist .track{flex:1;height:7px;border-radius:99px;background:#eef2ee;overflow:hidden}
 .dist .track i{display:block;height:100%;background:#fbbc04;border-radius:99px}
 .gsum .btn{width:100%;justify-content:center;margin-top:.5rem}
-/* Rezensionen unterschiedlich lang → zweispaltig als Mauerwerk statt starrem Raster */
-.revs{columns:1;column-gap:14px}
-@media(min-width:700px){.revs{columns:2}}
-.rev{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.4rem;display:flex;flex-direction:column;gap:.8rem;break-inside:avoid;margin-bottom:14px}
+.revs{display:grid;gap:14px;margin-bottom:.8rem}
+@media(min-width:700px){.revs{grid-template-columns:1fr 1fr}}
+.rev{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.4rem;display:flex;flex-direction:column;gap:.8rem}
 .rev-h{display:flex;align-items:center;gap:.7rem}
 .rev-h .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600}
 .rev-h b{display:block;font-size:.93rem}
@@ -776,7 +776,7 @@ footer{overflow:hidden}
         <img src="ueber-uns-beagle-barf.png" alt="Beagle frisst BARF aus seinem Napf" width="1100" height="561" loading="lazy" />
       </div>
       <div class="about-tag">
-        <span class="avatar">GH</span>
+        <span class="avatar"><img src="logo.png" alt="Logo Meine Futterkiste" width="320" height="320" loading="lazy" /></span>
         <div><b>Gaby Hess</b><small>Inhaberin, berät Sie persönlich im Laden.</small><small class="expert">Für weitere Konsultationen ziehen wir unseren Futterexperten <a href="https://www.tiernaturheilkunde-zentrum.de/" target="_blank" rel="noopener">Nils Steenbuck</a> hinzu.</small></div>
       </div>
     </div>
@@ -853,7 +853,7 @@ footer{overflow:hidden}
       <div>
         <span class="eyebrow rv">BARF-Rechner</span>
         <h2 class="h2 rv" style="--d:.1s">Wie viel braucht Ihr Hund am Tag?</h2>
-        <p class="lead rv" style="--d:.2s">Ein erster Richtwert für die Rohfütterung eines erwachsenen Hundes. Den genauen Plan, abgestimmt auf Alter, Rasse und Verträglichkeiten, stellen wir gerne gemeinsam mit Ihnen im Laden zusammen.</p>
+        <p class="lead rv" style="--d:.2s">Ein erster Richtwert für die Rohfütterung eines erwachsenen, gesunden Hundes. Für Welpen, Senioren und Hunde mit Erkrankungen oder Unverträglichkeiten gelten andere Mengen. Den genauen Plan, abgestimmt auf Alter, Rasse und Verträglichkeiten, stellen wir gerne gemeinsam mit Ihnen im Laden zusammen.</p>
         <a href="#kontakt" data-anliegen="BARF-Beratung" class="btn btn-orange rv" style="--d:.3s;margin-top:1.8rem">Beratung anfragen <i data-lucide="arrow-right"></i></a>
       </div>
       <div class="calc-form rv" style="--d:.2s">
@@ -877,7 +877,7 @@ footer{overflow:hidden}
           <div class="bar" id="bar"></div>
           <div class="split" id="split"></div>
         </div>
-        <p class="calc-note">Richtwert nach der gängigen Faustregel (2 bis 3 % des Körpergewichts, 80 % tierisch, 20 % pflanzlich). Ersetzt keine tierärztliche oder individuelle Beratung.</p>
+        <p class="calc-note">Richtwert für gesunde, ausgewachsene Hunde nach der gängigen Faustregel (2 bis 3 % des Körpergewichts, 80 % tierisch, 20 % pflanzlich). Ersetzt keine tierärztliche oder individuelle Beratung.</p>
       </div>
     </div>
   </div>
@@ -1438,12 +1438,12 @@ footer{overflow:hidden}
   $$('#act button').forEach(b=>b.addEventListener('click',()=>{ $$('#act button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); pct=+b.dataset.p; calc(); }));
 
   /* ---------- Bewertungen: echte Google-Rezensionen (alle 5 Sterne), Stand Oktober 2026.
-     Text wörtlich übernommen, Kürzungen mit […] markiert, Namen gekürzt ---------- */
+     Text wörtlich übernommen, Namen gekürzt. Vier Stück im 2er-Raster: oben die beiden kurzen,
+     unten die beiden längeren, damit die Karten je Reihe ähnlich gefüllt sind ---------- */
   const R = [
     ['Saskia S.','2026','Sehr freundliche und sympathische Beratung. Barft ihre Hunde selbst und hat ein gutes Wissen. Wir kommen gerne wieder.😉','#E86A10'],
-    ['Michaela D.','2025','Wir kaufen unser Hundefutter schon seit langer Zeit in der Futterkiste und kamen auf Empfehlung. Frau Hess berät uns bei all unseren Fragen immer sehr kompetent und geduldig. Egal ob es sich um Futter, Kauartikel, Trainingsleckerlies, Öl etc. handelt. Ganz unkompliziert hat sie uns auch die Bademäntel für unseren Hund bestellt, die perfekt passen. Zudem ist es einfach immer ein persönlicher Einkauf mit netten Gesprächen.','#1a3d1a'],
     ['Carlo R.','2024','Sehr gute und auch individuelle Beratung für unsere Vierbeiner da kann sich so manch ein anderer Shop eine Scheibe davon abschneiden🤗','#2f7a34'],
-    ['Familie S.','2023','Wir waren das erste mal hier, da es uns empfohlen wurde. […] Hier findet man alles was das Haustier benötigt. Wir erhielten als wir dann dran waren eine sehr ausführliche und professionelle Beratung auf die Bedürfnisse unseres Hundes. […] Wir werden auf jeden Fall weiterhin dort einkaufen.','#c98a1a'],
+    ['Michaela D.','2025','Wir kaufen unser Hundefutter schon seit langer Zeit in der Futterkiste und kamen auf Empfehlung. Frau Hess berät uns bei all unseren Fragen immer sehr kompetent und geduldig. Egal ob es sich um Futter, Kauartikel, Trainingsleckerlies, Öl etc. handelt. Ganz unkompliziert hat sie uns auch die Bademäntel für unseren Hund bestellt, die perfekt passen. Zudem ist es einfach immer ein persönlicher Einkauf mit netten Gesprächen.','#1a3d1a'],
     ['Simon B.','2021','Kleine aber hochwertige Auswahl an Tierbedarfprodukten. Sehr nette Verkäuferin mit Sachverstand die auch versucht Sonderwünsche möglich zu machen. Nur zu empfehlen!','#5a7d9a']
   ];
   const starSvg = '<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
@@ -1455,6 +1455,27 @@ footer{overflow:hidden}
       <div class="stars">${starSvg.repeat(5)}</div>
       <p>${r[2]}</p>
     </div>`).join('');
+
+  /* ---------- Über uns: Gaby-Kasten bündig zur Oberkante der unteren Perks (nur Desktop) ----------
+     offsetTop statt getBoundingClientRect, damit die Einblend-Animationen (transform) nicht mitgemessen werden.
+     Die Spalten sind vertikal zentriert, deshalb in wenigen Schritten annähern. */
+  const aboutTag = $('.about-pic .about-tag'), lowerPerk = $$('.usp > div')[2];
+  const absTop = el => { let y = 0; while (el){ y += el.offsetTop; el = el.offsetParent; } return y; };
+  function alignAboutTag(){
+    aboutTag.style.marginTop = '';
+    if (innerWidth < 960 || !lowerPerk) return;
+    const base = parseFloat(getComputedStyle(aboutTag).marginTop) || 0;
+    let m = base;
+    for (let i = 0; i < 6; i++){
+      const d = absTop(lowerPerk) - absTop(aboutTag);
+      if (Math.abs(d) < 1) break;
+      m = Math.max(base, m + d); aboutTag.style.marginTop = m + 'px';
+    }
+  }
+  alignAboutTag();
+  addEventListener('load', alignAboutTag);
+  addEventListener('resize', alignAboutTag);
+  document.fonts && document.fonts.ready.then(alignAboutTag);
 
   /* ---------- Menü, Leiste, Reveal ---------- */
   $('#menuOpen').addEventListener('click',()=>$('#mnav').classList.add('open'));
