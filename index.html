@@ -492,16 +492,17 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 .dist .track{flex:1;height:7px;border-radius:99px;background:#eef2ee;overflow:hidden}
 .dist .track i{display:block;height:100%;background:#fbbc04;border-radius:99px}
 .gsum .btn{width:100%;justify-content:center;margin-top:.5rem}
-.revs{display:grid;gap:14px}
-@media(min-width:700px){.revs{grid-template-columns:1fr 1fr}}
-.rev{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.4rem;display:flex;flex-direction:column;gap:.8rem}
+/* Rezensionen unterschiedlich lang → zweispaltig als Mauerwerk statt starrem Raster */
+.revs{columns:1;column-gap:14px}
+@media(min-width:700px){.revs{columns:2}}
+.rev{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.4rem;display:flex;flex-direction:column;gap:.8rem;break-inside:avoid;margin-bottom:14px}
 .rev-h{display:flex;align-items:center;gap:.7rem}
 .rev-h .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600}
 .rev-h b{display:block;font-size:.93rem}
 .rev-h small{color:var(--muted);font-size:.76rem}
 .rev-h .g{margin-left:auto;width:20px}
 .rev p{color:#374151;font-size:.92rem;line-height:1.6}
-.demo-note{font-size:.72rem;color:var(--muted);margin-top:.8rem}
+.demo-note{font-size:.72rem;color:var(--muted);margin-top:0}
 
 /* ---------- Öffnungszeiten + Karte ---------- */
 .visit{display:grid;gap:14px}
@@ -936,7 +937,7 @@ footer{overflow:hidden}
 </section>
 
 <!-- ================= BEWERTUNGEN ================= -->
-<!-- Hinweis: Bewertungen und Kennzahlen sind Platzhalter. Vor Livegang durch echte Google-Rezensionen (z. B. per Widget) ersetzen. -->
+<!-- Echte Google-Rezensionen (Stand Oktober 2026: 5,0 aus 18). Neue Rezensionen von Hand im Array R ergänzen, Anzahl unten anpassen. -->
 <section class="block" id="bewertungen" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow rv">Google Bewertungen</span>
@@ -949,7 +950,7 @@ footer{overflow:hidden}
         </div>
         <div style="display:flex;align-items:center;gap:1rem">
           <span class="big">5,0</span>
-          <div><div class="stars" data-stars="5"></div><small style="color:var(--muted)">aus 60+ Bewertungen</small></div>
+          <div><div class="stars" data-stars="5"></div><small style="color:var(--muted)">aus 18 Bewertungen</small></div>
         </div>
         <div class="dist">
           <div>5 <span class="track"><i style="width:100%"></i></span></div>
@@ -958,12 +959,12 @@ footer{overflow:hidden}
           <div>2 <span class="track"><i style="width:0"></i></span></div>
           <div>1 <span class="track"><i style="width:0"></i></span></div>
         </div>
-        <a class="btn btn-green" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Meine+Futterkiste+Obere+Seewiesen+56+71711+Steinheim">Bewertung schreiben <i data-lucide="pen-line"></i></a>
-        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Meine+Futterkiste+Obere+Seewiesen+56+71711+Steinheim">Alle auf Google ansehen</a>
+        <a class="btn btn-green" target="_blank" rel="noopener" href="https://maps.google.com/?cid=11828145802633233210">Bewertung schreiben <i data-lucide="pen-line"></i></a>
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://maps.google.com/?cid=11828145802633233210">Alle auf Google ansehen</a>
       </div>
       <div>
         <div class="revs" id="revs"></div>
-        <p class="demo-note">Beispielhafte Darstellung. Die Einbindung zeigt später automatisch die aktuellen Google-Rezensionen.</p>
+        <p class="demo-note">Eine Auswahl unserer Rezensionen auf Google, Namen gekürzt.</p>
       </div>
     </div>
   </div>
@@ -1254,7 +1255,7 @@ footer{overflow:hidden}
       {n:'Paul und Paulina Gipfelstürmer + Dorsch',m:'Kaltgepresste Ölmischung aus Lein-, Hanf- und Schwarzkümmelöl mit Dorschlebertran',bg:'#5a4a3e',tag:'Öl',photo:true,src:'marken/paul-paulina-gipfelstuermer.jpg'},
       {n:'Paul und Paulina Gemüsemix',m:'Geraspeltes Gemüse mit Karotte, als Block tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-gemuesemix.jpg'}
     ]},
-    'q-pet': {n:'Q-Pet', logo:'marken/logos/q-pet.png', logoPhoto:true, p:[
+    'q-pet': {n:'Q-Pet', logo:'marken/logos/q-pet.png?v=2', logoPhoto:true, p:[
       // Q-Pet GmbH verkauft unter der Marke Qchefs
       {n:'Qchefs Dreierlei',m:'65 g, Käsesnack-Mix aus Snackies, Puffies und Cheesies, vegetarisch',bg:'#efe6da',tag:'Snack',src:'marken/q-pet-mix.jpg'},
       {n:'Qchefs Zahnputzflocken',m:'90 g, Flocken auf Käsebasis für die tägliche Zahnpflege',bg:'#f1ece4',pad:'2%',src:'marken/q-pet-pulver.png'},
@@ -1436,18 +1437,20 @@ footer{overflow:hidden}
   $('#kg').addEventListener('input', calc);
   $$('#act button').forEach(b=>b.addEventListener('click',()=>{ $$('#act button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); pct=+b.dataset.p; calc(); }));
 
-  /* ---------- Bewertungen (Platzhalter) ---------- */
+  /* ---------- Bewertungen: echte Google-Rezensionen (alle 5 Sterne), Stand Oktober 2026.
+     Text wörtlich übernommen, Kürzungen mit […] markiert, Namen gekürzt ---------- */
   const R = [
-    ['Sabine K.','vor 2 Wochen','Super nette und ehrliche Beratung zum Thema BARF. Man merkt, dass hier nicht nach Marke verkauft wird, sondern nach dem, was der Hund braucht.','#E86A10'],
-    ['Markus W.','vor 1 Monat','Unser Labrador verträgt endlich sein Futter. Danke an Gaby für die Geduld und die vielen Tipps!','#1a3d1a'],
-    ['Petra L.','vor 2 Monaten','Tolle Auswahl, faire Preise und immer ein Leckerli für den Hund an der Kasse. Unser Lieblingsladen.','#2f7a34'],
-    ['Jürgen H.','vor 3 Monaten','Kaufe hier seit Jahren das BARF für unsere zwei Hunde. Immer frisch und jedes Mal super beraten.','#c98a1a']
+    ['Saskia S.','2026','Sehr freundliche und sympathische Beratung. Barft ihre Hunde selbst und hat ein gutes Wissen. Wir kommen gerne wieder.😉','#E86A10'],
+    ['Michaela D.','2025','Wir kaufen unser Hundefutter schon seit langer Zeit in der Futterkiste und kamen auf Empfehlung. Frau Hess berät uns bei all unseren Fragen immer sehr kompetent und geduldig. Egal ob es sich um Futter, Kauartikel, Trainingsleckerlies, Öl etc. handelt. Ganz unkompliziert hat sie uns auch die Bademäntel für unseren Hund bestellt, die perfekt passen. Zudem ist es einfach immer ein persönlicher Einkauf mit netten Gesprächen.','#1a3d1a'],
+    ['Carlo R.','2024','Sehr gute und auch individuelle Beratung für unsere Vierbeiner da kann sich so manch ein anderer Shop eine Scheibe davon abschneiden🤗','#2f7a34'],
+    ['Familie S.','2023','Wir waren das erste mal hier, da es uns empfohlen wurde. […] Hier findet man alles was das Haustier benötigt. Wir erhielten als wir dann dran waren eine sehr ausführliche und professionelle Beratung auf die Bedürfnisse unseres Hundes. […] Wir werden auf jeden Fall weiterhin dort einkaufen.','#c98a1a'],
+    ['Simon B.','2021','Kleine aber hochwertige Auswahl an Tierbedarfprodukten. Sehr nette Verkäuferin mit Sachverstand die auch versucht Sonderwünsche möglich zu machen. Nur zu empfehlen!','#5a7d9a']
   ];
   const starSvg = '<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
   $$('[data-stars]').forEach(e=>e.innerHTML = starSvg.repeat(5));
   $('#revs').innerHTML = R.map((r,i)=>`
     <div class="rev rv pop" style="--d:${i*.08}s">
-      <div class="rev-h"><span class="av" style="background:${r[3]}">${r[0][0]}</span><div><b>${r[0]}</b><small>${r[1]}</small></div>
+      <div class="rev-h"><span class="av" style="background:${r[3]}">${r[0][0]}</span><div><b>${r[0]}</b><small>Google-Rezension · ${r[1]}</small></div>
       <svg class="g" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg></div>
       <div class="stars">${starSvg.repeat(5)}</div>
       <p>${r[2]}</p>
