@@ -377,6 +377,13 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 @media(min-width:560px) and (max-width:959px){.split{grid-template-columns:1fr 1fr;gap:.45rem 1.4rem}}
 .split .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .calc-note{font-size:.76rem;color:#a9c7ab;line-height:1.5}
+/* Quellenangabe: mobil ganz unten, am Desktop unten in der linken Spalte (teilt sich die Zelle mit dem Text) */
+.calc-src{font-size:.66rem;color:#8fb593;line-height:1.4;margin-top:-1.2rem;position:relative}
+@media(min-width:960px){
+  .calc>div:not(.calc-form){grid-column:1;grid-row:1;padding-bottom:2.2rem}
+  .calc>.calc-form{grid-column:2;grid-row:1}
+  .calc-src{grid-column:1;grid-row:1;align-self:end;margin:0}
+}
 
 /* ---------- Video-Banner ---------- */
 .vbanner{position:relative;height:clamp(480px,70vh,620px);overflow:hidden;background:#141a12;color:#fff;display:flex;align-items:flex-start;text-align:center;isolation:isolate;margin-bottom:clamp(72px,10vw,130px)}
@@ -879,6 +886,7 @@ footer{overflow:hidden}
         </div>
         <p class="calc-note">Richtwert für gesunde, ausgewachsene Hunde nach der gängigen Faustregel (2 bis 3 % des Körpergewichts, 80 % tierisch, 20 % pflanzlich). Ersetzt keine tierärztliche oder individuelle Beratung.</p>
       </div>
+      <p class="calc-src">Quelle: Barf-Gut, „BARF für Hunde: Die ultimative Kurzanleitung zum Hunde BARF“, Ute Wadehn, 2019.</p>
     </div>
   </div>
 </section>
@@ -1456,17 +1464,19 @@ footer{overflow:hidden}
       <p>${r[2]}</p>
     </div>`).join('');
 
-  /* ---------- Über uns: Gaby-Kasten bündig zur Oberkante der unteren Perks (nur Desktop) ----------
+  /* ---------- Über uns: Gaby-Kasten bündig zur Oberkante der unteren Perks und gleich hoch (nur Desktop) ----------
      offsetTop statt getBoundingClientRect, damit die Einblend-Animationen (transform) nicht mitgemessen werden.
      Die Spalten sind vertikal zentriert, deshalb in wenigen Schritten annähern. */
   const aboutTag = $('.about-pic .about-tag'), lowerPerk = $$('.usp > div')[2];
   const absTop = el => { let y = 0; while (el){ y += el.offsetTop; el = el.offsetParent; } return y; };
   function alignAboutTag(){
-    aboutTag.style.marginTop = '';
+    aboutTag.style.marginTop = ''; aboutTag.style.minHeight = '';
     if (innerWidth < 960 || !lowerPerk) return;
+    // gleiche Höhe wie die Perk-Kacheln (Inhalt bleibt per align-items:center mittig)
+    aboutTag.style.minHeight = lowerPerk.offsetHeight + 'px';
     const base = parseFloat(getComputedStyle(aboutTag).marginTop) || 0;
     let m = base;
-    for (let i = 0; i < 6; i++){
+    for (let i = 0; i < 12; i++){
       const d = absTop(lowerPerk) - absTop(aboutTag);
       if (Math.abs(d) < 1) break;
       m = Math.max(base, m + d); aboutTag.style.marginTop = m + 'px';
