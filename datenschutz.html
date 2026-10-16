@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#EFFDF0" />
+<meta name="format-detection" content="telephone=yes" />
+<title>Datenschutz | Meine Futterkiste Steinheim-Höpfigheim</title>
+<link rel="icon" href="favicon.png" type="image/png" sizes="192x192" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<meta name="description" content="Datenschutzerklärung von Meine Futterkiste, Gabriele und Frank Hess GbR, Steinheim-Höpfigheim: Hosting bei STRATO, Google Maps und Kontaktformular." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://meine-futterkiste.de/datenschutz.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style>
+:root{
+  --bg:#EFFDF0;
+  --green:#1a3d1a;
+  --green-h:#2a5a2a;
+  --green-soft:#dff3e0;
+  --orange:#E86A10;
+  --orange-h:#d45e0d;
+  --ink:#16261a;
+  --muted:#5b6b5d;
+  --line:#cfe6d1;
+  --card:#ffffff;
+  --radius:18px;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+@media(min-width:768px){.wrap{padding:0 32px}}
+@media(min-width:1024px){.wrap{padding:0 48px}}
+svg.lucide{width:1em;height:1em;stroke-width:2}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:6px}
+::selection{background:#ffd2ae;color:var(--ink)}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+.animate-fade-up{animation:fade-up .8s var(--ease) both}
+.animate-fade-in{animation:fade-in .6s ease-out both}
+.delay-100{animation-delay:.1s}.delay-200{animation-delay:.2s}.delay-300{animation-delay:.3s}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;font-weight:600;font-size:.95rem;padding:.85rem 1.4rem;transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-ghost{border:1.5px solid var(--green);color:var(--green)}
+.btn-ghost:hover{background:var(--green);color:#fff}
+.btn svg.lucide{transition:transform .3s var(--ease)}
+.btn:hover svg.lucide-arrow-left{transform:translateX(-3px)}
+.circle{position:relative;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:18px;transition:background .2s,transform .2s;flex-shrink:0}
+.circle:hover{transform:translateY(-1px)}
+.circle-green{background:var(--green);color:#fff}
+.circle-green:hover{background:var(--green-h)}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.h2{font-family:'DM Serif Display',serif;font-weight:400;color:var(--green);font-size:clamp(40px,5.4vw,72px);line-height:1;letter-spacing:-.01em;margin:.6rem 0 1rem}
+.lead{color:var(--muted);font-size:1.05rem;line-height:1.65;max-width:56ch}
+
+/* ---------- Header ---------- */
+.hdr{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:.75rem 20px;gap:1rem;background:rgba(239,253,240,.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid rgba(207,230,209,.8)}
+@media(min-width:768px){.hdr{padding:.75rem 32px}}
+@media(min-width:1024px){.hdr{padding:.75rem 48px}}
+.logo{display:flex;align-items:center;gap:.6rem;color:var(--green)}
+.logo-mark{width:42px;height:42px;border-radius:50%;background:#fff;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 1px rgba(26,61,26,.08),0 6px 16px -8px rgba(26,61,26,.35);transition:transform .4s cubic-bezier(0.34,1.56,0.64,1)}
+.logo-mark img{width:100%;height:100%;object-fit:cover}
+.logo:hover .logo-mark{transform:rotate(-8deg) scale(1.06)}
+.logo-txt{font-family:'DM Serif Display',serif;font-size:1.25rem;line-height:.95}
+.logo-txt small{display:block;font-family:'Inter',sans-serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+@media(min-width:1024px){.logo-txt{font-size:1.4rem}}
+.hdr-actions{display:flex;align-items:center;gap:.6rem}
+.hdr .btn{padding:.6rem 1.1rem;font-size:.88rem}
+@media(max-width:559px){.hdr .btn span{display:none}.hdr .btn{padding:.6rem .75rem}}
+
+/* ---------- Inhalt ---------- */
+.page-head{padding:clamp(56px,8vw,96px) 0 clamp(28px,4vw,44px)}
+.legal-grid{display:grid;gap:1.25rem}
+@media(min-width:960px){.legal-grid{grid-template-columns:320px 1fr;gap:2.5rem;align-items:start}}
+.legal-grid>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem 1.5rem;box-shadow:0 18px 40px -32px rgba(10,40,10,.45)}
+@media(min-width:768px){.card{padding:2rem 2.1rem}}
+.card-id{position:relative;overflow:hidden}
+@media(min-width:960px){.card-id{position:sticky;top:96px}}
+.card-id::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:var(--green-soft);z-index:0}
+.card-id>*{position:relative;z-index:1}
+.card-id h2{font-family:'DM Serif Display',serif;font-weight:400;color:var(--green);font-size:1.7rem;line-height:1.1;margin-bottom:.35rem}
+.card-id .sub{color:var(--muted);font-size:.9rem;margin-bottom:1.2rem}
+.toc{list-style:none;display:flex;flex-direction:column;gap:.15rem;counter-reset:toc}
+.toc a{display:flex;gap:.7rem;align-items:baseline;padding:.42rem .55rem;margin:0 -.55rem;border-radius:10px;font-size:.92rem;color:var(--ink);transition:background .2s,color .2s}
+.toc a::before{counter-increment:toc;content:counter(toc,decimal-leading-zero);font-size:.7rem;font-weight:600;letter-spacing:.08em;color:var(--orange);min-width:1.4rem}
+.toc a:hover{background:var(--green-soft);color:var(--green)}
+
+.sec+.sec{margin-top:1.9rem;padding-top:1.9rem;border-top:1px solid var(--line)}
+.sec h3{font-family:'DM Serif Display',serif;font-weight:400;color:var(--green);font-size:1.45rem;line-height:1.15;margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem;hyphens:auto;overflow-wrap:break-word}
+.sec h3 span:last-child{min-width:0}
+@media(max-width:479px){.sec h3{font-size:1.25rem}}
+.sec h3 .num{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--orange);background:#fff1e6;border-radius:999px;padding:.25rem .55rem;flex-shrink:0}
+.sec h4{font-size:1rem;font-weight:600;color:var(--ink);margin:1.3rem 0 .45rem}
+.sec p,.sec li{color:var(--muted);line-height:1.7;font-size:.96rem;max-width:72ch;overflow-wrap:break-word}
+.sec p+p{margin-top:.7rem}
+.sec ul{margin:.5rem 0 .7rem 1.1rem}
+.sec li+li{margin-top:.2rem}
+.sec strong{color:var(--ink);font-weight:600}
+.sec a{color:var(--green);font-weight:500;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;transition:text-decoration-color .2s}
+.sec a:hover{text-decoration-color:var(--orange)}
+.addr{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:.85rem 1rem;margin:.7rem 0;color:var(--ink);font-size:.93rem;line-height:1.6}
+.note{background:#fff7f0;border:1px solid #ffd9bd;border-radius:12px;padding:.95rem 1.05rem;margin-top:.9rem}
+.note p{color:var(--ink)}
+.stand{margin-top:1.9rem;font-size:.82rem;color:var(--muted)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--green);color:#c6dfc8;padding:4rem 0 2rem;margin-top:clamp(72px,10vw,130px);overflow:hidden}
+.foot{display:grid;gap:2.5rem}
+@media(min-width:900px){.foot{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+.foot .logo{color:#fff}
+.foot .logo-mark{width:56px;height:56px;box-shadow:0 0 0 3px rgba(255,255,255,.12)}
+.foot .logo-txt small{color:#9fc0a2}
+.foot h4{color:#fff;font-size:.95rem;margin-bottom:.9rem}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;font-size:.9rem}
+.foot a:hover{color:#fff}
+.foot p{font-size:.9rem;line-height:1.6;margin-top:1rem;max-width:36ch}
+.legal{border-top:1px solid rgba(255,255,255,.12);margin-top:3rem;padding-top:1.4rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.8rem}
+.legal div{display:flex;gap:1.2rem}
+.legal a.on{color:#fff}
+.foot-mark{font-family:'DM Serif Display',serif;font-size:min(11vw,220px);line-height:.8;letter-spacing:-.02em;white-space:nowrap;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(198,223,200,.25);margin-top:2.5rem;user-select:none;pointer-events:none}
+@media(min-width:900px){.foot-mark{margin-bottom:calc(-2rem - .16em)}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="index.html" class="logo animate-fade-in" aria-label="Meine Futterkiste Startseite">
+    <span class="logo-mark"><img src="logo.png" alt="" width="320" height="320" /></span>
+    <span class="logo-txt">Meine Futterkiste<small>Steinheim-Höpfigheim</small></span>
+  </a>
+  <div class="hdr-actions animate-fade-in delay-100">
+    <a href="tel:+497144208362" class="circle circle-green" aria-label="Anrufen"><i data-lucide="phone"></i></a>
+    <a href="index.html" class="btn btn-ghost"><i data-lucide="arrow-left"></i><span>Zur Startseite</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <span class="eyebrow animate-fade-up">Rechtliches</span>
+      <h1 class="h2 animate-fade-up delay-100">Datenschutz.</h1>
+      <p class="lead animate-fade-up delay-200">Welche Daten beim Besuch dieser Website anfallen, wofür wir sie nutzen und welche Rechte Sie haben.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="legal-grid">
+
+      <aside class="card card-id animate-fade-up delay-200">
+        <h2>Auf einen Blick</h2>
+        <p class="sub">Keine Cookies, kein Tracking, keine Werbung.</p>
+        <ol class="toc">
+          <li><a href="#ueberblick">Überblick</a></li>
+          <li><a href="#verantwortlich">Verantwortliche Stelle</a></li>
+          <li><a href="#hosting">Hosting bei STRATO</a></li>
+          <li><a href="#kontakt">Kontakt &amp; Kontaktformular</a></li>
+          <li><a href="#speicher">Speicherung im Browser</a></li>
+          <li><a href="#maps">Google Maps</a></li>
+          <li><a href="#extern">Schriften &amp; externe Inhalte</a></li>
+          <li><a href="#rechte">Ihre Rechte</a></li>
+          <li><a href="#beschwerde">Beschwerderecht</a></li>
+          <li><a href="#sicherheit">Datensicherheit</a></li>
+          <li><a href="#aenderungen">Änderungen</a></li>
+        </ol>
+      </aside>
+
+      <article class="card animate-fade-up delay-300">
+
+        <div class="sec" id="ueberblick">
+          <h3><span class="num">01</span><span>Datenschutz auf einen Blick</span></h3>
+          <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+          <p>Ein Teil der Daten fällt technisch automatisch an, sobald Sie die Website aufrufen (zum Beispiel IP-Adresse, Browser, Uhrzeit des Aufrufs). Andere Daten teilen Sie uns selbst mit, etwa wenn Sie uns anrufen, eine E-Mail schreiben oder das Kontaktformular nutzen. Wir nutzen diese Daten, um die Website fehlerfrei bereitzustellen und Ihre Anfragen zu bearbeiten. Eine Auswertung Ihres Surfverhaltens findet nicht statt.</p>
+          <h4>Rechtsgrundlagen</h4>
+          <p>Wir verarbeiten Ihre Daten auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit dies für einen Vertrag oder vorvertragliche Maßnahmen (zum Beispiel eine Produktanfrage) erforderlich ist, auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO zur Erfüllung rechtlicher Pflichten und auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO. Sofern Sie eingewilligt haben, ist Art. 6 Abs. 1 lit. a DSGVO die Rechtsgrundlage; eine Einwilligung können Sie jederzeit für die Zukunft widerrufen.</p>
+          <h4>Speicherdauer</h4>
+          <p>Soweit nachfolgend keine speziellere Speicherdauer genannt ist, bleiben Ihre Daten bei uns, bis der Zweck der Verarbeitung entfällt. Gesetzliche Aufbewahrungsfristen, etwa aus dem Steuer- und Handelsrecht, bleiben unberührt.</p>
+        </div>
+
+        <div class="sec" id="verantwortlich">
+          <h3><span class="num">02</span><span>Verantwortliche Stelle</span></h3>
+          <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+          <div class="addr">
+            Gabriele und Frank Hess GbR (Meine Futterkiste)<br />
+            Obere Seewiesen 56, 71711 Steinheim an der Murr<br />
+            Telefon: <a href="tel:+497144208362">07144 208362</a><br />
+            E-Mail: <a href="mailto:info@meine-futterkiste.de">info@meine-futterkiste.de</a>
+          </div>
+          <p>Vertreten durch die Gesellschafter Gabriele Hess und Frank Hess. Weitere Angaben finden Sie im <a href="impressum.html">Impressum</a>. Ein Datenschutzbeauftragter ist gesetzlich nicht vorgeschrieben und daher nicht bestellt.</p>
+        </div>
+
+        <div class="sec" id="hosting">
+          <h3><span class="num">03</span><span>Hosting bei STRATO</span></h3>
+          <p>Diese Website wird bei einem externen Dienstleister gehostet:</p>
+          <div class="addr">STRATO GmbH<br />Otto-Ostrowski-Straße 7, 10249 Berlin</div>
+          <p>Die STRATO GmbH verarbeitet die Daten, die beim Aufruf dieser Website anfallen, auf Servern in Deutschland. Einzelheiten finden Sie in der <a href="https://www.strato.de/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung von STRATO</a>.</p>
+          <h4>Server-Log-Dateien</h4>
+          <p>Beim Aufruf jeder Seite übermittelt Ihr Browser automatisch Informationen, die der Hoster in sogenannten Server-Log-Dateien speichert:</p>
+          <ul>
+            <li>IP-Adresse des anfragenden Geräts</li>
+            <li>Datum und Uhrzeit des Zugriffs</li>
+            <li>aufgerufene Seite bzw. Datei und übertragene Datenmenge</li>
+            <li>Referrer-URL (die zuvor besuchte Seite)</li>
+            <li>Browsertyp und -version sowie Betriebssystem</li>
+          </ul>
+          <p>Diese Daten werden nicht mit anderen Datenquellen zusammengeführt. Sie dienen dem sicheren und stabilen Betrieb der Website und werden nach kurzer Zeit gelöscht. Rechtsgrundlage ist unser berechtigtes Interesse an einer technisch fehlerfreien und sicheren Bereitstellung (Art. 6 Abs. 1 lit. f DSGVO).</p>
+          <h4>Auftragsverarbeitung</h4>
+          <p>Mit der STRATO GmbH haben wir einen Vertrag über Auftragsverarbeitung (AVV) nach Art. 28 DSGVO geschlossen. Er stellt sicher, dass STRATO die Daten unserer Besucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+        </div>
+
+        <div class="sec" id="kontakt">
+          <h3><span class="num">04</span><span>Kontakt &amp; Kontaktformular</span></h3>
+          <h4>Anfrage per Telefon oder E-Mail</h4>
+          <p>Wenn Sie uns anrufen oder eine E-Mail schreiben, verarbeiten wir Ihre Angaben (zum Beispiel Name, Kontaktdaten, Anliegen) ausschließlich zur Bearbeitung Ihrer Anfrage und für mögliche Rückfragen. Wir geben diese Daten nicht ohne Ihre Einwilligung weiter.</p>
+          <h4>Kontaktformular</h4>
+          <p>Wenn Sie uns über das Kontaktformular schreiben, werden Ihre Angaben (Name, Telefonnummer oder E-Mail-Adresse, Anliegen, optional Name und Gewicht Ihres Hundes sowie Ihre Nachricht) verschlüsselt an unseren Webserver bei STRATO übertragen und von dort als E-Mail an unser Postfach gesendet. Wir nutzen die Angaben ausschließlich, um Ihre Anfrage zu beantworten. Eine Speicherung in einer Datenbank auf der Website findet nicht statt.</p>
+          <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage mit einem Vertrag zusammenhängt, im Übrigen unser berechtigtes Interesse an der Bearbeitung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO). Wir löschen die Daten, sobald Ihre Anfrage abschließend bearbeitet ist, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+        </div>
+
+        <div class="sec" id="speicher">
+          <h3><span class="num">05</span><span>Speicherung im Browser</span></h3>
+          <p>Diese Website setzt <strong>keine Cookies</strong> und verwendet keine Analyse- oder Trackingdienste.</p>
+          <p>Damit Ihre Merkliste beim nächsten Besuch erhalten bleibt, speichert die Website Ihre gemerkten Produkte im lokalen Speicher Ihres Browsers (Local Storage, Eintrag „mfk-favs“). Diese Daten verlassen Ihr Gerät nicht und werden nicht an uns übertragen. Die Speicherung ist für die von Ihnen gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Sie können den Eintrag jederzeit löschen, indem Sie die Sterne an den Produkten wieder abwählen oder die Websitedaten in Ihrem Browser entfernen.</p>
+        </div>
+
+        <div class="sec" id="maps">
+          <h3><span class="num">06</span><span>Google Maps</span></h3>
+          <p>Im Bereich „Öffnungszeiten &amp; Anfahrt“ binden wir eine Karte des Dienstes Google Maps ein, damit Sie uns leichter finden. Anbieter ist die:</p>
+          <div class="addr">Google Ireland Limited<br />Gordon House, Barrow Street, Dublin 4, Irland</div>
+          <p>Sobald die Karte geladen wird, stellt Ihr Browser eine Verbindung zu Servern von Google her. Dabei werden insbesondere Ihre IP-Adresse sowie technische Angaben zu Ihrem Browser an Google übertragen und in der Regel auf Servern in den USA verarbeitet. Google kann dabei Cookies setzen und eigene Schriftarten nachladen. Auf diese Datenverarbeitung haben wir keinen Einfluss.</p>
+          <p>Die Nutzung erfolgt im Interesse einer ansprechenden Darstellung und einer leichten Auffindbarkeit unseres Ladens; dies ist ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO. Sofern eine Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG; die Einwilligung ist jederzeit widerrufbar.</p>
+          <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt (<a href="https://privacy.google.com/businesses/gdprcontrollerterms/" target="_blank" rel="noopener">Details</a>). Google ist zudem nach dem „EU-US Data Privacy Framework“ (DPF) zertifiziert (<a href="https://www.dataprivacyframework.gov/participant/5780" target="_blank" rel="noopener">Eintrag</a>). Mehr zum Umgang mit Nutzerdaten finden Sie in der <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+          <p>Die Schaltflächen „Route“, „Bewertung schreiben“ und „Alle auf Google ansehen“ sind einfache Links. Eine Verbindung zu Google entsteht dabei erst, wenn Sie darauf klicken.</p>
+        </div>
+
+        <div class="sec" id="extern">
+          <h3><span class="num">07</span><span>Schriften &amp; externe Inhalte</span></h3>
+          <p>Für eine einheitliche Darstellung lädt diese Website einige Inhalte von Servern externer Anbieter. Dabei wird technisch bedingt Ihre IP-Adresse an den jeweiligen Anbieter übertragen, damit dieser die Inhalte an Ihren Browser ausliefern kann. Rechtsgrundlage ist unser berechtigtes Interesse an einer einheitlichen, ansprechenden und schnell ladenden Darstellung (Art. 6 Abs. 1 lit. f DSGVO).</p>
+          <h4>Google Fonts</h4>
+          <p>Wir verwenden Schriftarten von Google Fonts (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Beim Aufruf einer Seite lädt Ihr Browser die Schriften von Servern von Google; eine Übertragung in die USA ist dabei nicht ausgeschlossen. Google ist nach dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen: <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts FAQ</a>.</p>
+          <h4>jsDelivr (Symbole)</h4>
+          <p>Die auf der Website verwendeten Symbole (Icon-Bibliothek „Lucide“) werden über das Content Delivery Network jsDelivr geladen, betrieben von der Volentio JSD Limited, Vereinigtes Königreich. Für das Vereinigte Königreich besteht ein Angemessenheitsbeschluss der EU-Kommission. Weitere Informationen: <a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Datenschutzerklärung von jsDelivr</a>.</p>
+          <h4>Bilder und Videos</h4>
+          <p>Einige Fotos und Videos werden direkt von den Servern der Anbieter geladen, über die wir sie lizenziert haben: Unsplash (Unsplash Inc., Kanada; <a href="https://unsplash.com/privacy" target="_blank" rel="noopener">Datenschutz</a>), Mixkit (Envato Pty Ltd, Australien; <a href="https://envato.com/privacy/" target="_blank" rel="noopener">Datenschutz</a>). Beim Laden dieser Inhalte wird Ihre IP-Adresse an den jeweiligen Anbieter übermittelt; bei Anbietern außerhalb der EU kann dies eine Übermittlung in ein Drittland bedeuten.</p>
+          <h4>Video auf YouTube</h4>
+          <p>Unser Video ist nicht auf dieser Website eingebettet. Die Vorschau ist ein einfacher Link, der das Video auf YouTube (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) in einem neuen Fenster öffnet. Eine Verbindung zu YouTube entsteht erst, wenn Sie darauf klicken; ab dann gilt die <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+        </div>
+
+        <div class="sec" id="rechte">
+          <h3><span class="num">08</span><span>Ihre Rechte</span></h3>
+          <p>Sie haben im Rahmen der gesetzlichen Bestimmungen jederzeit das Recht auf:</p>
+          <ul>
+            <li>Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
+            <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+            <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
+            <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+            <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+            <li>Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+          </ul>
+          <p>Wenden Sie sich dazu einfach formlos an uns, die Kontaktdaten stehen oben unter „Verantwortliche Stelle“.</p>
+          <div class="note">
+            <p><strong>Widerspruchsrecht nach Art. 21 DSGVO:</strong> Wenn wir Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO verarbeiten, können Sie aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit Widerspruch gegen diese Verarbeitung einlegen. Wir verarbeiten die betroffenen Daten dann nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe nachweisen, die Ihre Interessen überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</p>
+          </div>
+        </div>
+
+        <div class="sec" id="beschwerde">
+          <h3><span class="num">09</span><span>Beschwerderecht</span></h3>
+          <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer Daten gegen die DSGVO verstößt. Für uns zuständig ist:</p>
+          <div class="addr">Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg<br />Lautenschlagerstraße 20, 70173 Stuttgart<br /><a href="https://www.baden-wuerttemberg.datenschutz.de" target="_blank" rel="noopener">www.baden-wuerttemberg.datenschutz.de</a></div>
+        </div>
+
+        <div class="sec" id="sicherheit">
+          <h3><span class="num">10</span><span>Datensicherheit</span></h3>
+          <p>Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie am Schloss-Symbol und an „https://“ in der Adresszeile Ihres Browsers. Bitte beachten Sie, dass die Übertragung per E-Mail in der Regel nicht Ende-zu-Ende verschlüsselt ist. Für vertrauliche Angaben empfehlen wir Ihnen das Telefon oder einen Besuch im Laden.</p>
+        </div>
+
+        <div class="sec" id="aenderungen">
+          <h3><span class="num">11</span><span>Änderungen</span></h3>
+          <p>Wir passen diese Datenschutzerklärung an, wenn sich die Website oder die rechtlichen Vorgaben ändern. Es gilt jeweils die hier veröffentlichte Fassung.</p>
+          <p class="stand">Stand: Oktober 2026</p>
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="index.html" class="logo"><span class="logo-mark"><img src="logo.png" alt="" width="320" height="320" /></span><span class="logo-txt">Meine Futterkiste<small>Steinheim-Höpfigheim</small></span></a>
+        <p>Spezialisten für die gesunde Ernährung Ihres Vierbeiners. Fair beraten durch Markenunabhängigkeit.</p>
+      </div>
+      <div>
+        <h4>Entdecken</h4>
+        <ul><li><a href="index.html#sortiment">Sortiment</a></li><li><a href="index.html#barf">BARF-Rechner</a></li><li><a href="index.html#shop">Shop</a></li><li><a href="index.html#ratgeber">Ratgeber</a></li></ul>
+      </div>
+      <div>
+        <h4>Öffnungszeiten</h4>
+        <ul><li>Di 16:00 bis 19:00</li><li>Mi 16:00 bis 20:00</li><li>Do 16:00 bis 18:00</li><li>Fr 16:00 bis 20:00</li></ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul><li>Obere Seewiesen 56</li><li>71711 Steinheim</li><li><a href="tel:+497144208362">07144 208362</a></li><li><a href="mailto:info@meine-futterkiste.de">info@meine-futterkiste.de</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr">2026</span> Gabriele und Frank Hess GbR</span>
+      <div><a href="impressum.html">Impressum</a><a href="datenschutz.html" class="on" aria-current="page">Datenschutz</a></div>
+    </div>
+  </div>
+  <div class="foot-mark" aria-hidden="true">Meine Futterkiste</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  if (window.lucide) lucide.createIcons();
+</script>
+</body>
+</html>

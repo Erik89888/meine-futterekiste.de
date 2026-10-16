@@ -6,18 +6,19 @@
 <meta name="theme-color" content="#EFFDF0" />
 <meta name="format-detection" content="telephone=yes" />
 <title>Meine Futterkiste | BARF, Hundefutter & Beratung in Steinheim-Höpfigheim</title>
-<link rel="icon" href="https://meine-futterkiste.de/wp-content/uploads/2023/02/cropped-Logo-Hund1-32x32.jpg" sizes="32x32" />
-<link rel="icon" href="https://meine-futterkiste.de/wp-content/uploads/2023/02/cropped-Logo-Hund1-192x192.jpg" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://meine-futterkiste.de/wp-content/uploads/2023/02/cropped-Logo-Hund1-180x180.jpg" />
-<meta name="description" content="Meine Futterkiste in Steinheim-Höpfigheim: Spezialisten für die gesunde Ernährung Ihres Vierbeiners. BARF, Futter, Zubehör und Bienenfutter. Markenunabhängige Beratung, Vorbestellung und Abholung im Laden." />
-<meta name="keywords" content="BARF Steinheim, Hundefutter Steinheim, Futterladen Höpfigheim, Bienenfutter, Rohfütterung, Meine Futterkiste" />
+<link rel="icon" href="favicon.png" type="image/png" sizes="192x192" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<meta name="description" content="Meine Futterkiste in Steinheim-Höpfigheim: Spezialisten für die gesunde Ernährung Ihres Vierbeiners. BARF, Futter, Kauartikel und Zubehör. Markenunabhängige, persönliche Beratung direkt im Laden." />
+<meta name="keywords" content="BARF Steinheim, Hundefutter Steinheim, Futterladen Höpfigheim, Rohfütterung, Meine Futterkiste" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://meine-futterkiste.de/" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="de_DE" />
 <meta property="og:site_name" content="Meine Futterkiste" />
 <meta property="og:title" content="Meine Futterkiste | Gesunde Ernährung für Ihren Vierbeiner" />
-<meta property="og:description" content="BARF, Futter, Zubehör und Bienenfutter mit fairer, markenunabhängiger Beratung in Steinheim-Höpfigheim." />
+<meta property="og:description" content="BARF, Futter, Kauartikel und Zubehör mit fairer, markenunabhängiger Beratung in Steinheim-Höpfigheim." />
+<meta property="og:url" content="https://meine-futterkiste.de/" />
+<meta property="og:image" content="https://meine-futterkiste.de/logo.jpg" />
 
 <script type="application/ld+json">
 {
@@ -26,6 +27,9 @@
   "name": "Meine Futterkiste",
   "legalName": "Gabriele und Frank Hess GbR",
   "url": "https://meine-futterkiste.de/",
+  "logo": "https://meine-futterkiste.de/logo.jpg",
+  "image": "https://meine-futterkiste.de/logo.jpg",
+  "sameAs": ["https://www.youtube.com/@frankhess3724"],
   "telephone": "+49 7144 208362",
   "email": "info@meine-futterkiste.de",
   "address": {
@@ -46,7 +50,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Kaushan+Script&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 
 <style>
@@ -143,7 +147,6 @@ svg.lucide{width:1em;height:1em;stroke-width:2}
 .prod{opacity:0}
 .prod-img>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(0.34,1.4,0.64,1)}
 .prod-img>.tag,.prod-img>.fav{z-index:2}
-.line .li{overflow:hidden}.line .li img{width:100%;height:100%;object-fit:cover}
 .prod:hover .prod-img>img{transform:scale(1.1) rotate(-1.5deg)}
 .step:hover svg.lucide,.usp div:hover svg.lucide{animation:wiggle .5s ease}
 .cat{transition:transform .5s var(--ease)}
@@ -302,13 +305,30 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 
 /* ---------- Über uns ---------- */
 .about{display:grid;gap:3rem;align-items:center}
-@media(min-width:960px){.about{grid-template-columns:1.05fr 1fr;gap:5rem}}
-.about-pic{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:var(--green-soft)}
-.about-pic img{width:100%;height:100%;object-fit:cover}
-.about-tag{position:absolute;left:18px;bottom:18px;right:18px;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);border-radius:18px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.9rem}
+@media(min-width:960px){.about{grid-template-columns:1.2fr 1fr;gap:5rem}}
+.about-pic{position:relative;display:flex;flex-direction:column}
+.about-tag{background:rgba(255,255,255,.93);backdrop-filter:blur(8px);border-radius:18px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.9rem;position:relative;border:1px solid var(--line);box-shadow:0 14px 30px -18px rgba(26,61,26,.45)}
+/* Freigestellter Beagle ohne Rahmen; läuft links bis in den Seitenrand, damit er größer wirken kann */
+.about-claim{color:var(--green);font-family:'Kaushan Script',cursive;font-weight:400;font-size:clamp(42px,4.6vw,68px);line-height:1.02;letter-spacing:.005em;transform:rotate(-3deg);transform-origin:left bottom;margin:0 0 .1em .1em}
+.about-claim span{display:block;color:var(--orange);padding-left:1.1em}
+.beagle{position:relative;margin-top:-1%}
+.about-pic .beagle img{position:relative;display:block;max-width:none;height:auto;object-fit:contain;width:122%;margin-left:max(-22%, calc((min(100vw, 1240px) - 100vw) / 2 - 40px))}
+.hearts{position:absolute;left:38%;top:4%;display:flex;align-items:flex-start;gap:6px;color:#5f9d68;font-size:clamp(24px,3vw,38px)}
+.hearts svg.lucide{fill:currentColor;stroke:none;animation:float 4.5s ease-in-out infinite}
+.hearts svg.lucide+svg.lucide{font-size:.72em;margin-top:-.5em;animation-delay:-1.6s;opacity:.85}
+.about-pic .about-tag{margin-top:clamp(14px,2vw,28px)}
+/* Gaby-Tag nach links verlängert, folgt dem Beagle in den Seitenrand */
+@media(min-width:960px){.about-pic .about-tag{margin-left:max(-14%, calc((min(100vw, 1240px) - 100vw) / 2 - 24px))}}
+@media(max-width:959px){
+  .about-pic{max-width:620px;width:100%;margin:0 auto}
+  .about-pic .beagle img{width:calc(100% + 40px);margin-left:-20px}
+}
 .about-tag .avatar{width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:600;flex-shrink:0}
 .about-tag b{color:var(--green);display:block}
-.about-tag small{color:var(--muted)}
+.about-tag small{color:var(--muted);line-height:1.45;display:block;margin-top:.15rem}
+.about-tag small.expert{margin-top:.45rem;padding-top:.45rem;border-top:1px dashed var(--line)}
+.about-tag small a{color:var(--green);font-weight:600;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;transition:text-decoration-color .2s}
+.about-tag small a:hover{text-decoration-color:var(--orange)}
 .usp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem}
 .usp div{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem}
 .usp svg.lucide{box-sizing:border-box;width:42px;height:42px;padding:10px;border-radius:12px;background:#fff1e6;color:var(--orange);display:block;margin-bottom:.8rem}
@@ -318,7 +338,7 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 /* ---------- Sortiment ---------- */
 .cats{display:grid;gap:14px;margin-top:2.5rem;grid-template-columns:1fr}
 @media(min-width:640px){.cats{grid-template-columns:1fr 1fr}}
-@media(min-width:1024px){.cats{grid-template-columns:repeat(4,1fr);grid-auto-rows:260px}.cat.big{grid-column:span 2;grid-row:span 2}}
+@media(min-width:1024px){.cats{grid-template-columns:repeat(4,1fr);grid-auto-rows:260px}.cat.big{grid-column:span 2;grid-row:span 2}.cat.wide{grid-column:span 2}}
 .cat{position:relative;border-radius:22px;overflow:hidden;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;color:#fff;background:var(--green);isolation:isolate}
 .cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s var(--ease)}
 .cat::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(10,30,10,.85),rgba(10,30,10,.05) 65%)}
@@ -328,10 +348,6 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 .cat p{font-size:.88rem;opacity:.88;margin-top:.45rem;line-height:1.5;max-width:40ch}
 .cat .corner{top:16px;right:16px;bottom:auto;width:40px;height:40px;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);font-size:18px}
 .cat:hover .corner{background:var(--orange)}
-.cat.plain{background:var(--orange)}
-.cat.plain::before{display:none}
-.cat.plain .big-ico{position:absolute;right:-20px;top:-20px;font-size:170px;opacity:.16;z-index:-1}
-.cat.honey{background:#c98a1a}
 
 /* ---------- BARF-Rechner ---------- */
 .calc{background:var(--green);color:#fff;border-radius:32px;padding:clamp(28px,5vw,64px);display:grid;gap:2.5rem;position:relative;overflow:hidden}
@@ -387,15 +403,51 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 @media (prefers-reduced-motion:reduce){.vbanner video{transform:none}}
 
 /* ---------- Shop ---------- */
-.shop-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem}
-.shop-tools{display:flex;flex-wrap:wrap;gap:.6rem;margin:2rem 0 1.6rem;align-items:center}
+.shop-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem}.shop-tools{display:flex;flex-wrap:wrap;gap:.6rem;margin:2rem 0 1.6rem;align-items:center}
 .chip{padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--line);font-size:.86rem;font-weight:500;color:var(--green);background:#fff;transition:all .2s}
 .chip:hover{border-color:var(--green)}
 .chip.on{background:var(--green);color:#fff;border-color:var(--green)}
 .search{margin-left:auto;display:flex;align-items:center;gap:.5rem;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:.5rem 1rem;min-width:min(100%,260px);color:var(--muted)}
 .search input{border:0;outline:0;background:none;flex:1;min-width:0;color:var(--ink)}
 .search:focus-within{border-color:var(--green)}
-@media(max-width:639px){.search{margin-left:0;width:100%}}
+/* Marken-Menü (eigenes Dropdown statt nativem select) */
+.shop-tools{position:relative;z-index:5}
+.brand-pick{position:relative}
+.brand-btn{display:flex;align-items:center;gap:.55rem;min-width:200px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:.55rem 1rem;color:var(--ink);font-size:.9rem;font-weight:500;transition:border-color .2s,background .2s,color .2s}
+.brand-btn svg.lucide{width:1.05em;height:1.05em;color:var(--green);flex:none;transition:color .2s,transform .25s var(--ease)}
+.brand-btn #brandLabel{flex:1;text-align:left}
+.brand-btn svg.chev{color:var(--muted)}
+.brand-btn:hover,.brand-btn[aria-expanded=true]{border-color:var(--green)}
+.brand-btn[aria-expanded=true] .chev{transform:rotate(180deg)}
+.brand-pick.on .brand-btn{background:var(--green);border-color:var(--green);color:#fff}
+.brand-pick.on .brand-btn svg.lucide{color:#fff}
+.bb-logo{width:24px;height:24px;margin:-2px 0 -2px -4px;border-radius:50%;background:#fff;object-fit:cover;flex:none}
+.bb-logo[hidden]{display:none}.brand-pick.on .brand-btn svg.tagi{display:none}
+.bm-logo{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);overflow:hidden;flex:none;transition:box-shadow .2s,border-color .2s}
+.bm-logo img{width:100%;height:100%;object-fit:contain;display:block}
+.bm-logo.photo img{object-fit:cover}
+.brand-menu li[aria-selected=true] .bm-logo{border-color:var(--green);box-shadow:0 0 0 1px var(--green)}
+.brand-menu{position:absolute;right:0;top:calc(100% + 8px);width:max(100%,270px);background:#fff;border:1px solid var(--line);border-radius:18px;padding:.4rem;box-shadow:0 24px 48px -22px rgba(26,61,26,.42);opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top right;transition:opacity .2s,transform .25s var(--ease),visibility 0s .25s}
+.brand-pick.open .brand-menu{opacity:1;visibility:visible;transform:none;transition:opacity .2s,transform .25s var(--ease)}
+.brand-menu-h{display:block;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.55rem .7rem .35rem}
+.brand-menu ul{list-style:none;margin:0;padding:0}
+.brand-menu li{display:flex;align-items:center;gap:.75rem;padding:.55rem .7rem;border-radius:12px;cursor:pointer;outline:0;transition:background .15s}
+.brand-menu li:hover,.brand-menu li:focus-visible{background:#f0f7f0}
+.bm-ini{width:34px;height:34px;border-radius:50%;background:#e6f2e7;color:var(--green);display:grid;place-items:center;font-size:.7rem;font-weight:700;letter-spacing:.02em;flex:none;transition:background .2s,color .2s}
+.bm-n{flex:1;display:flex;flex-direction:column;font-size:.9rem;font-weight:500;color:var(--ink);line-height:1.25}
+.bm-n small{font-size:.74rem;font-weight:400;color:var(--muted)}
+.brand-menu svg.bm-check{width:1.1em;height:1.1em;color:var(--green);opacity:0;transition:opacity .15s}
+.brand-menu li[aria-selected=true] .bm-ini{background:var(--green);color:#fff}
+.brand-menu li[aria-selected=true] svg.bm-check{opacity:1}
+@media (prefers-reduced-motion:reduce){.brand-menu,.brand-btn svg.lucide{transition:none}}
+.brand-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem;margin:-.4rem 0 1.2rem;font-size:.9rem;color:var(--muted)}
+.brand-bar[hidden]{display:none}
+.brand-bar b{color:var(--green);font-weight:600}
+.brand-bar button{display:flex;align-items:center;gap:.35rem;color:var(--green);font-weight:500;font-size:.86rem}
+.brand-bar button:hover{color:var(--orange)}
+.prod-img.pack>img{object-fit:contain;padding:9%}
+.prod:hover .prod-img.pack>img{transform:scale(1.05)}
+@media(max-width:639px){.search{margin-left:0;width:100%}.brand-pick,.brand-btn,.brand-menu{width:100%}}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
 @media(min-width:900px){.grid{grid-template-columns:repeat(4,1fr);gap:18px}}
 .prod{background:#fff;border:1px solid var(--line);border-radius:20px;padding:10px;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
@@ -406,38 +458,13 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 .fav.on{color:var(--orange)}
 .fav.on svg{fill:currentColor}
 .prod h4{font-size:.93rem;font-weight:600;color:var(--ink);margin:.8rem .3rem .15rem;line-height:1.3}
-.prod .meta{font-size:.78rem;color:var(--muted);margin:0 .3rem}
-.prod-foot{display:flex;align-items:center;justify-content:flex-end;margin:.8rem .3rem .2rem;margin-top:auto;padding-top:.8rem}
-.add{width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:18px;transition:background .2s,transform .2s}
-.add:hover{background:var(--orange);transform:rotate(90deg)}
+.prod .meta{font-size:.78rem;color:var(--muted);margin:0 .3rem .5rem}
 .empty{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted)}
 .shop-info{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.8rem;font-size:.86rem;color:var(--muted)}
-.shop-info span{display:flex;align-items:center;gap:.45rem}
+.shop-info span,.shop-info a{display:flex;align-items:center;gap:.45rem}
+.shop-info a:hover{color:var(--green)}
 .shop-info svg.lucide{color:var(--orange);width:1.1em;height:1.1em}
 
-/* Warenkorb */
-.scrim{position:fixed;inset:0;background:rgba(10,25,10,.45);z-index:80;opacity:0;pointer-events:none;transition:opacity .3s}
-.scrim.open{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:90;transform:translateX(100%);transition:transform .45s var(--ease);display:flex;flex-direction:column}
-.drawer.open{transform:none}
-.dr-head{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.4rem;border-bottom:1px solid var(--line)}
-.dr-head h3{font-family:'DM Serif Display',serif;font-weight:400;color:var(--green);font-size:1.7rem}
-.dr-body{flex:1;overflow-y:auto;padding:1rem 1.4rem}
-.line{display:flex;align-items:center;gap:.8rem;padding:.8rem 0;border-bottom:1px dashed var(--line)}
-.line .li{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:22px;color:var(--green);flex-shrink:0}
-.line .ln{flex:1;min-width:0;font-size:.88rem}
-.line .ln b{display:block;font-weight:600}
-.line .ln small{color:var(--muted)}
-.qty{display:flex;align-items:center;gap:.4rem;background:#fff;border:1px solid var(--line);border-radius:99px;padding:3px}
-.qty button{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;color:var(--green)}
-.qty button:hover{background:var(--green-soft)}
-.qty span{min-width:18px;text-align:center;font-size:.85rem;font-weight:600}
-.dr-foot{padding:1.2rem 1.4rem;border-top:1px solid var(--line);background:#fff;display:flex;flex-direction:column;gap:.7rem}
-.dr-foot input,.dr-foot select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);outline:0}
-.dr-foot input:focus,.dr-foot select:focus{border-color:var(--green)}
-.dr-foot .row2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-.dr-foot .btn{justify-content:center}
-.dr-foot small{color:var(--muted);font-size:.75rem;line-height:1.45}
 
 /* ---------- Ablauf ---------- */
 .steps{display:grid;gap:14px;margin-top:2.6rem}
@@ -546,14 +573,19 @@ details[open]{box-shadow:0 16px 36px -26px rgba(26,61,26,.45)}
 .cta-lines a{display:flex;align-items:center;gap:.8rem;font-weight:500}
 .cta-lines a svg.lucide{box-sizing:border-box;width:44px;height:44px;padding:12px;border-radius:50%;background:rgba(255,255,255,.18);flex-shrink:0;transition:background .2s,color .2s}
 .cta-lines a:hover svg.lucide{background:#fff;color:var(--orange)}
-.form{background:#fff;color:var(--ink);border-radius:24px;padding:1.6rem;display:grid;gap:.8rem}
+.form{position:relative;background:#fff;color:var(--ink);border-radius:24px;padding:1.6rem;display:grid;gap:.8rem}
 .form .row2{display:grid;gap:.8rem}
 @media(min-width:560px){.form .row2{grid-template-columns:1fr 1fr}}
 .form label{font-size:.8rem;font-weight:500;color:var(--muted);display:flex;flex-direction:column;gap:.35rem}
 .form input,.form select,.form textarea{padding:.8rem .95rem;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);outline:0;color:var(--ink);resize:vertical}
 .form input:focus,.form select:focus,.form textarea:focus{border-color:var(--green)}
 .form .btn{justify-content:center}
-.form small{font-size:.74rem;color:var(--muted)}
+.form small{font-size:.74rem;color:var(--muted);line-height:1.5}
+.form small a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
+.form small.ok{color:#16803a;font-weight:600}
+.form small.err{color:#b42318}
+.form .btn[disabled]{opacity:.7;cursor:wait}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
 /* ---------- Footer ---------- */
 footer{background:var(--green);color:#c6dfc8;padding:4rem 0 6rem;margin-top:clamp(72px,10vw,130px)}
@@ -607,13 +639,13 @@ footer{overflow:hidden}
 
   <header class="hdr">
     <a href="#start" class="logo animate-fade-in delay-100" aria-label="Meine Futterkiste Startseite">
-      <span class="logo-mark"><img src="https://meine-futterkiste.de/wp-content/uploads/2023/02/cropped-Logo-Hund1-270x270.jpg" alt="" width="270" height="270" /></span>
+      <span class="logo-mark"><img src="logo.png" alt="" width="320" height="320" /></span>
       <span class="logo-txt">Meine Futterkiste<small>Steinheim-Höpfigheim</small></span>
     </a>
     <nav class="nav animate-fade-in delay-200" aria-label="Hauptnavigation">
       <a href="#start" class="on">Home</a>
-      <a href="#shop">Shop</a>
       <a href="#barf">BARF-Rechner</a>
+      <a href="#shop">Shop</a>
       <a href="#bewertungen">Bewertungen</a>
       <a href="#besuch">Anfahrt</a>
       <a href="#kontakt">Kontakt</a>
@@ -621,7 +653,6 @@ footer{overflow:hidden}
     <div class="hdr-actions animate-fade-in delay-300">
       <button class="circle circle-line hide-xs" data-search aria-label="Produkte suchen"><i data-lucide="search"></i></button>
       <button class="circle circle-orange" data-favs aria-label="Merkliste"><i data-lucide="star"></i><span class="badge" id="favCount" data-badge="fav" data-count="0">0</span></button>
-      <button class="circle circle-line" data-cart aria-label="Vorbestellung öffnen"><i data-lucide="shopping-cart"></i><span class="badge" id="cartCount" data-badge="cart" data-count="0">0</span></button>
       <a href="tel:+497144208362" class="circle circle-green hide-xs" aria-label="Anrufen"><i data-lucide="phone"></i></a>
       <button class="circle circle-line menu-btn" id="menuOpen" aria-label="Menü öffnen"><i data-lucide="menu"></i></button>
     </div>
@@ -637,7 +668,7 @@ footer{overflow:hidden}
         </h1>
       </div>
 
-      <a href="#shop" class="side l px animate-slide-in-left delay-600" style="--k:-14px">
+      <a href="#shop" data-filter="barf" class="side l px animate-slide-in-left delay-600" style="--k:-14px">
         <div class="pcard-img float">
           <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=520&q=75" alt="Hund wartet auf sein Futter" />
           <span class="corner"><i data-lucide="arrow-up-right"></i></span>
@@ -645,19 +676,19 @@ footer{overflow:hidden}
         <div class="pcard-name">BARF Komplettmenü Rind</div>
       </a>
 
-      <a href="#beratung" class="side r px animate-slide-in-right delay-700" style="--k:-14px">
+      <a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener" aria-label="Video über Meine Futterkiste auf YouTube ansehen (neues Fenster)" class="side r px animate-slide-in-right delay-700" style="--k:-14px">
         <div class="vcard-img float slow">
-          <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=360&q=75" alt="Beratung zur Hundeernährung" />
+          <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=360&q=75" alt="" />
           <div class="vcard-body">
             <span class="play"><i data-lucide="play"></i></span>
-            So läuft Ihre persönliche BARF-Beratung
+            Meine Futterkiste im Video
           </div>
         </div>
       </a>
 
       <div class="photos">
         <div class="ph s px animate-pet-pop delay-700" style="--k:8px;--bd:.3s">
-          <img src="https://polo-pecan-73837341.figma.site/_assets/v11/8d44b25186ef45a5789c74668fb781cea4e1ff49.png" alt="" />
+          <img src="hero-dackel.png" alt="" />
           <div class="ov ov-stat animate-scale-in delay-1000">
             <div class="stack">
               <span class="si" style="background:var(--orange)"><i data-lucide="heart-handshake"></i></span>
@@ -677,7 +708,7 @@ footer{overflow:hidden}
           <img src="hero-golden.png" alt="" />
           <a href="#bewertungen" class="ov ov-rate animate-scale-in delay-1200">
             <span class="star"><i data-lucide="star"></i></span>
-            <b>4,9</b><span>Google</span>
+            <b>5,0</b><span>Google</span>
           </a>
         </div>
       </div>
@@ -691,17 +722,17 @@ footer{overflow:hidden}
         <a href="#sortiment" class="btn btn-orange animate-fade-up delay-400">Sortiment entdecken <i data-lucide="arrow-right"></i></a>
       </div>
       <div class="mob-cards">
-        <a href="#shop" class="mc-p animate-slide-in-left delay-500">
+        <a href="#shop" data-filter="barf" class="mc-p animate-slide-in-left delay-500">
           <div class="pcard-img">
             <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=70" alt="" />
             <span class="corner"><i data-lucide="arrow-up-right"></i></span>
           </div>
           <div class="pcard-name">BARF Menü Rind</div>
         </a>
-        <a href="#beratung" class="animate-slide-in-right delay-600">
+        <a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener" aria-label="Video über Meine Futterkiste auf YouTube ansehen (neues Fenster)" class="animate-slide-in-right delay-600">
           <div class="vcard-img">
             <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=360&q=70" alt="" />
-            <div class="vcard-body"><span class="play"><i data-lucide="play"></i></span>So läuft die Beratung</div>
+            <div class="vcard-body"><span class="play"><i data-lucide="play"></i></span>Unser Laden im Video</div>
           </div>
         </a>
       </div>
@@ -716,11 +747,11 @@ footer{overflow:hidden}
         <span class="div"></span>
         <a href="#bewertungen" class="st">
           <span class="star" style="color:var(--orange);font-size:22px;display:inline-flex"><i data-lucide="star" style="fill:currentColor"></i></span>
-          <div><b>4,9</b><small>Google</small></div>
+          <div><b>5,0</b><small>Google</small></div>
         </a>
       </div>
       <div class="mob-photos">
-        <div class="ph s px animate-pet-pop delay-800" style="--k:8px;--bd:.6s"><img src="https://polo-pecan-73837341.figma.site/_assets/v11/8d44b25186ef45a5789c74668fb781cea4e1ff49.png" alt="" /></div>
+        <div class="ph s px animate-pet-pop delay-800" style="--k:8px;--bd:.6s"><img src="hero-dackel.png" alt="" /></div>
         <div class="ph c animate-pet-pop delay-700"><img src="hero-aussie.png" alt="" /></div>
         <div class="ph s animate-pet-pop delay-900" style="--bd:.6s"><img src="hero-golden.png" alt="" /></div>
       </div>
@@ -738,10 +769,14 @@ footer{overflow:hidden}
 <section class="block" id="ueber-uns">
   <div class="wrap about">
     <div class="about-pic rv pop">
-      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=75" alt="Glücklicher Hund" loading="lazy" />
+      <p class="about-claim">Weil Ihr Tier <span>uns wichtig ist.</span></p>
+      <div class="beagle">
+        <span class="hearts" aria-hidden="true"><i data-lucide="heart"></i><i data-lucide="heart"></i></span>
+        <img src="ueber-uns-beagle-barf.png" alt="Beagle frisst BARF aus seinem Napf" width="1100" height="561" loading="lazy" />
+      </div>
       <div class="about-tag">
         <span class="avatar">GH</span>
-        <div><b>Gaby &amp; Frank Hess</b><small>Inhaber, beraten Sie persönlich im Laden</small></div>
+        <div><b>Gaby Hess</b><small>Inhaberin, berät Sie persönlich im Laden.</small><small class="expert">Für weitere Konsultationen ziehen wir unseren Futterexperten <a href="https://www.tiernaturheilkunde-zentrum.de/" target="_blank" rel="noopener">Nils Steenbuck</a> hinzu.</small></div>
       </div>
     </div>
     <div>
@@ -752,7 +787,7 @@ footer{overflow:hidden}
         <div class="rv" style="--d:.1s"><i data-lucide="scale"></i><b>Markenunabhängig</b><p>Faire Beratung ohne Verkaufsdruck eines Herstellers.</p></div>
         <div class="rv" style="--d:.2s"><i data-lucide="beef"></i><b>BARF-Profis</b><p>Rohfütterung von der Umstellung bis zum Wochenplan.</p></div>
         <div class="rv" style="--d:.3s"><i data-lucide="badge-euro"></i><b>Faire Preise</b><p>Qualität, die sich auch im Alltag leisten lässt.</p></div>
-        <div class="rv" style="--d:.4s"><i data-lucide="package-check"></i><b>Vorbestellen</b><p>Online reservieren und bequem im Laden abholen.</p></div>
+        <div class="rv" style="--d:.4s"><i data-lucide="store"></i><b>Persönlich vor Ort</b><p>Anschauen, beraten lassen und direkt mitnehmen.</p></div>
       </div>
     </div>
   </div>
@@ -762,8 +797,8 @@ footer{overflow:hidden}
 <section class="block" id="sortiment" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow rv">Sortiment</span>
-    <h2 class="h2 rv" style="--d:.1s">Alles für Napf, Pfote und Bienenstock.</h2>
-    <p class="lead rv" style="--d:.2s">Von frischem BARF über Snacks bis zum Futtersirup für Ihre Bienenvölker. Was Sie nicht finden, bestellen wir gerne für Sie.</p>
+    <h2 class="h2 rv" style="--d:.1s">Alles für Napf und Pfote.</h2>
+    <p class="lead rv" style="--d:.2s">Von frischem BARF über Trockenfutter und Kauartikel bis zum passenden Zubehör. Was Sie nicht finden, bestellen wir gerne für Sie.</p>
     <div class="cats">
       <a href="#shop" data-filter="barf" class="cat big rv pop">
         <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1100&q=75" alt="" loading="lazy" />
@@ -783,17 +818,11 @@ footer{overflow:hidden}
         <h3>Kauartikel &amp; Snacks</h3>
         <p>Natürlich getrocknet, ohne Zusätze.</p>
       </a>
-      <a href="#shop" data-filter="zubehoer" class="cat rv pop" style="--d:.1s">
-        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=700&q=75" alt="" loading="lazy" />
+      <a href="#shop" data-filter="zubehoer" class="cat wide rv pop" style="--d:.1s">
+        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1100&q=75" alt="" loading="lazy" />
         <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         <h3>Zubehör</h3>
         <p>Näpfe, Leinen, Pflege und mehr.</p>
-      </a>
-      <a href="#shop" data-filter="bienen" class="cat plain honey rv pop" style="--d:.2s">
-        <span class="big-ico"><i data-lucide="hexagon"></i></span>
-        <span class="corner"><i data-lucide="arrow-up-right"></i></span>
-        <h3>Bienenfutter</h3>
-        <p>Futtersirup und Futterteig für Ihre Völker.</p>
       </a>
     </div>
   </div>
@@ -824,7 +853,7 @@ footer{overflow:hidden}
         <span class="eyebrow rv">BARF-Rechner</span>
         <h2 class="h2 rv" style="--d:.1s">Wie viel braucht Ihr Hund am Tag?</h2>
         <p class="lead rv" style="--d:.2s">Ein erster Richtwert für die Rohfütterung eines erwachsenen Hundes. Den genauen Plan, abgestimmt auf Alter, Rasse und Verträglichkeiten, stellen wir gerne gemeinsam mit Ihnen im Laden zusammen.</p>
-        <a href="#kontakt" class="btn btn-orange rv" style="--d:.3s;margin-top:1.8rem">Beratung anfragen <i data-lucide="arrow-right"></i></a>
+        <a href="#kontakt" data-anliegen="BARF-Beratung" class="btn btn-orange rv" style="--d:.3s;margin-top:1.8rem">Beratung anfragen <i data-lucide="arrow-right"></i></a>
       </div>
       <div class="calc-form rv" style="--d:.2s">
         <div>
@@ -858,27 +887,36 @@ footer{overflow:hidden}
   <div class="wrap">
     <div class="shop-head">
       <div>
-        <span class="eyebrow rv">Online vorbestellen</span>
-        <h2 class="h2 rv" style="--d:.1s">Reservieren und im Laden abholen.</h2>
-        <p class="lead rv" style="--d:.2s">Legen Sie Ihre Wunschprodukte in die Kiste, wählen Sie einen Abholtag und wir packen alles für Sie bereit. Bezahlt wird bequem bei Abholung.</p>
-      </div>
-    </div>
+        <span class="eyebrow rv">Unser Sortiment</span>
+        <h2 class="h2 rv" style="--d:.1s">Werfen Sie einen Blick in unsere Regale.</h2>
+        <p class="lead rv" style="--d:.2s">Hier sehen Sie eine Auswahl aus unserem Laden. Merken Sie sich Ihre Favoriten mit dem Stern und schauen Sie zu unseren Öffnungszeiten vorbei. Suchen Sie etwas Bestimmtes, fragen Sie uns einfach.</p>
+      </div>    </div>
     <div class="shop-tools rv">
       <button class="chip on" data-cat="alle">Alle</button>
       <button class="chip" data-cat="barf">BARF</button>
       <button class="chip" data-cat="futter">Futter</button>
       <button class="chip" data-cat="snacks">Snacks</button>
       <button class="chip" data-cat="zubehoer">Zubehör</button>
-      <button class="chip" data-cat="bienen">Bienen</button>
       <button class="chip" data-cat="favs"><i data-lucide="star" style="vertical-align:-2px"></i> Merkliste</button>
       <label class="search"><i data-lucide="search"></i><input id="q" type="search" placeholder="Produkt suchen" aria-label="Produkt suchen" /></label>
+      <div class="brand-pick" id="brandPick">
+        <button type="button" class="brand-btn" id="brandBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="brandList">
+          <i data-lucide="tag" class="tagi"></i><img id="brandLogo" class="bb-logo" alt="" hidden /><span id="brandLabel">Marken</span><i data-lucide="chevron-down" class="chev"></i>
+        </button>
+        <div class="brand-menu">
+          <span class="brand-menu-h">Unsere Marken</span>
+          <ul role="listbox" id="brandList" aria-label="Marke auswählen"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="brand-bar" id="brandBar" hidden>
+      <span>Marke: <b id="brandName"></b></span>
+      <button type="button" id="brandReset"><i data-lucide="arrow-left"></i> Zur Gesamtübersicht</button>
     </div>
     <div class="grid" id="grid"></div>
     <div class="shop-info rv">
-      <span><i data-lucide="store"></i> Abholung zu den Öffnungszeiten</span>
-      <span><i data-lucide="wallet"></i> Zahlung vor Ort</span>
-      <span><i data-lucide="snowflake"></i> BARF tiefgekühlt bereitgestellt</span>
-      <span><i data-lucide="info"></i> Beispielsortiment</span>
+      <a href="#besuch"><i data-lucide="store"></i> Erhältlich im Laden</a>
+      <span><i data-lucide="snowflake"></i> BARF tiefgekühlt vor Ort</span>
     </div>
   </div>
 </section>
@@ -892,7 +930,7 @@ footer{overflow:hidden}
     <div class="steps">
       <div class="step rv pop"><span class="n">1</span><i data-lucide="message-circle"></i><h3>Kurz melden</h3><p>Rufen Sie an, schreiben Sie eine E-Mail oder kommen Sie einfach vorbei. Gerne auch mit Hund.</p></div>
       <div class="step rv pop" style="--d:.1s"><span class="n">2</span><i data-lucide="clipboard-list"></i><h3>Persönlich beraten</h3><p>Wir besprechen Gewicht, Alter, Aktivität und Vorlieben und stellen einen Futterplan zusammen.</p></div>
-      <div class="step rv pop" style="--d:.2s"><span class="n">3</span><i data-lucide="shopping-bag"></i><h3>Bequem abholen</h3><p>Ihr Futter liegt zum Wunschtermin bereit. Nachbestellen geht ganz einfach online.</p></div>
+      <div class="step rv pop" style="--d:.2s"><span class="n">3</span><i data-lucide="shopping-bag"></i><h3>Direkt mitnehmen</h3><p>Ihr Futter nehmen Sie gleich mit. Und wenn später Fragen auftauchen, sind wir weiter für Sie da.</p></div>
     </div>
   </div>
 </section>
@@ -910,13 +948,13 @@ footer{overflow:hidden}
           Google Rezensionen
         </div>
         <div style="display:flex;align-items:center;gap:1rem">
-          <span class="big">4,9</span>
+          <span class="big">5,0</span>
           <div><div class="stars" data-stars="5"></div><small style="color:var(--muted)">aus 60+ Bewertungen</small></div>
         </div>
         <div class="dist">
-          <div>5 <span class="track"><i style="width:90%"></i></span></div>
-          <div>4 <span class="track"><i style="width:8%"></i></span></div>
-          <div>3 <span class="track"><i style="width:2%"></i></span></div>
+          <div>5 <span class="track"><i style="width:100%"></i></span></div>
+          <div>4 <span class="track"><i style="width:0"></i></span></div>
+          <div>3 <span class="track"><i style="width:0"></i></span></div>
           <div>2 <span class="track"><i style="width:0"></i></span></div>
           <div>1 <span class="track"><i style="width:0"></i></span></div>
         </div>
@@ -941,7 +979,7 @@ footer{overflow:hidden}
         <span class="status" id="status"><i></i><span>Status wird geladen</span></span>
         <ul id="hoursList"></ul>
         <div class="contact-lines">
-          <div><i data-lucide="map-pin"></i><span>Obere Seewiesen 56<br />71711 Steinheim-Höpfigheim</span></div>
+          <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Obere+Seewiesen+56,+71711+Steinheim"><i data-lucide="map-pin"></i><span>Obere Seewiesen 56<br />71711 Steinheim-Höpfigheim</span></a>
           <a href="tel:+497144208362"><i data-lucide="phone"></i>07144 208362</a>
           <a href="mailto:bestellungen@meine-futterkiste.de"><i data-lucide="mail"></i>bestellungen@meine-futterkiste.de</a>
         </div>
@@ -966,15 +1004,15 @@ footer{overflow:hidden}
     <div class="tips">
       <article class="tip rv pop">
         <div class="tip-img"><img src="https://images.unsplash.com/photo-1613454320437-0c228c8b1723?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" /></div>
-        <div class="tip-b"><small>BARF</small><h3>Umstieg auf Rohfütterung: So gelingt der Start</h3><p>Warum ein sanfter Übergang wichtig ist und womit Sie am besten anfangen.</p><span class="tip-more">Im Laden nachfragen <i data-lucide="arrow-right"></i></span></div>
+        <div class="tip-b"><small>BARF</small><h3>Umstieg auf Rohfütterung: So gelingt der Start</h3><p>Warum ein sanfter Übergang wichtig ist und womit Sie am besten anfangen.</p><a href="#kontakt" class="tip-more" data-anliegen="BARF-Beratung" data-thema="Umstieg auf Rohfütterung">Jetzt nachfragen <i data-lucide="arrow-right"></i></a></div>
       </article>
       <article class="tip rv pop" style="--d:.1s">
         <div class="tip-img"><img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" /></div>
-        <div class="tip-b"><small>Ernährung</small><h3>Futter lesen lernen: Was auf dem Etikett wirklich zählt</h3><p>Zutatenliste, Analysewerte und Zusatzstoffe verständlich erklärt.</p><span class="tip-more">Im Laden nachfragen <i data-lucide="arrow-right"></i></span></div>
+        <div class="tip-b"><small>Ernährung</small><h3>Futter lesen lernen: Was auf dem Etikett wirklich zählt</h3><p>Zutatenliste, Analysewerte und Zusatzstoffe verständlich erklärt.</p><a href="#kontakt" class="tip-more" data-anliegen="Futterfrage" data-thema="Futteretiketten richtig lesen">Jetzt nachfragen <i data-lucide="arrow-right"></i></a></div>
       </article>
       <article class="tip rv pop" style="--d:.2s">
-        <div class="tip-img" style="background:#f6e3b8"><img src="https://images.unsplash.com/photo-1623018697148-8350cf18e64e?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" /></div>
-        <div class="tip-b"><small>Bienen</small><h3>Einfüttern im Herbst: Sirup oder Futterteig?</h3><p>Was Ihre Völker für einen sicheren Winter brauchen.</p><span class="tip-more">Im Laden nachfragen <i data-lucide="arrow-right"></i></span></div>
+        <div class="tip-img"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" /></div>
+        <div class="tip-b"><small>Welpen</small><h3>Der erste Napf: Gesund durchs erste Lebensjahr</h3><p>Wie viel, wie oft und was ein junger Hund für ein gutes Wachstum braucht.</p><a href="#kontakt" class="tip-more" data-anliegen="Futterfrage" data-thema="Welpenernährung">Jetzt nachfragen <i data-lucide="arrow-right"></i></a></div>
       </article>
     </div>
   </div>
@@ -990,10 +1028,9 @@ footer{overflow:hidden}
       <a href="tel:+497144208362" class="btn btn-green rv" style="--d:.3s;margin-top:1.5rem"><i data-lucide="phone"></i> 07144 208362</a>
     </div>
     <div class="rv" style="--d:.1s">
-      <details open><summary>Wie funktioniert die Vorbestellung?<span class="pm"><i data-lucide="plus"></i></span></summary><p>Produkte in die Futterkiste legen, Abholtag wählen und absenden. Ihre Bestellung geht per E-Mail an uns, wir bestätigen und legen alles bereit. Bezahlt wird bei Abholung.</p></details>
+      <details open><summary>Gibt es alle Produkte direkt im Laden?<span class="pm"><i data-lucide="plus"></i></span></summary><p>Ja, die Produkte auf dieser Seite sind eine Auswahl aus unserem Laden. Was gerade nicht vorrätig ist, besorgen wir gerne für Sie. Fragen Sie einfach nach.</p></details>
       <details><summary>Kann ich auch ohne Termin zur Beratung kommen?<span class="pm"><i data-lucide="plus"></i></span></summary><p>Ja, zu unseren Öffnungszeiten sind Sie jederzeit willkommen. Für eine ausführliche BARF-Beratung lohnt sich eine kurze Voranmeldung.</p></details>
       <details><summary>Ist BARF für jeden Hund geeignet?<span class="pm"><i data-lucide="plus"></i></span></summary><p>Für die meisten gesunden Hunde ja. Bei Vorerkrankungen, Welpen oder Senioren passen wir die Zusammensetzung individuell an und empfehlen die Rücksprache mit Ihrem Tierarzt.</p></details>
-      <details><summary>Führen Sie auch Futter für Bienen?<span class="pm"><i data-lucide="plus"></i></span></summary><p>Ja, wir haben Futtersirup und Futterteig für Imkerinnen und Imker im Sortiment. Größere Mengen bestellen Sie am besten vorab.</p></details>
       <details><summary>Wo kann ich parken?<span class="pm"><i data-lucide="plus"></i></span></summary><p>Direkt am Laden in der Oberen Seewiesen. Schwere Säcke tragen wir Ihnen gerne zum Auto.</p></details>
     </div>
   </div>
@@ -1013,26 +1050,27 @@ footer{overflow:hidden}
           <a href="#besuch"><i data-lucide="map-pin"></i>Obere Seewiesen 56, 71711 Steinheim</a>
         </div>
       </div>
-      <form class="form rv" id="contactForm" style="--d:.2s">
+      <form class="form rv" id="contactForm" action="kontakt.php" method="post" style="--d:.2s">
         <div class="row2">
-          <label>Name<input name="name" required autocomplete="name" /></label>
-          <label>Telefon oder E-Mail<input name="kontakt" required /></label>
+          <label>Name<input name="name" required maxlength="100" autocomplete="name" /></label>
+          <label>Telefon oder E-Mail<input name="kontakt" required maxlength="150" /></label>
         </div>
+        <!-- Spamschutz: bleibt für Menschen unsichtbar und leer -->
+        <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label>
         <div class="row2">
           <label>Anliegen
             <select name="anliegen">
               <option>BARF-Beratung</option>
               <option>Futterfrage</option>
               <option>Produktanfrage</option>
-              <option>Bienenfutter</option>
               <option>Sonstiges</option>
             </select>
           </label>
-          <label>Name &amp; Gewicht Ihres Hundes<input name="hund" placeholder="z. B. Bella, 18 kg" /></label>
+          <label>Name &amp; Gewicht Ihres Hundes<input name="hund" maxlength="100" placeholder="z. B. Bella, 18 kg" /></label>
         </div>
-        <label>Nachricht<textarea name="nachricht" rows="4" required></textarea></label>
+        <label>Nachricht<textarea name="nachricht" rows="4" required maxlength="5000"></textarea></label>
         <button class="btn btn-orange" type="submit">Nachricht senden <i data-lucide="send"></i></button>
-        <small>Das Formular öffnet Ihr E-Mail-Programm mit der vorbereiteten Nachricht.</small>
+        <small id="formNote" role="status">Ihre Angaben nutzen wir nur zur Bearbeitung Ihrer Anfrage. Mehr dazu in der <a href="datenschutz.html#kontakt">Datenschutzerklärung</a>.</small>
       </form>
     </div>
   </div>
@@ -1043,25 +1081,25 @@ footer{overflow:hidden}
   <div class="wrap">
     <div class="foot">
       <div>
-        <a href="#start" class="logo"><span class="logo-mark"><img src="https://meine-futterkiste.de/wp-content/uploads/2023/02/cropped-Logo-Hund1-270x270.jpg" alt="" width="270" height="270" /></span><span class="logo-txt">Meine Futterkiste<small>Steinheim-Höpfigheim</small></span></a>
+        <a href="#start" class="logo"><span class="logo-mark"><img src="logo.png" alt="" width="320" height="320" /></span><span class="logo-txt">Meine Futterkiste<small>Steinheim-Höpfigheim</small></span></a>
         <p>Spezialisten für die gesunde Ernährung Ihres Vierbeiners. Fair beraten durch Markenunabhängigkeit.</p>
       </div>
       <div>
         <h4>Entdecken</h4>
-        <ul><li><a href="#sortiment">Sortiment</a></li><li><a href="#shop">Vorbestellen</a></li><li><a href="#barf">BARF-Rechner</a></li><li><a href="#ratgeber">Ratgeber</a></li></ul>
+        <ul><li><a href="#sortiment">Sortiment</a></li><li><a href="#barf">BARF-Rechner</a></li><li><a href="#shop">Shop</a></li><li><a href="#beratung">Beratung</a></li><li><a href="#bewertungen">Bewertungen</a></li><li><a href="#ratgeber">Ratgeber</a></li><li><a href="#faq">Häufige Fragen</a></li><li><a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener">Video</a></li></ul>
       </div>
       <div>
-        <h4>Öffnungszeiten</h4>
+        <h4><a href="#besuch">Öffnungszeiten</a></h4>
         <ul id="footHours"><li>Di 16:00 bis 19:00</li><li>Mi 16:00 bis 20:00</li><li>Do 16:00 bis 18:00</li><li>Fr 16:00 bis 20:00</li></ul>
       </div>
       <div>
-        <h4>Kontakt</h4>
-        <ul><li>Obere Seewiesen 56</li><li>71711 Steinheim</li><li><a href="tel:+497144208362">07144 208362</a></li><li><a href="mailto:info@meine-futterkiste.de">info@meine-futterkiste.de</a></li></ul>
+        <h4><a href="#kontakt">Kontakt</a></h4>
+        <ul><li><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Obere+Seewiesen+56,+71711+Steinheim">Obere Seewiesen 56<br />71711 Steinheim</a></li><li><a href="tel:+497144208362">07144 208362</a></li><li><a href="mailto:info@meine-futterkiste.de">info@meine-futterkiste.de</a></li><li><a href="mailto:bestellungen@meine-futterkiste.de">bestellungen@meine-futterkiste.de</a></li></ul>
       </div>
     </div>
     <div class="legal">
       <span>© <span id="yr">2026</span> Gabriele und Frank Hess GbR</span>
-      <div><a href="https://meine-futterkiste.de/home/impressum/">Impressum</a><a href="https://meine-futterkiste.de/home/datenschutz/">Datenschutz</a></div>
+      <div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
     </div>
   </div>
   <div class="foot-mark" aria-hidden="true">Meine Futterkiste</div>
@@ -1070,45 +1108,26 @@ footer{overflow:hidden}
 <!-- Mobile Aktionsleiste -->
 <div class="mbar" id="mbar">
   <a href="tel:+497144208362"><i data-lucide="phone"></i>Anrufen</a>
-  <button data-cart class="hl"><i data-lucide="shopping-cart"></i>Futterkiste<span class="badge" id="cartCount2" data-badge="cart" data-count="0">0</span></button>
+  <a href="#kontakt" class="hl"><i data-lucide="message-circle"></i>Nachricht</a>
   <a href="#besuch"><i data-lucide="map-pin"></i>Anfahrt</a>
 </div>
 
 <!-- Mobiles Menü -->
 <div class="mnav" id="mnav">
   <div class="mnav-top">
-    <span class="logo"><span class="logo-mark"><img src="https://meine-futterkiste.de/wp-content/uploads/2023/02/cropped-Logo-Hund1-270x270.jpg" alt="" width="270" height="270" /></span><span class="logo-txt">Meine Futterkiste</span></span>
+    <a href="#start" class="logo" aria-label="Meine Futterkiste Startseite"><span class="logo-mark"><img src="logo.png" alt="" width="320" height="320" /></span><span class="logo-txt">Meine Futterkiste</span></a>
     <button class="circle circle-line" id="menuClose" aria-label="Menü schließen"><i data-lucide="x"></i></button>
   </div>
   <nav>
     <a href="#sortiment">Sortiment</a>
-    <a href="#shop">Vorbestellen</a>
     <a href="#barf">BARF-Rechner</a>
+    <a href="#shop">Shop</a>
     <a href="#bewertungen">Bewertungen</a>
     <a href="#besuch">Anfahrt</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
   <a href="tel:+497144208362" class="btn btn-orange"><i data-lucide="phone"></i> 07144 208362</a>
 </div>
-
-<!-- Warenkorb -->
-<div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-label="Futterkiste">
-  <div class="dr-head">
-    <h3>Ihre Futterkiste</h3>
-    <button class="circle circle-line" id="drawerClose" aria-label="Schließen"><i data-lucide="x"></i></button>
-  </div>
-  <div class="dr-body" id="lines"></div>
-  <form class="dr-foot" id="orderForm">
-    <input name="name" placeholder="Ihr Name" required autocomplete="name" />
-    <div class="row2">
-      <input name="tel" placeholder="Telefon" required autocomplete="tel" />
-      <select name="tag" id="pickup" required></select>
-    </div>
-    <button class="btn btn-orange" type="submit">Vorbestellung senden <i data-lucide="send"></i></button>
-    <small>Unverbindliche Reservierung. Wir bestätigen per Telefon oder E-Mail, Zahlung bei Abholung.</small>
-  </form>
-</aside>
 
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span></span></div>
 
@@ -1175,7 +1194,7 @@ footer{overflow:hidden}
     if (a >= 0) {
       const from = dayAt(a), to = dayAt(b);
       const when = !reopens ? 'ab ' + dm(from) : a===b ? 'am ' + DAYS[from.wd] + ', ' + dm(from) : dm(from) + ' bis ' + dm(to);
-      $('#noticeText').innerHTML = `Bitte beachten: <strong>${when}</strong> geschlossen. Vorbestellungen gerne per E-Mail.`;
+      $('#noticeText').innerHTML = `Bitte beachten: <strong>${when}</strong> geschlossen. Per <a href="mailto:bestellungen@meine-futterkiste.de" style="text-decoration:underline">E-Mail</a> erreichen Sie uns trotzdem.`;
     }
     $('#notice').hidden = a < 0;
 
@@ -1185,17 +1204,6 @@ footer{overflow:hidden}
     if (el.classList.contains('open')) txt.textContent = 'Jetzt geöffnet bis ' + hm(h[1]) + ' Uhr';
     else if (h && nowMin < h[0]) txt.textContent = 'Heute ab ' + hm(h[0]) + ' Uhr geöffnet';
     else for (let i=1;i<=14;i++){ const d = dayAt(i), x = hoursOn(d); if (x) { txt.textContent = 'Geschlossen, öffnet ' + (i===1?'morgen':i<7?DAYS[d.wd]:DAYS[d.wd]+', '+dd(d)) + ' um ' + hm(x[0]) + ' Uhr'; break; } }
-
-    // Abholtage (nächste Öffnungstage); eine schon getroffene Auswahl bleibt stehen
-    const pk = $('#pickup');
-    if (pk.value) return;
-    const opts = [];
-    for (let i=0; opts.length<8 && i<40; i++){
-      const d = dayAt(i), x = hoursOn(d);
-      if (!x || (i===0 && nowMin >= x[1]-60)) continue;
-      opts.push(`<option>${DAYS[d.wd]}, ${dd(d)} ab ${hm(x[0])}</option>`);
-    }
-    pk.innerHTML = '<option value="" disabled selected>Abholtag</option>' + opts.join('');
   }
   renderHours();
   fetch('hours.json', {cache:'no-cache'}).then(r => r.ok ? r.json() : null).then(g => {
@@ -1205,7 +1213,7 @@ footer{overflow:hidden}
   }).catch(() => {});
 
   /* ---------- Marquee ---------- */
-  const words = ['BARF','Frischfleisch','Trockenfutter','Nassfutter','Kauartikel','Zubehör','Bienenfutter','Ehrliche Beratung'];
+  const words = ['BARF','Frischfleisch','Trockenfutter','Nassfutter','Kauartikel','Zubehör','Ehrliche Beratung'];
   const one = words.map(w=>`<span>${w}<i><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg></i></span>`).join('');
   $('#marquee').innerHTML = one + one;
 
@@ -1222,15 +1230,60 @@ footer{overflow:hidden}
     {id:8,cat:'snacks',n:'Hundekekse Knochenform',m:'500 g, gebacken',i:'bone',bg:'#fde3cf',img:'1568640347023-a616a30bc3bd'},
     {id:9,cat:'futter',n:'Omega-3 Lachsölkapseln',m:'120 Stück',i:'droplet',bg:'#e7ecf8',img:'1670850757896-e1b6c3e311ea'},
     {id:10,cat:'zubehoer',n:'Keramiknapf „Pfote“',m:'1,2 l, spülmaschinenfest',i:'soup',bg:'#dff3e0',img:'1676193866128-03a926df76ef'},
-    {id:11,cat:'zubehoer',n:'Führleine Biothane',m:'2 m, wetterfest',i:'link',bg:'#fdf1d6',img:'1708062270853-ee7c66b69f07'},
-    {id:12,cat:'bienen',n:'Bienen-Futtersirup',m:'14 kg Kanister',i:'hexagon',bg:'#f6e3b8',tag:'Saison',img:'1623018697148-8350cf18e64e'}
+    {id:11,cat:'zubehoer',n:'Führleine Biothane',m:'2 m, wetterfest',i:'link',bg:'#fdf1d6',img:'1708062270853-ee7c66b69f07'}
   ];
   const pimg = (x,w) => 'https://images.unsplash.com/photo-' + x.img + '?auto=format&fit=crop&w=' + w + '&h=' + w + '&q=70';
+
+  /* Markenprodukte: erscheinen NUR über das Marken-Dropdown, nie unter „Alle“,
+     in den Rubriken oder in der Merkliste (Vorgabe der Marken: nicht gemeinsam anzeigen) */
+  const BRANDS = {
+    // logo = kleines Markenzeichen im Menü; logoPhoto = Produktfoto statt Logo (füllt den Kreis)
+    'graf-barf': {n:'Graf Barf', logo:'marken/logos/graf-barf.png', p:[
+      {n:'Graf Barf Juniormenü',m:'2,5 kg, Hähnchen mit Obst und Gemüse, für Junghunde ab 6 Monaten',bg:'#fbe4e4',tag:'Junior',src:'marken/graf-barf-juniormenue.png'},
+      {n:'Graf Barf Mineral Mix',m:'Mineralstoffe und Vitamine zum Vollwertmenü',bg:'#e3efe4',src:'marken/graf-barf-mineral-mix.png'},
+      {n:'Graf Barf Spezial-Öl',m:'200 ml, Omega-3-6-9 und Vitamine A, D und E',bg:'#fdf1d6',src:'marken/graf-barf-spezial-oel.png'}
+    ]},
+    // photo:true = Stimmungsfoto statt freigestellter Packung, füllt die Kachel wie die übrigen Shopfotos
+    'pollux': {n:'Pollux', logo:'marken/logos/pollux.png', p:[
+      {n:'Pollux Rind, Spessartforelle & Saibling',m:'1000 g, Mix vom kompletten Rind mit Forelle und Saibling aus dem Spessart, tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'marken/pollux-barf-forelle.webp'},
+      {n:'Pollux Lammallerlei & Süßkartoffel',m:'Nassfutter in der Dose, 400 g oder 800 g, für Allergiker geeignet',bg:'#f4f4f2',photo:true,src:'marken/pollux-lammallerlei.webp'},
+      {n:'Pollux Mix vom kompletten Rind',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Innereien, Knorpel und Sehnen, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'marken/pollux-barf-rind.webp'}
+    ]},
+    'paul-paulina': {n:'Paul und Paulina', logo:'marken/logos/paul-paulina.png', p:[
+      {n:'Paul und Paulina Fleischmix',m:'Frischfleisch, gewolft, tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-fleischmix.jpg'},
+      {n:'Paul und Paulina Gipfelstürmer + Dorsch',m:'Kaltgepresste Ölmischung aus Lein-, Hanf- und Schwarzkümmelöl mit Dorschlebertran',bg:'#5a4a3e',tag:'Öl',photo:true,src:'marken/paul-paulina-gipfelstuermer.jpg'},
+      {n:'Paul und Paulina Gemüsemix',m:'Geraspeltes Gemüse mit Karotte, als Block tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-gemuesemix.jpg'}
+    ]},
+    'q-pet': {n:'Q-Pet', logo:'marken/logos/q-pet.png', logoPhoto:true, p:[
+      // Q-Pet GmbH verkauft unter der Marke Qchefs
+      {n:'Qchefs Dreierlei',m:'65 g, Käsesnack-Mix aus Snackies, Puffies und Cheesies, vegetarisch',bg:'#efe6da',tag:'Snack',src:'marken/q-pet-mix.jpg'},
+      {n:'Qchefs Zahnputzflocken',m:'90 g, Flocken auf Käsebasis für die tägliche Zahnpflege',bg:'#f1ece4',pad:'2%',src:'marken/q-pet-pulver.png'},
+      {n:'Qchefs Hard Cheese',m:'100 g, harte Käse-Kaustange, splittert nicht',bg:'#e3efe4',src:'marken/q-pet-kaustange.png'}
+    ]}
+  };
+  let brand = '';
+
   let cat='alle', q='';
   let favs = store.get('mfk-favs', []);
-  let cart = store.get('mfk-cart', {});
+  // Früher gespeicherte Vorbestellungen aus dem Browser entfernen (Funktion gibt es nicht mehr)
+  try { localStorage.removeItem('mfk-cart') } catch(e) {}
+  // Gespeicherte Einträge zu Produkten, die es nicht mehr gibt, verwerfen
+  favs = favs.filter(id => P.some(p => p.id === id));
 
   function renderGrid(animate = true){
+    if (brand){
+      const b = BRANDS[brand], list = b.p.filter(x => (x.n+' '+x.m).toLowerCase().includes(q));
+      $('#grid').innerHTML = list.length ? list.map(x=>`
+      <article class="prod">
+        <div class="prod-img${x.photo?'':' pack'}" style="background:${x.bg}">
+          <img src="${x.src}" alt="${x.n}" loading="lazy"${x.pad?` style="padding:${x.pad}"`:''} />
+          ${x.tag?`<span class="tag">${x.tag}</span>`:''}
+        </div>
+        <h4>${x.n}</h4><div class="meta">${x.m.replace(/(\d) (g|kg|ml)\b/g,'$1&nbsp;$2')}</div>
+      </article>`).join('') : `<div class="empty">${b.p.length?'Kein Produkt gefunden. Fragen Sie uns gerne direkt.':'Die Produkte von '+b.n+' zeigen wir Ihnen hier in Kürze. Fragen Sie gerne schon jetzt im Laden danach.'}</div>`;
+      $$('#grid .prod').forEach((p,i)=>{ p.style.setProperty('--d', (i%4)*.08 + 's'); io.observe(p); });
+      return;
+    }
     const list = P.filter(x => (cat==='alle' || (cat==='favs' ? favs.includes(x.id) : x.cat===cat)) && (x.n+' '+x.m).toLowerCase().includes(q));
     $('#grid').innerHTML = list.length ? list.map(x=>`
       <article class="prod">
@@ -1241,7 +1294,6 @@ footer{overflow:hidden}
           <i data-lucide="${x.i}"></i>
         </div>
         <h4>${x.n}</h4><div class="meta">${x.m}</div>
-        <div class="prod-foot"><button class="add" data-add="${x.id}" aria-label="${x.n} hinzufügen"><i data-lucide="plus"></i></button></div>
       </article>`).join('') : `<div class="empty">${cat==='favs'?'Noch nichts gemerkt. Tippen Sie auf den Stern an einem Produkt.':'Kein Produkt gefunden. Fragen Sie uns gerne direkt.'}</div>`;
     lucide.createIcons();
     // Produkte ploppen gestaffelt auf
@@ -1270,62 +1322,102 @@ footer{overflow:hidden}
   function bump(el){ el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
 
   function counts(){
-    const n = Object.values(cart).reduce((a,b)=>a+b,0);
-    $$('[data-badge="cart"]').forEach(e=>{ e.textContent=n; e.dataset.count=n; });
     $$('[data-badge="fav"]').forEach(e=>{ e.textContent=favs.length; e.dataset.count=favs.length; });
-  }
-  function renderCart(){
-    const ids = Object.keys(cart);
-    $('#lines').innerHTML = ids.length ? ids.map(id=>{
-      const x = P.find(p=>p.id==id);
-      return `<div class="line"><span class="li" style="background:${x.bg}"><img src="${pimg(x,120)}" alt="" onerror="this.remove()" /></span>
-        <div class="ln"><b>${x.n}</b><small>${x.m}</small></div>
-        <div class="qty"><button data-dec="${id}" aria-label="weniger"><i data-lucide="minus"></i></button><span>${cart[id]}</span><button data-inc="${id}" aria-label="mehr"><i data-lucide="plus"></i></button></div></div>`;
-    }).join('') : '<div class="empty" style="padding:4rem 1rem"><div style="font-size:48px;color:var(--line);display:flex;justify-content:center;margin-bottom:.8rem"><i data-lucide="package-open"></i></div>Ihre Futterkiste ist noch leer.</div>';
-    counts(); store.set('mfk-cart', cart); lucide.createIcons();
   }
 
   const toast = msg => { const t=$('#toast'); t.querySelector('span').textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2200); };
 
   document.addEventListener('click', e=>{
-    const a = e.target.closest('[data-add]'), f = e.target.closest('[data-fav]'),
-          inc = e.target.closest('[data-inc]'), dec = e.target.closest('[data-dec]');
-    if (a){ const id=+a.dataset.add; cart[id]=(cart[id]||0)+1; renderCart(); toast(P.find(p=>p.id===id).n+' in der Futterkiste'); paws(e.clientX, e.clientY, 6); $$('[data-badge="cart"]').forEach(bump); }
+    const f = e.target.closest('[data-fav]');
     if (f){ const id=+f.dataset.fav; favs = favs.includes(id)?favs.filter(x=>x!==id):[...favs,id]; store.set('mfk-favs',favs); counts(); renderGrid(cat!=='favs' ? false : true); if (favs.includes(id)) paws(e.clientX, e.clientY, 4); $$('[data-badge="fav"]').forEach(bump); }
-    if (inc){ cart[inc.dataset.inc]++; renderCart(); }
-    if (dec){ const k=dec.dataset.dec; if(--cart[k]<=0) delete cart[k]; renderCart(); }
   });
 
-  function setCat(c){ cat=c; $$('.chip').forEach(b=>b.classList.toggle('on', b.dataset.cat===c)); renderGrid(); }
+  // Marke wählen: Rubriken-Chips treten zurück, nur die Produkte dieser einen Marke erscheinen
+  function setBrand(v){
+    brand = BRANDS[v] ? v : '';
+    $('#brandLabel').textContent = brand ? BRANDS[brand].n : 'Marken';
+    const bl = $('#brandLogo'), lg = brand && BRANDS[brand].logo;
+    bl.hidden = !lg; if (lg) bl.src = lg;
+    $$('#brandList li').forEach(li=>li.setAttribute('aria-selected', li.dataset.brand===brand));
+    $('#brandPick').classList.toggle('on', !!brand);
+    $('#brandBar').hidden = !brand;
+    if (brand) $('#brandName').textContent = BRANDS[brand].n;
+    $$('.chip').forEach(b=>b.classList.toggle('on', !brand && b.dataset.cat===cat));
+  }
+  // Marken-Menü: Einträge aus BRANDS, Kürzel als Monogramm, per Maus und Tastatur bedienbar
+  const bPick = $('#brandPick'), bBtn = $('#brandBtn'), bList = $('#brandList');
+  bList.innerHTML = Object.entries(BRANDS).map(([k,b])=>`
+    <li role="option" tabindex="-1" data-brand="${k}" aria-selected="false">
+      ${b.logo ? `<span class="bm-logo${b.logoPhoto?' photo':''}"><img src="${b.logo}" alt="" /></span>`
+        : `<span class="bm-ini">${b.n.split(/[\s-]+/).filter(w=>w!=='und').map(w=>w[0]).join('').slice(0,2).toUpperCase()}</span>`}
+      <span class="bm-n">${b.n}<small>${b.p.length} Produkte</small></span>
+      <i data-lucide="check" class="bm-check"></i>
+    </li>`).join('');
+  const bOpts = () => $$('#brandList li');
+  function brandMenu(open, focus){
+    bPick.classList.toggle('open', open); bBtn.setAttribute('aria-expanded', open);
+    if (open && focus) (bList.querySelector('[aria-selected=true]') || bOpts()[0]).focus();
+  }
+  function pickBrand(v){ setBrand(v); renderGrid(); brandMenu(false); bBtn.focus(); }
+  bBtn.addEventListener('click', ()=>brandMenu(!bPick.classList.contains('open'), true));
+  bBtn.addEventListener('keydown', e=>{ if (e.key==='ArrowDown'){ e.preventDefault(); brandMenu(true, true); } });
+  bList.addEventListener('click', e=>{ const li = e.target.closest('li'); if (li) pickBrand(li.dataset.brand); });
+  bList.addEventListener('keydown', e=>{
+    const o = bOpts(), i = o.indexOf(document.activeElement);
+    if (e.key==='ArrowDown'){ e.preventDefault(); o[(i+1)%o.length].focus(); }
+    else if (e.key==='ArrowUp'){ e.preventDefault(); o[(i-1+o.length)%o.length].focus(); }
+    else if (e.key==='Enter' || e.key===' '){ e.preventDefault(); if (i>-1) pickBrand(o[i].dataset.brand); }
+    else if (e.key==='Escape'){ brandMenu(false); bBtn.focus(); }
+    else if (e.key==='Tab') brandMenu(false);
+  });
+  document.addEventListener('click', e=>{ if (!bPick.contains(e.target)) brandMenu(false); });
+  $('#brandReset').addEventListener('click', ()=>{ setBrand(''); setCat('alle'); });
+
+  function setCat(c){ cat=c; setBrand(''); renderGrid(); }
   $$('.chip').forEach(b=>b.addEventListener('click',()=>setCat(b.dataset.cat)));
   $$('[data-filter]').forEach(a=>a.addEventListener('click',()=>setCat(a.dataset.filter)));
   $('#q').addEventListener('input', e=>{ q=e.target.value.trim().toLowerCase(); renderGrid(); });
   $$('[data-search]').forEach(b=>b.addEventListener('click',()=>{ $('#shop').scrollIntoView({behavior:'smooth'}); setTimeout(()=>$('#q').focus({preventScroll:true}),600); }));
   $$('[data-favs]').forEach(b=>b.addEventListener('click',()=>{ setCat('favs'); $('#shop').scrollIntoView({behavior:'smooth'}); }));
 
-  // Drawer
-  const openDrawer = () => { $('#drawer').classList.add('open'); $('#scrim').classList.add('open'); };
-  const closeDrawer = () => { $('#drawer').classList.remove('open'); $('#scrim').classList.remove('open'); };
-  $$('[data-cart]').forEach(b=>b.addEventListener('click',openDrawer));
-  $('#drawerClose').addEventListener('click',closeDrawer);
-  $('#scrim').addEventListener('click',closeDrawer);
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeDrawer(); $('#mnav').classList.remove('open'); } });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') $('#mnav').classList.remove('open'); });
 
-  $('#orderForm').addEventListener('submit', e=>{
+  /* ---------- Kontaktformular: geht per kontakt.php direkt an bestellungen@ ---------- */
+  const cf = $('#contactForm'), cfNote = $('#formNote'), cfBtn = cf.querySelector('button[type=submit]'), cfNoteHtml = cfNote.innerHTML;
+  const FAIL = 'Das hat leider nicht geklappt. Bitte rufen Sie uns an (<a href="tel:+497144208362">07144 208362</a>) oder schreiben Sie an <a href="mailto:bestellungen@meine-futterkiste.de">bestellungen@meine-futterkiste.de</a>.';
+  const note = (html, cls) => { cfNote.innerHTML = html; cfNote.className = cls || ''; };
+  cf.addEventListener('submit', async e=>{
     e.preventDefault();
-    if (!Object.keys(cart).length){ toast('Bitte zuerst Produkte auswählen'); return; }
-    const fd = new FormData(e.target);
-    const lines = Object.keys(cart).map(id=>{ const x=P.find(p=>p.id==id); return `${cart[id]} × ${x.n} (${x.m})`; }).join('\n');
-    const body = `Hallo liebes Futterkiste-Team,\n\nich möchte folgende Produkte vorbestellen:\n\n${lines}\n\nAbholung: ${fd.get('tag')}\n\nName: ${fd.get('name')}\nTelefon: ${fd.get('tel')}\n\nVielen Dank!`;
-    location.href = 'mailto:bestellungen@meine-futterkiste.de?subject=' + encodeURIComponent('Vorbestellung ' + fd.get('name')) + '&body=' + encodeURIComponent(body);
+    const label = cfBtn.innerHTML;
+    cfBtn.disabled = true; cfBtn.textContent = 'Wird gesendet …';
+    try {
+      const r = await fetch(cf.action, { method:'POST', body:new FormData(cf), headers:{ Accept:'application/json' } });
+      const res = await r.json().catch(() => ({}));
+      if (r.ok && res.ok){
+        cf.reset();
+        note('Danke! Ihre Nachricht ist bei uns angekommen, wir melden uns zeitnah.', 'ok');
+        toast('Nachricht gesendet');
+      } else note(res.error || FAIL, 'err');
+    } catch (err) {
+      note(FAIL, 'err');
+    } finally {
+      cfBtn.disabled = false; cfBtn.innerHTML = label; lucide.createIcons();
+    }
   });
-
-  $('#contactForm').addEventListener('submit', e=>{
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const body = `${fd.get('nachricht')}\n\nHund: ${fd.get('hund')||'-'}\nName: ${fd.get('name')}\nKontakt: ${fd.get('kontakt')}`;
-    location.href = 'mailto:info@meine-futterkiste.de?subject=' + encodeURIComponent(fd.get('anliegen') + ' (Anfrage über Website)') + '&body=' + encodeURIComponent(body);
-  });
+  cf.addEventListener('input', () => { if (cfNote.className) note(cfNoteHtml); });
+  // Rückmeldung, falls das Formular ohne JavaScript abgeschickt wurde (kontakt.php leitet zurück)
+  const sent = new URLSearchParams(location.search).get('kontakt');
+  if (sent) {
+    note(sent === 'ok' ? 'Danke! Ihre Nachricht ist bei uns angekommen, wir melden uns zeitnah.' : FAIL, sent === 'ok' ? 'ok' : 'err');
+    history.replaceState(null, '', location.pathname + location.hash);
+  }
+  // Links aus Ratgeber und BARF-Rechner füllen das Anliegen schon passend vor
+  $$('[data-anliegen]').forEach(a=>a.addEventListener('click',()=>{
+    const el = cf.elements;
+    el.anliegen.value = a.dataset.anliegen;
+    if (a.dataset.thema && !el.nachricht.value.trim()) el.nachricht.value = `Ich habe eine Frage zum Thema „${a.dataset.thema}“: `;
+    setTimeout(()=>el.name.focus({preventScroll:true}), 700);
+  }));
 
   /* ---------- BARF-Rechner ---------- */
   const PARTS = [
@@ -1349,7 +1441,7 @@ footer{overflow:hidden}
     ['Sabine K.','vor 2 Wochen','Super nette und ehrliche Beratung zum Thema BARF. Man merkt, dass hier nicht nach Marke verkauft wird, sondern nach dem, was der Hund braucht.','#E86A10'],
     ['Markus W.','vor 1 Monat','Unser Labrador verträgt endlich sein Futter. Danke an Gaby für die Geduld und die vielen Tipps!','#1a3d1a'],
     ['Petra L.','vor 2 Monaten','Tolle Auswahl, faire Preise und immer ein Leckerli für den Hund an der Kasse. Unser Lieblingsladen.','#2f7a34'],
-    ['Jürgen H.','vor 3 Monaten','Hole hier seit Jahren den Futtersirup für meine Bienen. Zuverlässig vorbestellt und immer pünktlich bereit.','#c98a1a']
+    ['Jürgen H.','vor 3 Monaten','Kaufe hier seit Jahren das BARF für unsere zwei Hunde. Immer frisch und jedes Mal super beraten.','#c98a1a']
   ];
   const starSvg = '<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
   $$('[data-stars]').forEach(e=>e.innerHTML = starSvg.repeat(5));
@@ -1364,7 +1456,7 @@ footer{overflow:hidden}
   /* ---------- Menü, Leiste, Reveal ---------- */
   $('#menuOpen').addEventListener('click',()=>$('#mnav').classList.add('open'));
   $('#menuClose').addEventListener('click',()=>$('#mnav').classList.remove('open'));
-  $$('#mnav nav a').forEach(a=>a.addEventListener('click',()=>$('#mnav').classList.remove('open')));
+  $$('#mnav a').forEach(a=>a.addEventListener('click',()=>$('#mnav').classList.remove('open')));
 
   const hero = $('#start');
   new IntersectionObserver(([e])=>{
@@ -1436,7 +1528,7 @@ footer{overflow:hidden}
   });
 
   $('#yr').textContent = now.y;
-  renderGrid(); renderCart(); calc(); watch();
+  renderGrid(); counts(); calc(); watch();
   lucide.createIcons();
 })();
 </script>
