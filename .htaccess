@@ -1,0 +1,66 @@
+# ============================================================================
+#  Meine Futterkiste – Server-Einstellungen für Apache (STRATO)
+# ============================================================================
+
+AddDefaultCharset UTF-8
+DirectoryIndex index.html
+
+# Lokale Schriften und Video mit korrektem Typ ausliefern
+AddType font/woff2 .woff2
+AddType video/mp4 .mp4
+
+# ── Eine einzige Adresse für Google: https://meine-futterkiste.de ─────────
+# HTTPS erzwingt STRATO bereits selbst, hier wird nur www. auf die Adresse
+# ohne www umgeleitet (passend zu canonical und sitemap.xml).
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.meine-futterkiste\.de$ [NC]
+    RewriteRule ^(.*)$ https://meine-futterkiste.de/$1 [R=301,L]
+
+    # Adressen der alten WordPress-Seite, die Google noch kennt, auf die Startseite
+    RewriteRule ^(wp-content|wp-includes|wp-admin)/ - [G,L]
+    RewriteCond %{QUERY_STRING} (^|&)p=[0-9]+ [OR]
+    RewriteCond %{QUERY_STRING} (^|&)page_id=[0-9]+
+    RewriteRule ^$ /? [R=301,L]
+</IfModule>
+
+# ── Sicherheits-Header ─────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ── Einstellungen und GitHub-Ordner nie ausliefern ────────────────────────
+# config.php enthält das Postfach-Passwort. Normalerweise führt der Server
+# PHP aus und zeigt nichts an, das hier greift, falls PHP einmal ausfällt.
+<FilesMatch "^(config\.php|\.git.*)$">
+    Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.github(/|$)
+
+# ── Verzeichnisauflistung verhindern ───────────────────────────────────────
+Options -Indexes
+
+# ── Komprimierung ──────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+    AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── Browser-Zwischenspeicher ───────────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg        "access plus 1 year"
+    ExpiresByType image/png         "access plus 1 year"
+    ExpiresByType image/webp        "access plus 1 year"
+    ExpiresByType image/svg+xml     "access plus 1 year"
+    ExpiresByType font/woff2        "access plus 1 year"
+    ExpiresByType video/mp4         "access plus 1 month"
+    ExpiresByType text/css          "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType text/html         "access plus 0 seconds"
+    ExpiresByType application/json  "access plus 0 seconds"
+</IfModule>
