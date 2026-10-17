@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="de">
 <head>
@@ -49,10 +48,8 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Kaushan+Script&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="fonts.css" />
+<script src="lucide.min.js"></script>
 
 <style>
 :root{
@@ -736,7 +733,7 @@ footer{overflow:hidden}
     <nav class="nav animate-fade-in delay-200" aria-label="Hauptnavigation">
       <a href="#start" class="on">Home</a>
       <a href="#barf">BARF-Rechner</a>
-      <a href="#shop">Shop</a>
+      <a href="#shop">Sortiment</a>
       <a href="#bewertungen">Bewertungen</a>
       <a href="#besuch">Anfahrt</a>
       <a href="#kontakt">Kontakt</a>
@@ -908,10 +905,10 @@ footer{overflow:hidden}
 </section>
 
 <!-- ================= VIDEO-BANNER ================= -->
-<!-- Video: Mixkit (frei nutzbar, keine Namensnennung nötig). Für den Livegang am besten lokal ablegen. -->
+<!-- Video: Mixkit (frei nutzbar, keine Namensnennung nötig), lokal als video-herz.mp4 -->
 <section class="vbanner" id="herz" aria-label="Weil die Gesundheit Ihres Tieres uns am Herzen liegt">
-  <video muted loop playsinline preload="none" poster="https://assets.mixkit.co/videos/4839/4839-thumb-720-0.jpg" aria-hidden="true">
-    <source src="https://assets.mixkit.co/videos/4839/4839-720.mp4" type="video/mp4" />
+  <video muted loop playsinline preload="none" poster="video-herz-poster.jpg" aria-hidden="true">
+    <source src="video-herz.mp4" type="video/mp4" />
   </video>
   <div class="vb-heart rv pop"><span><i data-lucide="heart"></i></span></div>
   <div class="vb-inner">
@@ -1166,7 +1163,7 @@ footer{overflow:hidden}
       </div>
       <div>
         <h4>Entdecken</h4>
-        <ul><li><a href="#sortiment">Sortiment</a></li><li><a href="#barf">BARF-Rechner</a></li><li><a href="#shop">Shop</a></li><li><a href="#beratung">Beratung</a></li><li><a href="#bewertungen">Bewertungen</a></li><li><a href="#ratgeber">Ratgeber</a></li><li><a href="#faq">Häufige Fragen</a></li><li><a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener">Video</a></li></ul>
+        <ul><li><a href="#barf">BARF-Rechner</a></li><li><a href="#shop">Sortiment</a></li><li><a href="#beratung">Beratung</a></li><li><a href="#bewertungen">Bewertungen</a></li><li><a href="#ratgeber">Ratgeber</a></li><li><a href="#faq">Häufige Fragen</a></li><li><a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener">Video</a></li></ul>
       </div>
       <div>
         <h4><a href="#besuch">Öffnungszeiten</a></h4>
@@ -1199,9 +1196,8 @@ footer{overflow:hidden}
     <button class="circle circle-line" id="menuClose" aria-label="Menü schließen"><i data-lucide="x"></i></button>
   </div>
   <nav>
-    <a href="#sortiment">Sortiment</a>
     <a href="#barf">BARF-Rechner</a>
-    <a href="#shop">Shop</a>
+    <a href="#shop">Sortiment</a>
     <a href="#bewertungen">Bewertungen</a>
     <a href="#besuch">Anfahrt</a>
     <a href="#kontakt">Kontakt</a>
@@ -1308,27 +1304,28 @@ footer{overflow:hidden}
   /* Markenprodukte: cat = Rubrik für die Filter-Chips; id wird unten vergeben (ab 101, damit alte Merklisten-Einträge nicht auf falsche Produkte zeigen) */
   const BRANDS = {
     // logo = kleines Markenzeichen im Menü; logoPhoto = Produktfoto statt Logo (füllt den Kreis)
-    'graf-barf': {n:'Graf Barf', logo:'marken/logos/graf-barf.png', p:[
-      {id:101,cat:'barf',n:'Graf Barf Juniormenü',m:'2,5 kg, Hähnchen mit Obst und Gemüse, für Junghunde ab 6 Monaten',bg:'#fbe4e4',tag:'Junior',src:'marken/graf-barf-juniormenue.png'},
-      {id:102,cat:'barf',n:'Graf Barf Mineral Mix',m:'Mineralstoffe und Vitamine zum Vollwertmenü',bg:'#e3efe4',src:'marken/graf-barf-mineral-mix.png'},
-      {id:103,cat:'barf',n:'Graf Barf Spezial-Öl',m:'200 ml, Omega-3-6-9 und Vitamine A, D und E',bg:'#fdf1d6',src:'marken/graf-barf-spezial-oel.png'}
+    // Alle Bilder liegen flach im Hauptordner (wie im Repo), keine Unterordner
+    'graf-barf': {n:'Graf Barf', logo:'graf-barf.png', p:[
+      {id:101,cat:'barf',n:'Graf Barf Juniormenü',m:'2,5 kg, Hähnchen mit Obst und Gemüse, für Junghunde ab 6 Monaten',bg:'#fbe4e4',tag:'Junior',src:'graf-barf-juniormenue.png'},
+      {id:102,cat:'barf',n:'Graf Barf Mineral Mix',m:'Mineralstoffe und Vitamine zum Vollwertmenü',bg:'#e3efe4',src:'graf-barf-mineral-mix.png'},
+      {id:103,cat:'barf',n:'Graf Barf Spezial-Öl',m:'200 ml, Omega-3-6-9 und Vitamine A, D und E',bg:'#fdf1d6',src:'graf-barf-spezial-oel.png'}
     ]},
     // photo:true = Stimmungsfoto statt freigestellter Packung, füllt die Kachel wie die übrigen Shopfotos
-    'pollux': {n:'Pollux', logo:'marken/logos/pollux.png', p:[
-      {id:111,cat:'barf',n:'Pollux Rind, Spessartforelle & Saibling',m:'1000 g, Mix vom kompletten Rind mit Forelle und Saibling aus dem Spessart, tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'marken/pollux-barf-forelle.webp'},
-      {id:112,cat:'futter',n:'Pollux Lammallerlei & Süßkartoffel',m:'Nassfutter in der Dose, 400 g oder 800 g, für Allergiker geeignet',bg:'#f4f4f2',photo:true,src:'marken/pollux-lammallerlei.webp'},
-      {id:113,cat:'barf',n:'Pollux Mix vom kompletten Rind',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Innereien, Knorpel und Sehnen, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'marken/pollux-barf-rind.webp'}
+    'pollux': {n:'Pollux', logo:'pollux.png', p:[
+      {id:111,cat:'barf',n:'Pollux Rind, Spessartforelle & Saibling',m:'1000 g, Mix vom kompletten Rind mit Forelle und Saibling aus dem Spessart, tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'pollux-barf-forelle.webp'},
+      {id:112,cat:'futter',n:'Pollux Lammallerlei & Süßkartoffel',m:'Nassfutter in der Dose, 400 g oder 800 g, für Allergiker geeignet',bg:'#f4f4f2',photo:true,src:'pollux-lammallerlei.webp'},
+      {id:113,cat:'barf',n:'Pollux Mix vom kompletten Rind',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Innereien, Knorpel und Sehnen, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-barf-rind.webp'}
     ]},
-    'paul-paulina': {n:'Paul und Paulina', logo:'marken/logos/paul-paulina.png', p:[
-      {id:121,cat:'barf',n:'Paul und Paulina Fleischmix',m:'Frischfleisch, gewolft, tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-fleischmix.jpg'},
-      {id:122,cat:'barf',n:'Paul und Paulina Gipfelstürmer + Dorsch',m:'Kaltgepresste Ölmischung aus Lein-, Hanf- und Schwarzkümmelöl mit Dorschlebertran',bg:'#5a4a3e',tag:'Öl',photo:true,src:'marken/paul-paulina-gipfelstuermer.jpg'},
-      {id:123,cat:'barf',n:'Paul und Paulina Gemüsemix',m:'Geraspeltes Gemüse mit Karotte, als Block tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-gemuesemix.jpg'}
+    'paul-paulina': {n:'Paul und Paulina', logo:'paul-paulina.png', p:[
+      {id:121,cat:'barf',n:'Paul und Paulina Fleischmix',m:'Frischfleisch, gewolft, tiefgekühlt',bg:'#eeebe6',photo:true,src:'paul-paulina-fleischmix.jpg'},
+      {id:122,cat:'barf',n:'Paul und Paulina Gipfelstürmer + Dorsch',m:'Kaltgepresste Ölmischung aus Lein-, Hanf- und Schwarzkümmelöl mit Dorschlebertran',bg:'#5a4a3e',tag:'Öl',photo:true,src:'paul-paulina-gipfelstuermer.jpg'},
+      {id:123,cat:'barf',n:'Paul und Paulina Gemüsemix',m:'Geraspeltes Gemüse mit Karotte, als Block tiefgekühlt',bg:'#eeebe6',photo:true,src:'paul-paulina-gemuesemix.jpg'}
     ]},
-    'q-pet': {n:'Q-Pet', logo:'marken/logos/q-pet.png?v=2', logoPhoto:true, p:[
+    'q-pet': {n:'Q-Pet', logo:'q-pet.png?v=2', logoPhoto:true, p:[
       // Q-Pet GmbH verkauft unter der Marke Qchefs
-      {id:131,cat:'snacks',n:'Qchefs Dreierlei',m:'65 g, Käsesnack-Mix aus Snackies, Puffies und Cheesies, vegetarisch',bg:'#efe6da',tag:'Snack',src:'marken/q-pet-mix.jpg'},
-      {id:132,cat:'snacks',n:'Qchefs Zahnputzflocken',m:'90 g, Flocken auf Käsebasis für die tägliche Zahnpflege',bg:'#f1ece4',pad:'2%',src:'marken/q-pet-pulver.png'},
-      {id:133,cat:'snacks',n:'Qchefs Hard Cheese',m:'100 g, harte Käse-Kaustange, splittert nicht',bg:'#e3efe4',src:'marken/q-pet-kaustange.png'}
+      {id:131,cat:'snacks',n:'Qchefs Dreierlei',m:'65 g, Käsesnack-Mix aus Snackies, Puffies und Cheesies, vegetarisch',bg:'#efe6da',tag:'Snack',src:'q-pet-mix.jpg'},
+      {id:132,cat:'snacks',n:'Qchefs Zahnputzflocken',m:'90 g, Flocken auf Käsebasis für die tägliche Zahnpflege',bg:'#f1ece4',pad:'2%',src:'q-pet-pulver.png'},
+      {id:133,cat:'snacks',n:'Qchefs Hard Cheese',m:'100 g, harte Käse-Kaustange, splittert nicht',bg:'#e3efe4',src:'q-pet-kaustange.png'}
     ]}
   };
   let brand = '';
