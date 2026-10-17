@@ -305,21 +305,40 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 .ov-rate span{font-size:clamp(10px,.8vw,12px);color:var(--muted)}
 
 /* Mobile */
-/* Reihenfolge mobil: Titel, Hundebilder, Fließtext, Button, Kennzahlen. Hero wächst mit, statt intern zu scrollen */
-@media(max-width:767px){.hero{height:auto}}
+/* Reihenfolge mobil: Titel (Kennzahlen links/rechts neben „liebt“), Aussie, Button. Hero wächst mit, statt intern zu scrollen */
+@media(max-width:767px){
+  .hero{height:auto}
+  /* Header mobil: Merkliste größer, Menü nur drei Striche ohne Kreisrand */
+  .hdr-actions{gap:.3rem}
+  .hdr .circle-orange[data-favs]{width:48px;height:48px;font-size:22px}
+  .hdr .menu-btn{width:48px;height:48px;border:0;border-radius:12px;font-size:32px;margin-right:-6px}
+}
+/* Sehr schmale Handys: Logo etwas kleiner, damit Name und Ort einzeilig bleiben */
+@media(max-width:374px){
+  .hdr{padding-left:14px;padding-right:14px;gap:.6rem}
+  .hdr .logo-mark,.hdr.sticky .logo-mark{width:36px;height:36px}
+  .hdr .logo-txt,.hdr.sticky .logo-txt{font-size:1rem;white-space:nowrap}
+  .logo-txt small{font-size:.55rem;letter-spacing:.06em}
+  .hdr .circle-orange[data-favs],.hdr .menu-btn{width:44px;height:44px}
+}
 .mob{display:flex;flex-direction:column;flex:1;padding-bottom:1.8rem}
-.mob-top{text-align:center;padding:1.4rem 20px 0}
-.mob-top h1{font-family:'DM Serif Display',serif;color:var(--green);font-size:36px;line-height:1;font-weight:400}
-.mob-text{text-align:center;padding:1.3rem 20px 0}
-.mob-text p{color:var(--muted);font-size:.9rem;margin:0 auto 1rem;max-width:32ch;line-height:1.5}
-.mob-stats{display:flex;align-items:center;justify-content:center;gap:1rem;padding:1.1rem 20px .4rem}
-.mob-stats .div{width:1px;height:30px;background:var(--line)}
-.mob-stats b{color:var(--green);font-size:1.3rem}
-.mob-stats small{display:block;color:var(--muted);font-size:.72rem}
-.mob-stats .st{display:flex;align-items:center;gap:.5rem}
-/* overflow:hidden, damit die Hunde beim Aufploppen aus der Kante kommen und nicht über den Text darunter */
-.mob-photos{display:flex;align-items:flex-end;margin-top:1.1rem;padding-top:12px;overflow:hidden}
+.mob-top{position:relative;text-align:center;padding:1.2rem 16px 0}
+.mob-top h1{font-family:'DM Serif Display',serif;color:var(--green);font-size:clamp(34px,10.6vw,46px);line-height:1;font-weight:400;letter-spacing:-.01em}
+/* Kennzahlen sitzen unten an der letzten Titelzeile („liebt“), links und rechts davon */
+.mob-stats{position:absolute;left:max(16px, calc(50% - 250px));right:max(16px, calc(50% - 250px));bottom:1px;display:flex;justify-content:space-between;align-items:flex-end;text-align:left;pointer-events:none}
+.mob-stats .st{display:flex;flex-direction:column;line-height:1.1;pointer-events:auto}
+.mob-stats .st-r{align-items:flex-end;text-align:right}
+.mob-stats .st-n{display:flex;align-items:center;gap:.3rem}
+.mob-stats b{color:var(--green);font-size:clamp(20px,6.2vw,27px);font-variant-numeric:tabular-nums}
+.mob-stats small{display:block;color:var(--muted);font-size:clamp(9.5px,2.75vw,11.5px);margin-top:2px}
+.mob-stats svg.lucide{color:var(--orange);font-size:clamp(17px,5.2vw,23px)}
+.mob-stats .star{display:inline-flex}
+.mob-stats .star svg{fill:currentColor}
+/* overflow:hidden, damit der Hund beim Aufploppen aus der Kante kommt */
+.mob-photos{display:flex;justify-content:center;margin-top:.6rem;padding-top:12px;overflow:hidden}
+.mob-photos .ph{flex:none;width:min(88vw, 52vh, 420px)}
 .mob-photos .ph img{max-height:none}
+.mob-cta{text-align:center;padding:1.1rem 20px 0}
 
 /* ---------- Marquee ---------- */
 .marquee{background:var(--green);color:#e8f7e9;overflow:hidden;padding:1.1rem 0;position:relative;z-index:2}
@@ -803,33 +822,26 @@ footer{overflow:hidden}
       </div>
     </div>
 
-    <!-- Mobile -->
+    <!-- Mobile: Titel, links und rechts neben „liebt“ die Kennzahlen, darunter nur der Aussie, direkt darunter der Button -->
     <div class="mob">
       <div class="mob-top">
-        <h1><span class="w animate-word-pop delay-100">Alles,</span> <span class="w animate-word-pop delay-200">was</span> <span class="w animate-word-pop delay-300">Ihr</span> <span class="w animate-word-pop delay-400">Hund</span> <span class="w animate-word-pop delay-500">liebt</span></h1>
+        <h1><span class="w animate-word-pop delay-100">Alles,</span> <span class="w animate-word-pop delay-200">was</span> <span class="w animate-word-pop delay-300">Ihr</span> <span class="w animate-word-pop delay-400">Hund</span><br /><span class="w animate-word-pop delay-500">liebt</span></h1>
+        <div class="mob-stats animate-fade-up delay-700">
+          <div class="st">
+            <span class="st-n"><i data-lucide="heart-handshake"></i><b>100%</b></span>
+            <small>markenunabhängig</small>
+          </div>
+          <a href="#bewertungen" class="st st-r" aria-label="5,0 Sterne bei Google">
+            <span class="st-n"><span class="star"><i data-lucide="star"></i></span><b>5,0</b></span>
+            <small>Google</small>
+          </a>
+        </div>
       </div>
       <div class="mob-photos">
-        <div class="ph s animate-pet-pop delay-600" style="--bd:.3s"><img src="hero-dackel.png" alt="" /></div>
-        <div class="ph c animate-pet-pop delay-500"><img src="hero-aussie.png" alt="" /></div>
-        <div class="ph s animate-pet-pop delay-700" style="--bd:.6s"><img src="hero-golden.png" alt="" /></div>
+        <div class="ph c animate-pet-pop delay-500"><img src="hero-aussie.png" alt="" width="1100" height="1152" /></div>
       </div>
-      <div class="mob-text">
-        <p class="animate-fade-up delay-800">Spezialisten für die gesunde Ernährung Ihres Vierbeiners. BARF, Futter und Zubehör in Steinheim.</p>
-        <a href="#sortiment" class="btn btn-orange animate-fade-up delay-900">Sortiment entdecken <i data-lucide="arrow-right"></i></a>
-      </div>
-      <div class="mob-stats animate-fade-up delay-1000">
-        <div class="st">
-          <div class="stack">
-            <span class="si" style="background:var(--orange);width:30px;height:30px"><i data-lucide="heart-handshake"></i></span>
-            <span class="si" style="background:var(--green);width:30px;height:30px"><i data-lucide="plus"></i></span>
-          </div>
-          <div><b>100%</b><small>markenunabhängig</small></div>
-        </div>
-        <span class="div"></span>
-        <a href="#bewertungen" class="st">
-          <span class="star" style="color:var(--orange);font-size:22px;display:inline-flex"><i data-lucide="star" style="fill:currentColor"></i></span>
-          <div><b>5,0</b><small>Google</small></div>
-        </a>
+      <div class="mob-cta">
+        <a href="#sortiment" class="btn btn-orange animate-fade-up delay-800">Sortiment entdecken <i data-lucide="arrow-right"></i></a>
       </div>
     </div>
   </div>
