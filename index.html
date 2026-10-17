@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#EFFDF0" />
 <meta name="format-detection" content="telephone=yes" />
 <title>Meine Futterkiste | BARF, Hundefutter & Beratung in Steinheim-Höpfigheim</title>
-<link rel="icon" href="favicon.png" type="image/png" sizes="192x192" />
-<link rel="apple-touch-icon" href="favicon.png" />
+<link rel="icon" href="favicon.png?v=2" type="image/png" sizes="192x192" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2" />
 <meta name="description" content="Meine Futterkiste in Steinheim-Höpfigheim: Spezialisten für die gesunde Ernährung Ihres Vierbeiners. BARF, Futter, Kauartikel und Zubehör. Markenunabhängige, persönliche Beratung direkt im Laden." />
 <meta name="keywords" content="BARF Steinheim, Hundefutter Steinheim, Futterladen Höpfigheim, Rohfütterung, Meine Futterkiste" />
 <meta name="robots" content="index, follow" />
@@ -48,10 +48,8 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Kaushan+Script&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="fonts.css" />
+<script src="lucide.min.js"></script>
 
 <style>
 :root{
@@ -761,7 +759,7 @@ footer{overflow:hidden}
       <!-- Seitenkarten ohne Schweben/Parallax (Kundenwunsch), nur einmaliges Einfahren -->
       <a href="#shop" data-filter="barf" class="side l animate-slide-in-left delay-600">
         <div class="pcard-img">
-          <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=520&q=75" alt="Hund wartet auf sein Futter" />
+          <img src="foto-hund-wartet.jpg" alt="Hund wartet auf sein Futter" />
           <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         </div>
         <div class="pcard-name">BARF Komplettmenü Rind</div>
@@ -769,7 +767,7 @@ footer{overflow:hidden}
 
       <a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener" aria-label="Video über Meine Futterkiste auf YouTube ansehen (neues Fenster)" class="side r animate-slide-in-right delay-700">
         <div class="vcard-img">
-          <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=360&q=75" alt="" />
+          <img src="hero-video-vorschau.jpg" alt="" />
           <div class="vcard-body">
             <span class="play"><i data-lucide="play"></i></span>
             Meine Futterkiste im Video
@@ -879,25 +877,25 @@ footer{overflow:hidden}
     <p class="lead rv" style="--d:.2s">Von frischem BARF über Trockenfutter und Kauartikel bis zum passenden Zubehör. Was Sie nicht finden, bestellen wir gerne für Sie.</p>
     <div class="cats">
       <a href="#shop" data-filter="barf" class="cat big rv pop">
-        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1100&q=75" alt="" loading="lazy" />
+        <img src="sortiment-barf.jpg" alt="" loading="lazy" />
         <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         <h3>BARF &amp; Frischfleisch</h3>
         <p>Muskelfleisch, Pansen, Innereien, Komplettmenüs und passende Ergänzungen. Tiefgekühlt und portioniert.</p>
       </a>
       <a href="#shop" data-filter="futter" class="cat rv pop" style="--d:.1s">
-        <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=700&q=75" alt="" loading="lazy" />
+        <img src="sortiment-ernaehrung.jpg" alt="" loading="lazy" />
         <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         <h3>Ernährung</h3>
         <p>Trocken- und Nassfutter mit ehrlichen Zutaten.</p>
       </a>
       <a href="#shop" data-filter="snacks" class="cat rv pop" style="--d:.2s">
-        <img src="https://images.unsplash.com/photo-1592468257342-8375cb556a69?auto=format&fit=crop&w=700&q=75" alt="" loading="lazy" />
+        <img src="sortiment-snacks.jpg" alt="" loading="lazy" />
         <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         <h3>Kauartikel &amp; Snacks</h3>
         <p>Natürlich getrocknet, ohne Zusätze.</p>
       </a>
       <a href="#shop" data-filter="zubehoer" class="cat wide rv pop" style="--d:.1s">
-        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1100&q=75" alt="" loading="lazy" />
+        <img src="sortiment-zubehoer.jpg" alt="" loading="lazy" />
         <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         <h3>Zubehör</h3>
         <p>Näpfe, Leinen, Pflege und mehr.</p>
@@ -907,10 +905,10 @@ footer{overflow:hidden}
 </section>
 
 <!-- ================= VIDEO-BANNER ================= -->
-<!-- Video: Mixkit (frei nutzbar, keine Namensnennung nötig). Für den Livegang am besten lokal ablegen. -->
+<!-- Video: Mixkit (frei nutzbar, keine Namensnennung nötig), lokal als video-herz.mp4 -->
 <section class="vbanner" id="herz" aria-label="Weil die Gesundheit Ihres Tieres uns am Herzen liegt">
-  <video muted loop playsinline preload="none" poster="https://assets.mixkit.co/videos/4839/4839-thumb-720-0.jpg" aria-hidden="true">
-    <source src="https://assets.mixkit.co/videos/4839/4839-720.mp4" type="video/mp4" />
+  <video muted loop playsinline preload="none" poster="video-herz-poster.jpg" aria-hidden="true">
+    <source src="video-herz.mp4" type="video/mp4" />
   </video>
   <div class="vb-heart rv pop"><span><i data-lucide="heart"></i></span></div>
   <div class="vb-inner">
@@ -1082,15 +1080,15 @@ footer{overflow:hidden}
     <h2 class="h2 rv" style="--d:.1s">Wissen aus der Futterkiste.</h2>
     <div class="tips">
       <article class="tip rv pop">
-        <div class="tip-img"><img src="https://images.unsplash.com/photo-1613454320437-0c228c8b1723?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" /></div>
+        <div class="tip-img"><img src="ratgeber-barf.jpg" alt="" loading="lazy" /></div>
         <div class="tip-b"><small>BARF</small><h3>Umstieg auf Rohfütterung: So gelingt der Start</h3><p>Warum ein sanfter Übergang wichtig ist und womit Sie am besten anfangen.</p><a href="#kontakt" class="tip-more" data-anliegen="BARF-Beratung" data-thema="Umstieg auf Rohfütterung">Jetzt nachfragen <i data-lucide="arrow-right"></i></a></div>
       </article>
       <article class="tip rv pop" style="--d:.1s">
-        <div class="tip-img"><img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" /></div>
+        <div class="tip-img"><img src="sortiment-ernaehrung.jpg" alt="" loading="lazy" /></div>
         <div class="tip-b"><small>Ernährung</small><h3>Futter lesen lernen: Was auf dem Etikett wirklich zählt</h3><p>Zutatenliste, Analysewerte und Zusatzstoffe verständlich erklärt.</p><a href="#kontakt" class="tip-more" data-anliegen="Futterfrage" data-thema="Futteretiketten richtig lesen">Jetzt nachfragen <i data-lucide="arrow-right"></i></a></div>
       </article>
       <article class="tip rv pop" style="--d:.2s">
-        <div class="tip-img"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" /></div>
+        <div class="tip-img"><img src="foto-hund-wartet.jpg" alt="" loading="lazy" /></div>
         <div class="tip-b"><small>Welpen</small><h3>Der erste Napf: Gesund durchs erste Lebensjahr</h3><p>Wie viel, wie oft und was ein junger Hund für ein gutes Wachstum braucht.</p><a href="#kontakt" class="tip-more" data-anliegen="Futterfrage" data-thema="Welpenernährung">Jetzt nachfragen <i data-lucide="arrow-right"></i></a></div>
       </article>
     </div>
@@ -1297,14 +1295,12 @@ footer{overflow:hidden}
   $('#marquee').innerHTML = one + one;
 
   /* ---------- Produkte ----------
-     Beispielprodukte ohne Marke (Unsplash-Fotos). Die Markenprodukte aus BRANDS kommen unten dazu,
+     Beispielprodukte ohne Marke (Unsplash-Fotos, lokal gespeichert). Die Markenprodukte aus BRANDS kommen unten dazu,
      erscheinen unter „Alle“, in ihrer Rubrik und in der Merkliste und lassen sich zusätzlich per Marken-Menü filtern. */
   const EXAMPLES = [
-    // img = Unsplash-Foto-ID (freie Lizenz), Größe setzt pimg(); Icon bleibt als Fallback darunter
-    {id:4,cat:'barf',n:'Gemüse-Obst-Mix',m:'500 g, püriert',i:'carrot',bg:'#fde3cf',img:'1598295309854-cfa5819004d8'},
-    {id:5,cat:'futter',n:'Trockenfutter getreidefrei',m:'12 kg, Lamm und Kartoffel',i:'wheat-off',bg:'#e7ecf8',tag:'Tipp',img:'1682536192307-c25211b1d4ac'}
+    {id:4,cat:'barf',n:'Gemüse-Obst-Mix',m:'500 g, püriert',bg:'#fde3cf',photo:true,src:'produkt-gemuese-obst-mix.jpg'},
+    {id:5,cat:'futter',n:'Trockenfutter getreidefrei',m:'12 kg, Lamm und Kartoffel',bg:'#e7ecf8',tag:'Tipp',photo:true,src:'produkt-trockenfutter.jpg'}
   ];
-  const pimg = (x,w) => 'https://images.unsplash.com/photo-' + x.img + '?auto=format&fit=crop&w=' + w + '&h=' + w + '&q=70';
 
   /* Markenprodukte: cat = Rubrik für die Filter-Chips; id wird unten vergeben (ab 101, damit alte Merklisten-Einträge nicht auf falsche Produkte zeigen) */
   const BRANDS = {
@@ -1351,15 +1347,13 @@ footer{overflow:hidden}
       : cat==='favs' ? 'Noch nichts gemerkt. Tippen Sie auf den Stern an einem Produkt.'
       : q ? 'Kein Produkt gefunden. Fragen Sie uns gerne direkt.'
       : 'Aus dieser Rubrik zeigen wir online gerade nichts. Im Laden finden Sie eine große Auswahl, fragen Sie uns gerne.';
-    // Markenprodukte: lokale Bilder (Packung freigestellt = contain, photo = cover); Beispiele: Unsplash mit Icon als Fallback
+    // alle Bilder lokal: freigestellte Packung = contain (.pack), photo = cover
     $('#grid').innerHTML = list.length ? list.map(x=>`
       <article class="prod">
-        <div class="prod-img${x.src && !x.photo ? ' pack' : ''}" style="background:${x.bg}">
-          ${x.src ? `<img src="${x.src}" alt="${x.n}" loading="lazy"${x.pad?` style="padding:${x.pad}"`:''} />`
-            : `<img src="${pimg(x,420)}" alt="${x.n}" loading="lazy" onerror="this.remove()" />`}
+        <div class="prod-img${x.photo ? '' : ' pack'}" style="background:${x.bg}">
+          <img src="${x.src}" alt="${x.n}" loading="lazy"${x.pad?` style="padding:${x.pad}"`:''} />
           ${x.tag?`<span class="tag">${x.tag}</span>`:''}
           <button class="fav ${favs.includes(x.id)?'on':''}" data-fav="${x.id}" aria-label="Merken"><i data-lucide="star"></i></button>
-          ${x.i ? `<i data-lucide="${x.i}"></i>` : ''}
         </div>
         <h4>${x.n}</h4><div class="meta">${x.m.replace(/(\d) (g|kg|ml)\b/g,'$1&nbsp;$2')}</div>
       </article>`).join('') : `<div class="empty">${empty}</div>`;
