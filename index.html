@@ -221,7 +221,8 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 .hdr.sticky.show{transform:none}
 .hdr.sticky .logo-mark{width:42px;height:42px}
 .hdr.sticky .logo-txt{font-size:1.3rem}
-@media(max-width:899px){.hdr.sticky{display:none}}
+/* Mobil erscheint der Sticky-Header schon, sobald der Hero-Header aus dem Bild ist (siehe Skript) */
+@media(max-width:899px){.hdr.sticky{padding-top:.55rem;padding-bottom:.55rem}}
 @media(min-width:900px){.nav{display:flex}}
 .hdr-actions{display:flex;align-items:center;gap:.6rem}
 .hide-xs{display:none}
@@ -234,7 +235,7 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 /* Desktop + Tablet */
 .hd{display:none;position:absolute;inset:0}
 @media(min-width:768px){.hd{display:block}.mob{display:none!important}}
-.hero-text{position:absolute;inset:0 0 auto 0;z-index:5;text-align:center;padding:.2rem 48px 0}
+.hero-text{position:absolute;inset:0 0 auto 0;z-index:11;text-align:center;padding:.2rem 48px 0}
 .hero-title{font-family:'DM Serif Display',serif;color:var(--green);font-size:clamp(52px,6.3vw,94px);line-height:.95;letter-spacing:-.02em}
 .hero-title .w{display:inline-block}
 @media(min-width:768px) and (max-width:1023px){.hero-title{font-size:3.9rem}.hero-text{padding-top:1.6rem}}
@@ -243,6 +244,33 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 .side.l{left:48px;width:clamp(160px,14vw,260px)}
 .side.r{right:48px;width:clamp(120px,10vw,177px)}
 @media(min-width:768px) and (max-width:1023px){.side{top:80px}.side.l{left:16px;width:160px}.side.r{right:16px;width:120px}}
+/* Abstand halten bei niedrigen Fenstern: .hd ist Größen-Container (cqh/cqw = Bühne).
+   Hundehöhen wie unten bei .ph: Aussie min(40.58cqw,85vh,70vw), Golden min(29.68cqw,70vh,55vw), Dackel min(26.83cqw,70vh,55vw);
+   transparenter Rand über den Köpfen: Aussie 5,6 %, Golden 1,4 %, Dackel 5,5 %. Puffer 18–20px für Wippen und Parallax der Hunde.
+   Reicht das nicht einmal für die Mindestgrößen (sehr breite, niedrige Fenster), rutscht die ganze Hundereihe um --x nach unten
+   aus dem Bild; alle drei Panels gleich weit, damit ihre Oberkanten bündig bleiben. */
+@media(min-width:1024px){
+  .hd{container-type:size;
+    --ha:min(40.58cqw, 85vh, 70vw); --hg:min(29.68cqw, 70vh, 55vw); --hk:min(26.83cqw, 70vh, 55vw);
+    --x:max(0px, calc(.2rem + 1.9 * 52px + 18px + .944 * var(--ha) - 100cqh), calc(70px + 1.6215 * 110px + .986 * var(--hg) - 100cqh), calc(100px + .988 * 150px + .945 * var(--hk) - 100cqh))}
+  .hero-title{font-size:clamp(52px, calc((100cqh + var(--x) - .944 * var(--ha) - .2rem - 18px) / 1.9), clamp(52px,6.3vw,94px))}
+  .side.r{width:clamp(110px, calc((100cqh + var(--x) - .986 * var(--hg) - 70px) / 1.6215), clamp(120px,10vw,177px))}
+  .side.l{width:clamp(150px, calc((100cqh + var(--x) - .945 * var(--hk) - 100px) / .988), clamp(160px,14vw,260px))}
+}
+@media(min-width:768px) and (max-width:1023px){
+  .hd{container-type:size;
+    --ha:min(40.58cqw, 75vh); --hg:min(29.68cqw, 60vh); --hk:min(26.83cqw, 60vh);
+    --x:max(0px, calc(1.6rem + 1.9 * 44px + 18px + .944 * var(--ha) - 100cqh), calc(100px + 1.6215 * 90px + .986 * var(--hg) - 100cqh), calc(130px + .988 * 110px + .945 * var(--hk) - 100cqh))}
+  .hero-title{font-size:clamp(44px, calc((100cqh + var(--x) - .944 * var(--ha) - 1.6rem - 18px) / 1.9), 3.9rem)}
+  .side.r{width:clamp(90px, calc((100cqh + var(--x) - .986 * var(--hg) - 100px) / 1.6215), 120px)}
+  .side.l{width:clamp(110px, calc((100cqh + var(--x) - .945 * var(--hk) - 130px) / .988), 160px)}
+}
+@media(min-width:768px){
+  .hd .photos{bottom:calc(-1 * var(--x, 0px))}
+  .hd .photos .ov{bottom:calc(clamp(20px,4vh,50px) + var(--x, 0px))}
+  /* Reihe stark verschoben (Klasse per Skript): Spruch über dem Button weglassen, sonst liegt er auf dem Aussie */
+  .hd.tight .ov-center h3{display:none}
+}
 .pcard-img{position:relative;aspect-ratio:260/257;border-radius:16px;overflow:hidden;background:#fff}
 .pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .side.l:hover .pcard-img img{transform:scale(1.05)}
@@ -279,22 +307,20 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 .ov-rate span{font-size:clamp(10px,.8vw,12px);color:var(--muted)}
 
 /* Mobile */
-.mob{display:flex;flex-direction:column;flex:1;overflow-y:auto;overflow-x:hidden}
-.mob-top{text-align:center;padding:1.2rem 20px 0}
+/* Reihenfolge mobil: Titel, Hundebilder, Fließtext, Button, Kennzahlen. Hero wächst mit, statt intern zu scrollen */
+@media(max-width:767px){.hero{height:auto}}
+.mob{display:flex;flex-direction:column;flex:1;padding-bottom:1.8rem}
+.mob-top{text-align:center;padding:1.4rem 20px 0}
 .mob-top h1{font-family:'DM Serif Display',serif;color:var(--green);font-size:36px;line-height:1;font-weight:400}
-.mob-top p{color:var(--muted);font-size:.9rem;margin:.7rem auto 1rem;max-width:32ch;line-height:1.5}
-.mob-cards{display:flex;gap:12px;padding:1.2rem 20px 0}
-.mob-cards>*{flex:1;min-width:0}
-.mob-cards .pcard-img{aspect-ratio:1}
-.mob-cards .vcard-img{aspect-ratio:3/4}
-.mob-cards .mc-p{display:flex;flex-direction:column}
-.mob-cards .mc-p .pcard-img{flex:1;aspect-ratio:auto;min-height:150px}
-.mob-stats{display:flex;align-items:center;justify-content:center;gap:1rem;padding:1rem 20px}
+.mob-text{text-align:center;padding:1.3rem 20px 0}
+.mob-text p{color:var(--muted);font-size:.9rem;margin:0 auto 1rem;max-width:32ch;line-height:1.5}
+.mob-stats{display:flex;align-items:center;justify-content:center;gap:1rem;padding:1.1rem 20px .4rem}
 .mob-stats .div{width:1px;height:30px;background:var(--line)}
 .mob-stats b{color:var(--green);font-size:1.3rem}
 .mob-stats small{display:block;color:var(--muted);font-size:.72rem}
 .mob-stats .st{display:flex;align-items:center;gap:.5rem}
-.mob-photos{display:flex;align-items:flex-end;margin-top:auto}
+/* overflow:hidden, damit die Hunde beim Aufploppen aus der Kante kommen und nicht über den Text darunter */
+.mob-photos{display:flex;align-items:flex-end;margin-top:1.1rem;padding-top:12px;overflow:hidden}
 .mob-photos .ph img{max-height:none}
 
 /* ---------- Marquee ---------- */
@@ -376,6 +402,18 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 .split{grid-template-columns:1fr;gap:.5rem}
 @media(min-width:560px) and (max-width:959px){.split{grid-template-columns:1fr 1fr;gap:.45rem 1.4rem}}
 .split .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+/* Mobil/Tablet: Grammzahlen mit fester Breite, damit die Beschriftung beim Ziehen des Reglers nicht umbricht und die Seite springt */
+@media(max-width:959px){
+  .split div b{min-width:3.4em;text-align:right;font-variant-numeric:tabular-nums}
+  .result-top b,#week{font-variant-numeric:tabular-nums;white-space:nowrap}
+}
+@media(max-width:559px){
+  .calc{padding:26px 18px}
+  .calc-form{padding:1rem}
+  .result{padding:1rem}
+  .split{font-size:.8rem}
+  .result-top{flex-direction:column;align-items:flex-start;gap:.3rem}
+}
 .calc-note{font-size:.76rem;color:#a9c7ab;line-height:1.5}
 /* Quellenangabe: mobil ganz unten, am Desktop unten in der linken Spalte (teilt sich die Zelle mit dem Text) */
 .calc-src{font-size:.66rem;color:#8fb593;line-height:1.4;margin-top:-1.2rem;position:relative}
@@ -510,6 +548,26 @@ input[type=range]{width:100%;accent-color:var(--orange);height:6px}
 .rev-h .g{margin-left:auto;width:20px}
 .rev p{color:#374151;font-size:.92rem;line-height:1.6}
 .demo-note{font-size:.72rem;color:var(--muted);margin-top:0}
+/* Desktop: Google-Kasten so hoch wie die Rezensionen, Buttons unten; Hinweis hängt unter den Karten, ohne die Höhe mitzubestimmen */
+@media(min-width:960px){
+  .rev-wrap{align-items:stretch}
+  .gsum{display:flex;flex-direction:column}
+  .gsum .btn-green{margin-top:auto}
+  .rev-wrap>div:last-child{position:relative}
+  .rev-wrap .revs{margin-bottom:0}
+  .rev-wrap .demo-note{position:absolute;left:0;right:0;top:100%;margin-top:.8rem}
+}
+
+/* Mobil: Beratungsschritte sowie Google-Zusammenfassung und Rezensionen als Wischreihe */
+@media(max-width:767px){
+  .steps,.rev-wrap{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-left:-20px;margin-right:-20px;padding:4px 20px 14px;scroll-padding-inline:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .steps::-webkit-scrollbar,.rev-wrap::-webkit-scrollbar{display:none}
+  .steps>.step,.rev-wrap>.gsum,.revs>.rev{flex:0 0 84%;scroll-snap-align:start}
+  .rev-wrap>div:last-child,.revs{display:contents}
+  /* Hinweis bleibt unter der Reihe stehen, statt mitzuwischen */
+  #bewertungen .wrap{position:relative;padding-bottom:1.4rem}
+  .demo-note{position:absolute;left:20px;right:20px;bottom:0}
+}
 
 /* ---------- Öffnungszeiten + Karte ---------- */
 .visit{display:grid;gap:14px}
@@ -614,10 +672,10 @@ footer{overflow:hidden}
 @media(min-width:900px){.foot-mark{margin-bottom:calc(-2rem - .16em)}}
 
 /* Mobile Leiste */
-.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;background:rgba(26,61,26,.95);backdrop-filter:blur(10px);border-radius:20px;padding:6px;transform:translateY(140%);transition:transform .45s var(--ease)}
+.mbar{position:fixed;left:12px;right:12px;bottom:10px;z-index:70;display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;background:rgba(26,61,26,.95);backdrop-filter:blur(10px);border-radius:17px;padding:4px;transform:translateY(140%);transition:transform .45s var(--ease)}
 .mbar.show{transform:none}
-.mbar a,.mbar button{display:flex;flex-direction:column;align-items:center;gap:3px;color:#fff;font-size:.72rem;font-weight:500;padding:.55rem 0;border-radius:14px;position:relative}
-.mbar a svg.lucide,.mbar button svg.lucide{width:20px;height:20px}
+.mbar a,.mbar button{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;font-size:.68rem;font-weight:500;line-height:1.15;padding:.38rem 0;border-radius:13px;position:relative}
+.mbar a svg.lucide,.mbar button svg.lucide{width:18px;height:18px}
 .mbar .hl{background:var(--orange)}
 .mbar .badge{top:2px;right:calc(50% - 22px);border-color:var(--green)}
 @media(min-width:900px){.mbar{display:none}}
@@ -634,6 +692,30 @@ footer{overflow:hidden}
 .toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:#fff;padding:.75rem 1.1rem;border-radius:999px;font-size:.87rem;z-index:100;transition:all .35s var(--ease);display:flex;align-items:center;gap:.5rem;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(min-width:900px){.toast{bottom:28px}}
+
+/* ---------- Mobile Animationen (nur bis 767 px) ---------- */
+.mob-top h1 .w{display:inline-block}
+.dots{display:none}
+@keyframes kb{from{transform:scale(1.18)}to{transform:none}}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(232,106,16,.65)}100%{box-shadow:0 0 0 12px rgba(232,106,16,0)}}
+@media(max-width:767px){
+  /* Wischreihen: aktive Karte groß, Nachbarn leicht verkleinert (scale statt transform, beißt sich nicht mit pop-in) */
+  .slide{transition:scale .5s var(--ease)}
+  .slide.in:not(.act){scale:.94}
+  .step.act svg.lucide{animation:wiggle .6s ease .2s}
+  .step.act .n{color:#ffe1cc}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:2px}
+  .dots button{width:7px;height:7px;padding:0;border-radius:99px;background:#c6dcc8;transition:width .35s var(--ease),background .35s}
+  .dots button.on{width:22px;background:var(--orange)}
+  #bewertungen .dots{margin-bottom:.6rem}
+  /* Bilder zoomen beim Einblenden sanft heraus */
+  .cat.in img,.tip.in .tip-img img{animation:kb 1.8s var(--ease) both}
+  /* Strich vor den Überschriften wächst beim Einblenden */
+  .eyebrow.rv::before{width:0;transition:width .7s var(--ease) .35s}
+  .eyebrow.rv.in::before{width:22px}
+  /* Nachricht-Button macht beim ersten Einblenden der Leiste kurz auf sich aufmerksam */
+  .mbar.show .hl{animation:ring 1.3s ease-out .5s 2}
+}
 </style>
 </head>
 <body>
@@ -676,16 +758,17 @@ footer{overflow:hidden}
         </h1>
       </div>
 
-      <a href="#shop" data-filter="barf" class="side l px animate-slide-in-left delay-600" style="--k:-14px">
-        <div class="pcard-img float">
+      <!-- Seitenkarten ohne Schweben/Parallax (Kundenwunsch), nur einmaliges Einfahren -->
+      <a href="#shop" data-filter="barf" class="side l animate-slide-in-left delay-600">
+        <div class="pcard-img">
           <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=520&q=75" alt="Hund wartet auf sein Futter" />
           <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         </div>
         <div class="pcard-name">BARF Komplettmenü Rind</div>
       </a>
 
-      <a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener" aria-label="Video über Meine Futterkiste auf YouTube ansehen (neues Fenster)" class="side r px animate-slide-in-right delay-700" style="--k:-14px">
-        <div class="vcard-img float slow">
+      <a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener" aria-label="Video über Meine Futterkiste auf YouTube ansehen (neues Fenster)" class="side r animate-slide-in-right delay-700">
+        <div class="vcard-img">
           <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=360&q=75" alt="" />
           <div class="vcard-body">
             <span class="play"><i data-lucide="play"></i></span>
@@ -725,26 +808,18 @@ footer{overflow:hidden}
     <!-- Mobile -->
     <div class="mob">
       <div class="mob-top">
-        <h1 class="animate-fade-up delay-200">Alles, was Ihr Hund liebt</h1>
-        <p class="animate-fade-up delay-300">Spezialisten für die gesunde Ernährung Ihres Vierbeiners. BARF, Futter und Zubehör in Steinheim.</p>
-        <a href="#sortiment" class="btn btn-orange animate-fade-up delay-400">Sortiment entdecken <i data-lucide="arrow-right"></i></a>
+        <h1><span class="w animate-word-pop delay-100">Alles,</span> <span class="w animate-word-pop delay-200">was</span> <span class="w animate-word-pop delay-300">Ihr</span> <span class="w animate-word-pop delay-400">Hund</span> <span class="w animate-word-pop delay-500">liebt</span></h1>
       </div>
-      <div class="mob-cards">
-        <a href="#shop" data-filter="barf" class="mc-p animate-slide-in-left delay-500">
-          <div class="pcard-img">
-            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=70" alt="" />
-            <span class="corner"><i data-lucide="arrow-up-right"></i></span>
-          </div>
-          <div class="pcard-name">BARF Menü Rind</div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener" aria-label="Video über Meine Futterkiste auf YouTube ansehen (neues Fenster)" class="animate-slide-in-right delay-600">
-          <div class="vcard-img">
-            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=360&q=70" alt="" />
-            <div class="vcard-body"><span class="play"><i data-lucide="play"></i></span>Unser Laden im Video</div>
-          </div>
-        </a>
+      <div class="mob-photos">
+        <div class="ph s animate-pet-pop delay-600" style="--bd:.3s"><img src="hero-dackel.png" alt="" /></div>
+        <div class="ph c animate-pet-pop delay-500"><img src="hero-aussie.png" alt="" /></div>
+        <div class="ph s animate-pet-pop delay-700" style="--bd:.6s"><img src="hero-golden.png" alt="" /></div>
       </div>
-      <div class="mob-stats animate-fade-up delay-700">
+      <div class="mob-text">
+        <p class="animate-fade-up delay-800">Spezialisten für die gesunde Ernährung Ihres Vierbeiners. BARF, Futter und Zubehör in Steinheim.</p>
+        <a href="#sortiment" class="btn btn-orange animate-fade-up delay-900">Sortiment entdecken <i data-lucide="arrow-right"></i></a>
+      </div>
+      <div class="mob-stats animate-fade-up delay-1000">
         <div class="st">
           <div class="stack">
             <span class="si" style="background:var(--orange);width:30px;height:30px"><i data-lucide="heart-handshake"></i></span>
@@ -757,11 +832,6 @@ footer{overflow:hidden}
           <span class="star" style="color:var(--orange);font-size:22px;display:inline-flex"><i data-lucide="star" style="fill:currentColor"></i></span>
           <div><b>5,0</b><small>Google</small></div>
         </a>
-      </div>
-      <div class="mob-photos">
-        <div class="ph s px animate-pet-pop delay-800" style="--k:8px;--bd:.6s"><img src="hero-dackel.png" alt="" /></div>
-        <div class="ph c animate-pet-pop delay-700"><img src="hero-aussie.png" alt="" /></div>
-        <div class="ph s animate-pet-pop delay-900" style="--bd:.6s"><img src="hero-golden.png" alt="" /></div>
       </div>
     </div>
   </div>
@@ -784,7 +854,7 @@ footer{overflow:hidden}
       </div>
       <div class="about-tag">
         <span class="avatar"><img src="logo.png" alt="Logo Meine Futterkiste" width="320" height="320" loading="lazy" /></span>
-        <div><b>Gaby Hess</b><small>Inhaberin, berät Sie persönlich im Laden.</small><small class="expert">Für weitere Konsultationen ziehen wir unseren Futterexperten <a href="https://www.tiernaturheilkunde-zentrum.de/" target="_blank" rel="noopener">Nils Steenbuck</a> hinzu.</small></div>
+        <div><b>Gaby Hess</b><small>Inhaberin, berät Sie persönlich im Laden.</small><small class="expert">Für weitere Konsultationen ziehen wir unseren Futterexperten <a href="https://www.tiernaturheilkunde-zentrum.de/" target="_blank" rel="noopener">Nils Steenbuck (Tiernaturheilkunde-Zentrum)</a> hinzu.</small></div>
       </div>
     </div>
     <div>
@@ -1226,51 +1296,45 @@ footer{overflow:hidden}
   const one = words.map(w=>`<span>${w}<i><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg></i></span>`).join('');
   $('#marquee').innerHTML = one + one;
 
-  /* ---------- Produkte (Beispieldaten) ---------- */
-  const P = [
+  /* ---------- Produkte ----------
+     Beispielprodukte ohne Marke (Unsplash-Fotos). Die Markenprodukte aus BRANDS kommen unten dazu,
+     erscheinen unter „Alle“, in ihrer Rubrik und in der Merkliste und lassen sich zusätzlich per Marken-Menü filtern. */
+  const EXAMPLES = [
     // img = Unsplash-Foto-ID (freie Lizenz), Größe setzt pimg(); Icon bleibt als Fallback darunter
-    {id:1,cat:'barf',n:'BARF Komplettmenü Rind',m:'500 g, tiefgekühlt',i:'beef',bg:'#fde3cf',tag:'Beliebt',img:'1613454320437-0c228c8b1723'},
-    {id:2,cat:'barf',n:'Fleischmix mit Pansen',m:'1 kg, gewolft, tiefgekühlt',i:'drumstick',bg:'#dff3e0',img:'1690983323238-0b91789e1b5a'},
-    {id:3,cat:'barf',n:'Hühnerhälse',m:'1 kg, tiefgekühlt',i:'drumstick',bg:'#fdf1d6',img:'1587593810167-a84920ea0781'},
     {id:4,cat:'barf',n:'Gemüse-Obst-Mix',m:'500 g, püriert',i:'carrot',bg:'#fde3cf',img:'1598295309854-cfa5819004d8'},
-    {id:5,cat:'futter',n:'Trockenfutter getreidefrei',m:'12 kg, Lamm und Kartoffel',i:'wheat-off',bg:'#e7ecf8',tag:'Tipp',img:'1682536192307-c25211b1d4ac'},
-    {id:6,cat:'futter',n:'Nassfutter Pute pur',m:'6 × 400 g',i:'package',bg:'#dff3e0',img:'1591946559594-8c6d3b7391eb'},
-    {id:7,cat:'snacks',n:'Kauknochen Rind',m:'5 Stück, getrocknet',i:'bone',bg:'#fdf1d6',img:'1592468257342-8375cb556a69'},
-    {id:8,cat:'snacks',n:'Hundekekse Knochenform',m:'500 g, gebacken',i:'bone',bg:'#fde3cf',img:'1568640347023-a616a30bc3bd'},
-    {id:9,cat:'futter',n:'Omega-3 Lachsölkapseln',m:'120 Stück',i:'droplet',bg:'#e7ecf8',img:'1670850757896-e1b6c3e311ea'},
-    {id:10,cat:'zubehoer',n:'Keramiknapf „Pfote“',m:'1,2 l, spülmaschinenfest',i:'soup',bg:'#dff3e0',img:'1676193866128-03a926df76ef'},
-    {id:11,cat:'zubehoer',n:'Führleine Biothane',m:'2 m, wetterfest',i:'link',bg:'#fdf1d6',img:'1708062270853-ee7c66b69f07'}
+    {id:5,cat:'futter',n:'Trockenfutter getreidefrei',m:'12 kg, Lamm und Kartoffel',i:'wheat-off',bg:'#e7ecf8',tag:'Tipp',img:'1682536192307-c25211b1d4ac'}
   ];
   const pimg = (x,w) => 'https://images.unsplash.com/photo-' + x.img + '?auto=format&fit=crop&w=' + w + '&h=' + w + '&q=70';
 
-  /* Markenprodukte: erscheinen NUR über das Marken-Dropdown, nie unter „Alle“,
-     in den Rubriken oder in der Merkliste (Vorgabe der Marken: nicht gemeinsam anzeigen) */
+  /* Markenprodukte: cat = Rubrik für die Filter-Chips; id wird unten vergeben (ab 101, damit alte Merklisten-Einträge nicht auf falsche Produkte zeigen) */
   const BRANDS = {
     // logo = kleines Markenzeichen im Menü; logoPhoto = Produktfoto statt Logo (füllt den Kreis)
     'graf-barf': {n:'Graf Barf', logo:'marken/logos/graf-barf.png', p:[
-      {n:'Graf Barf Juniormenü',m:'2,5 kg, Hähnchen mit Obst und Gemüse, für Junghunde ab 6 Monaten',bg:'#fbe4e4',tag:'Junior',src:'marken/graf-barf-juniormenue.png'},
-      {n:'Graf Barf Mineral Mix',m:'Mineralstoffe und Vitamine zum Vollwertmenü',bg:'#e3efe4',src:'marken/graf-barf-mineral-mix.png'},
-      {n:'Graf Barf Spezial-Öl',m:'200 ml, Omega-3-6-9 und Vitamine A, D und E',bg:'#fdf1d6',src:'marken/graf-barf-spezial-oel.png'}
+      {id:101,cat:'barf',n:'Graf Barf Juniormenü',m:'2,5 kg, Hähnchen mit Obst und Gemüse, für Junghunde ab 6 Monaten',bg:'#fbe4e4',tag:'Junior',src:'marken/graf-barf-juniormenue.png'},
+      {id:102,cat:'barf',n:'Graf Barf Mineral Mix',m:'Mineralstoffe und Vitamine zum Vollwertmenü',bg:'#e3efe4',src:'marken/graf-barf-mineral-mix.png'},
+      {id:103,cat:'barf',n:'Graf Barf Spezial-Öl',m:'200 ml, Omega-3-6-9 und Vitamine A, D und E',bg:'#fdf1d6',src:'marken/graf-barf-spezial-oel.png'}
     ]},
     // photo:true = Stimmungsfoto statt freigestellter Packung, füllt die Kachel wie die übrigen Shopfotos
     'pollux': {n:'Pollux', logo:'marken/logos/pollux.png', p:[
-      {n:'Pollux Rind, Spessartforelle & Saibling',m:'1000 g, Mix vom kompletten Rind mit Forelle und Saibling aus dem Spessart, tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'marken/pollux-barf-forelle.webp'},
-      {n:'Pollux Lammallerlei & Süßkartoffel',m:'Nassfutter in der Dose, 400 g oder 800 g, für Allergiker geeignet',bg:'#f4f4f2',photo:true,src:'marken/pollux-lammallerlei.webp'},
-      {n:'Pollux Mix vom kompletten Rind',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Innereien, Knorpel und Sehnen, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'marken/pollux-barf-rind.webp'}
+      {id:111,cat:'barf',n:'Pollux Rind, Spessartforelle & Saibling',m:'1000 g, Mix vom kompletten Rind mit Forelle und Saibling aus dem Spessart, tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'marken/pollux-barf-forelle.webp'},
+      {id:112,cat:'futter',n:'Pollux Lammallerlei & Süßkartoffel',m:'Nassfutter in der Dose, 400 g oder 800 g, für Allergiker geeignet',bg:'#f4f4f2',photo:true,src:'marken/pollux-lammallerlei.webp'},
+      {id:113,cat:'barf',n:'Pollux Mix vom kompletten Rind',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Innereien, Knorpel und Sehnen, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'marken/pollux-barf-rind.webp'}
     ]},
     'paul-paulina': {n:'Paul und Paulina', logo:'marken/logos/paul-paulina.png', p:[
-      {n:'Paul und Paulina Fleischmix',m:'Frischfleisch, gewolft, tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-fleischmix.jpg'},
-      {n:'Paul und Paulina Gipfelstürmer + Dorsch',m:'Kaltgepresste Ölmischung aus Lein-, Hanf- und Schwarzkümmelöl mit Dorschlebertran',bg:'#5a4a3e',tag:'Öl',photo:true,src:'marken/paul-paulina-gipfelstuermer.jpg'},
-      {n:'Paul und Paulina Gemüsemix',m:'Geraspeltes Gemüse mit Karotte, als Block tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-gemuesemix.jpg'}
+      {id:121,cat:'barf',n:'Paul und Paulina Fleischmix',m:'Frischfleisch, gewolft, tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-fleischmix.jpg'},
+      {id:122,cat:'barf',n:'Paul und Paulina Gipfelstürmer + Dorsch',m:'Kaltgepresste Ölmischung aus Lein-, Hanf- und Schwarzkümmelöl mit Dorschlebertran',bg:'#5a4a3e',tag:'Öl',photo:true,src:'marken/paul-paulina-gipfelstuermer.jpg'},
+      {id:123,cat:'barf',n:'Paul und Paulina Gemüsemix',m:'Geraspeltes Gemüse mit Karotte, als Block tiefgekühlt',bg:'#eeebe6',photo:true,src:'marken/paul-paulina-gemuesemix.jpg'}
     ]},
     'q-pet': {n:'Q-Pet', logo:'marken/logos/q-pet.png?v=2', logoPhoto:true, p:[
       // Q-Pet GmbH verkauft unter der Marke Qchefs
-      {n:'Qchefs Dreierlei',m:'65 g, Käsesnack-Mix aus Snackies, Puffies und Cheesies, vegetarisch',bg:'#efe6da',tag:'Snack',src:'marken/q-pet-mix.jpg'},
-      {n:'Qchefs Zahnputzflocken',m:'90 g, Flocken auf Käsebasis für die tägliche Zahnpflege',bg:'#f1ece4',pad:'2%',src:'marken/q-pet-pulver.png'},
-      {n:'Qchefs Hard Cheese',m:'100 g, harte Käse-Kaustange, splittert nicht',bg:'#e3efe4',src:'marken/q-pet-kaustange.png'}
+      {id:131,cat:'snacks',n:'Qchefs Dreierlei',m:'65 g, Käsesnack-Mix aus Snackies, Puffies und Cheesies, vegetarisch',bg:'#efe6da',tag:'Snack',src:'marken/q-pet-mix.jpg'},
+      {id:132,cat:'snacks',n:'Qchefs Zahnputzflocken',m:'90 g, Flocken auf Käsebasis für die tägliche Zahnpflege',bg:'#f1ece4',pad:'2%',src:'marken/q-pet-pulver.png'},
+      {id:133,cat:'snacks',n:'Qchefs Hard Cheese',m:'100 g, harte Käse-Kaustange, splittert nicht',bg:'#e3efe4',src:'marken/q-pet-kaustange.png'}
     ]}
   };
   let brand = '';
+  // Gesamtliste: erst die Beispiele (Gemüse-Obst-Mix, Trockenfutter), dann die Markenprodukte je Marke gruppiert; brand/bn für Filter und Suche
+  const P = [...EXAMPLES, ...Object.entries(BRANDS).flatMap(([k,b]) => b.p.map(x => ({...x, brand:k, bn:b.n})))];
 
   let cat='alle', q='';
   let favs = store.get('mfk-favs', []);
@@ -1280,30 +1344,25 @@ footer{overflow:hidden}
   favs = favs.filter(id => P.some(p => p.id === id));
 
   function renderGrid(animate = true){
-    if (brand){
-      const b = BRANDS[brand], list = b.p.filter(x => (x.n+' '+x.m).toLowerCase().includes(q));
-      $('#grid').innerHTML = list.length ? list.map(x=>`
-      <article class="prod">
-        <div class="prod-img${x.photo?'':' pack'}" style="background:${x.bg}">
-          <img src="${x.src}" alt="${x.n}" loading="lazy"${x.pad?` style="padding:${x.pad}"`:''} />
-          ${x.tag?`<span class="tag">${x.tag}</span>`:''}
-        </div>
-        <h4>${x.n}</h4><div class="meta">${x.m.replace(/(\d) (g|kg|ml)\b/g,'$1&nbsp;$2')}</div>
-      </article>`).join('') : `<div class="empty">${b.p.length?'Kein Produkt gefunden. Fragen Sie uns gerne direkt.':'Die Produkte von '+b.n+' zeigen wir Ihnen hier in Kürze. Fragen Sie gerne schon jetzt im Laden danach.'}</div>`;
-      $$('#grid .prod').forEach((p,i)=>{ p.style.setProperty('--d', (i%4)*.08 + 's'); io.observe(p); });
-      return;
-    }
-    const list = P.filter(x => (cat==='alle' || (cat==='favs' ? favs.includes(x.id) : x.cat===cat)) && (x.n+' '+x.m).toLowerCase().includes(q));
+    // Marke gewählt: nur deren Produkte; sonst Rubrik bzw. Merkliste. Suche gilt in beiden Fällen (auch nach Markenname)
+    const list = P.filter(x => (brand ? x.brand===brand : cat==='alle' || (cat==='favs' ? favs.includes(x.id) : x.cat===cat))
+      && (x.n+' '+x.m+' '+(x.bn||'')).toLowerCase().includes(q));
+    const empty = brand ? 'Kein Produkt gefunden. Fragen Sie uns gerne direkt.'
+      : cat==='favs' ? 'Noch nichts gemerkt. Tippen Sie auf den Stern an einem Produkt.'
+      : q ? 'Kein Produkt gefunden. Fragen Sie uns gerne direkt.'
+      : 'Aus dieser Rubrik zeigen wir online gerade nichts. Im Laden finden Sie eine große Auswahl, fragen Sie uns gerne.';
+    // Markenprodukte: lokale Bilder (Packung freigestellt = contain, photo = cover); Beispiele: Unsplash mit Icon als Fallback
     $('#grid').innerHTML = list.length ? list.map(x=>`
       <article class="prod">
-        <div class="prod-img" style="background:${x.bg}">
-          <img src="${pimg(x,420)}" alt="${x.n}" loading="lazy" onerror="this.remove()" />
+        <div class="prod-img${x.src && !x.photo ? ' pack' : ''}" style="background:${x.bg}">
+          ${x.src ? `<img src="${x.src}" alt="${x.n}" loading="lazy"${x.pad?` style="padding:${x.pad}"`:''} />`
+            : `<img src="${pimg(x,420)}" alt="${x.n}" loading="lazy" onerror="this.remove()" />`}
           ${x.tag?`<span class="tag">${x.tag}</span>`:''}
           <button class="fav ${favs.includes(x.id)?'on':''}" data-fav="${x.id}" aria-label="Merken"><i data-lucide="star"></i></button>
-          <i data-lucide="${x.i}"></i>
+          ${x.i ? `<i data-lucide="${x.i}"></i>` : ''}
         </div>
-        <h4>${x.n}</h4><div class="meta">${x.m}</div>
-      </article>`).join('') : `<div class="empty">${cat==='favs'?'Noch nichts gemerkt. Tippen Sie auf den Stern an einem Produkt.':'Kein Produkt gefunden. Fragen Sie uns gerne direkt.'}</div>`;
+        <h4>${x.n}</h4><div class="meta">${x.m.replace(/(\d) (g|kg|ml)\b/g,'$1&nbsp;$2')}</div>
+      </article>`).join('') : `<div class="empty">${empty}</div>`;
     lucide.createIcons();
     // Produkte ploppen gestaffelt auf
     $$('#grid .prod').forEach((p,i)=>{
@@ -1440,7 +1499,7 @@ footer{overflow:hidden}
     $('#week').textContent = (total*7/1000).toFixed(1).replace('.',',') + ' kg pro Woche';
     const rows = PARTS.map(([n,s,c])=>[n,animal*s,c]).concat([['Gemüse & Obst',plant,'#E86A10']]);
     $('#bar').innerHTML = rows.map(r=>`<i style="flex-grow:${r[1]};background:${r[2]}"></i>`).join('');
-    $('#split').innerHTML = rows.map(r=>`<div><span class="dot" style="background:${r[2]}"></span>${r[0]}<b>${Math.round(r[1])} g</b></div>`).join('');
+    $('#split').innerHTML = rows.map(r=>`<div><span class="dot" style="background:${r[2]}"></span><span>${r[0]}</span><b>${Math.round(r[1])} g</b></div>`).join('');
   }
   $('#kg').addEventListener('input', calc);
   $$('#act button').forEach(b=>b.addEventListener('click',()=>{ $$('#act button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); pct=+b.dataset.p; calc(); }));
@@ -1488,16 +1547,26 @@ footer{overflow:hidden}
   document.fonts && document.fonts.ready.then(alignAboutTag);
 
   /* ---------- Menü, Leiste, Reveal ---------- */
-  $('#menuOpen').addEventListener('click',()=>$('#mnav').classList.add('open'));
+  // auch der Menü-Button im Sticky-Header (Kopie ohne id)
+  $$('.menu-btn').forEach(b=>b.addEventListener('click',()=>$('#mnav').classList.add('open')));
   $('#menuClose').addEventListener('click',()=>$('#mnav').classList.remove('open'));
   $$('#mnav a').forEach(a=>a.addEventListener('click',()=>$('#mnav').classList.remove('open')));
 
-  const hero = $('#start');
+  // Desktop: Sticky-Header nach dem Hero. Mobil: sobald der Hero-Header aus dem Bild ist, damit das Menü immer erreichbar bleibt
+  const hero = $('#start'), heroHdr = $('.hdr'), mobNav = matchMedia('(max-width:899px)');
+  let heroOut = false, hdrOut = false;
+  function stickyState(){
+    const on = mobNav.matches ? hdrOut : heroOut;
+    sticky.classList.toggle('show', on);
+    sticky.inert = !on;
+  }
   new IntersectionObserver(([e])=>{
-    $('#mbar').classList.toggle('show', !e.isIntersecting);
-    sticky.classList.toggle('show', !e.isIntersecting);
-    sticky.inert = e.isIntersecting;
+    heroOut = !e.isIntersecting;
+    $('#mbar').classList.toggle('show', heroOut);
+    stickyState();
   },{threshold:.15}).observe(hero);
+  new IntersectionObserver(([e])=>{ hdrOut = !e.isIntersecting; stickyState(); }).observe(heroHdr);
+  mobNav.addEventListener('change', stickyState);
 
   // Aktiven Menüpunkt beim Scrollen markieren
   const navIds = ['start','shop','barf','bewertungen','besuch','kontakt'];
@@ -1512,6 +1581,32 @@ footer{overflow:hidden}
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Mobil: Wischreihen (Beratungsschritte, Google) mit Punkten, aktiver Karte und Wisch-Hinweis ---------- */
+  [[$('.steps'), $$('.steps > .step')], [$('.rev-wrap'), [$('.gsum'), ...$$('#revs .rev')]]].forEach(([sc, slides])=>{
+    slides.forEach(s=>s.classList.add('slide'));
+    const dots = document.createElement('div');
+    dots.className = 'dots';
+    dots.innerHTML = slides.map((_,i)=>`<button type="button" aria-label="Karte ${i+1} von ${slides.length}"></button>`).join('');
+    sc.after(dots);
+    const btns = [...dots.children];
+    btns.forEach((b,i)=>b.addEventListener('click',()=>sc.scrollTo({left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth'})));
+    // aktiv = mindestens 60 % der Karte im sichtbaren Bereich der Reihe
+    const act = new IntersectionObserver(es=>es.forEach(e=>{
+      e.target.classList.toggle('act', e.isIntersecting);
+      if (e.isIntersecting) btns.forEach((b,i)=>b.classList.toggle('on', slides[i] === e.target));
+    }),{root: sc, threshold: .6});
+    slides.forEach(s=>act.observe(s));
+    // einmaliges Anstupsen, damit klar ist, dass man wischen kann
+    if (reduce) return;
+    const seen = new IntersectionObserver(([e])=>{
+      if (!e.isIntersecting || !matchMedia('(max-width:767px)').matches) return;
+      seen.disconnect();
+      // per Web Animations API, damit die CSS-Einblendung (pop-in) der Karten nicht neu startet
+      setTimeout(()=>{ if (sc.scrollLeft < 4) slides.forEach(s=>s.animate([{translate:'0'},{translate:'-46px',offset:.45},{translate:'0'}],{duration:1100,easing:'cubic-bezier(0.45,0,0.25,1)'})); }, 900);
+    },{threshold:.5});
+    seen.observe(sc);
+  });
+
   // Video-Banner: nur abspielen, solange er sichtbar ist
   const vb = $('.vbanner'), vbVid = vb.querySelector('video');
   new IntersectionObserver(([e])=>{
@@ -1520,6 +1615,12 @@ footer{overflow:hidden}
       if (!reduce){ vbVid.preload = 'auto'; vbVid.play().catch(()=>{}); }
     } else vbVid.pause();
   },{threshold:.2}).observe(vb);
+
+  /* ---------- Hero: wie weit ist die Hundereihe nach unten verschoben (CSS --x)? Ab 30px Spruch ausblenden ---------- */
+  const hd = $('.hd'), heroPhotos = $('.hd .photos');
+  const tightHero = () => hd.classList.toggle('tight', -parseFloat(getComputedStyle(heroPhotos).bottom) > 30);
+  // ResizeObserver statt resize-Event: reagiert auch, wenn die Hinweisleiste (Urlaub) die Bühne verkleinert
+  new ResizeObserver(tightHero).observe(hd);
 
   /* ---------- Maus-Parallax im Hero ---------- */
   if (!reduce && matchMedia('(pointer:fine)').matches){
