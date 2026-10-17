@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="de">
 <head>
@@ -48,8 +49,10 @@
 }
 </script>
 
-<link rel="stylesheet" href="fonts.css" />
-<script src="lucide.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Kaushan+Script&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 
 <style>
 :root{
@@ -733,7 +736,7 @@ footer{overflow:hidden}
     <nav class="nav animate-fade-in delay-200" aria-label="Hauptnavigation">
       <a href="#start" class="on">Home</a>
       <a href="#barf">BARF-Rechner</a>
-      <a href="#shop">Sortiment</a>
+      <a href="#shop">Shop</a>
       <a href="#bewertungen">Bewertungen</a>
       <a href="#besuch">Anfahrt</a>
       <a href="#kontakt">Kontakt</a>
@@ -905,10 +908,10 @@ footer{overflow:hidden}
 </section>
 
 <!-- ================= VIDEO-BANNER ================= -->
-<!-- Video: Mixkit (frei nutzbar, keine Namensnennung nötig), lokal als video-herz.mp4 -->
+<!-- Video: Mixkit (frei nutzbar, keine Namensnennung nötig). Für den Livegang am besten lokal ablegen. -->
 <section class="vbanner" id="herz" aria-label="Weil die Gesundheit Ihres Tieres uns am Herzen liegt">
-  <video muted loop playsinline preload="none" poster="video-herz-poster.jpg" aria-hidden="true">
-    <source src="video-herz.mp4" type="video/mp4" />
+  <video muted loop playsinline preload="none" poster="https://assets.mixkit.co/videos/4839/4839-thumb-720-0.jpg" aria-hidden="true">
+    <source src="https://assets.mixkit.co/videos/4839/4839-720.mp4" type="video/mp4" />
   </video>
   <div class="vb-heart rv pop"><span><i data-lucide="heart"></i></span></div>
   <div class="vb-inner">
@@ -1196,8 +1199,9 @@ footer{overflow:hidden}
     <button class="circle circle-line" id="menuClose" aria-label="Menü schließen"><i data-lucide="x"></i></button>
   </div>
   <nav>
+    <a href="#sortiment">Sortiment</a>
     <a href="#barf">BARF-Rechner</a>
-    <a href="#shop">Sortiment</a>
+    <a href="#shop">Shop</a>
     <a href="#bewertungen">Bewertungen</a>
     <a href="#besuch">Anfahrt</a>
     <a href="#kontakt">Kontakt</a>
