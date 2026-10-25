@@ -49,8 +49,20 @@
 }
 </script>
 
-<link rel="stylesheet" href="fonts.css" />
-<script src="lucide.min.js"></script>
+<!-- Ladezeit: größtes Bild (Aussie) und Titel-/Textschrift früh anfordern; Handy und Desktop laden nur ihre eigene Bildvariante -->
+<link rel="preload" as="image" href="hero-aussie-mobil-800.webp" imagesrcset="hero-aussie-mobil-800.webp 800w, hero-aussie-mobil-1100.webp 1100w" imagesizes="100vw" media="(max-width:767px)" fetchpriority="high" />
+<link rel="preload" as="image" href="hero-aussie-700.webp" imagesrcset="hero-aussie-700.webp 700w, hero-aussie-1100.webp 1100w" imagesizes="39vw" media="(min-width:768px)" fetchpriority="high" />
+<link rel="preload" as="font" type="font/woff2" href="font-dm-serif-display-latin.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="font-inter-latin.woff2" crossorigin />
+<!-- Schriften lokal, direkt eingebettet statt fonts.css (eine blockierende Anfrage weniger). Inter ist variabel, eine Datei deckt 400-600 ab -->
+<style>
+@font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;font-display:swap;src:url(font-dm-serif-display-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;font-display:swap;src:url(font-dm-serif-display-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(font-inter-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(font-inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Kaushan Script';font-style:normal;font-weight:400;font-display:swap;src:url(font-kaushan-script-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Kaushan Script';font-style:normal;font-weight:400;font-display:swap;src:url(font-kaushan-script-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 
 <style>
 :root{
@@ -188,7 +200,6 @@ svg.lucide{width:1em;height:1em;stroke-width:2}
 .badge[data-count="0"]{display:none}
 .circle-orange .badge{background:var(--green)}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
-.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
 .h2{font-family:'DM Serif Display',serif;font-weight:400;color:var(--green);font-size:clamp(34px,4.6vw,60px);line-height:1;letter-spacing:-.01em;margin:.6rem 0 1rem}
 .lead{color:var(--muted);font-size:1.05rem;line-height:1.65;max-width:56ch}
 section.block{padding:clamp(72px,10vw,130px) 0}
@@ -324,15 +335,17 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 }
 .mob{display:flex;flex-direction:column;flex:1}
 .mob-top{position:relative;text-align:center;padding:1.2rem 16px 0}
-.mob-top h1,.mob-stats .mid{font-family:'DM Serif Display',serif;font-size:clamp(34px,10.6vw,46px);line-height:1;font-weight:400;letter-spacing:-.01em}
+.mob-top h1{font-family:'DM Serif Display',serif;font-size:clamp(34px,10.6vw,46px);line-height:1;font-weight:400;letter-spacing:-.01em}
 .mob-top h1{color:var(--green)}
-/* Kennzahlen unten an der letzten Titelzeile: unsichtbares „liebt“ in der Mitte, jede Kennzahl mittig zwischen Bildschirmrand und Wort */
-.mob-stats{position:absolute;left:0;right:0;bottom:1px;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;pointer-events:none}
-.mob-stats .mid{visibility:hidden}
-.mob-stats .st{justify-self:center;display:flex;flex-direction:column;align-items:center;line-height:1.1;pointer-events:auto}
+/* Kennzahlen untereinander im grünen Balken des Aussie-Bilds, zwischen den Pfoten.
+   Maße aus hero-aussie-mobil: Balken ab 67,5 % der Bildhöhe, Lücke zwischen den Pfoten ca. 24,5 % bis 75,5 % der Breite.
+   Sitzt in .mob-dog und steigt so mit dem Hund auf */
+.mob-dog{position:relative}
+.mob-stats{position:absolute;left:24.5%;right:24.5%;top:67.5%;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(8px,2.8vw,14px)}
+.mob-stats .st{display:flex;flex-direction:column;align-items:center;line-height:1.1}
 .mob-stats .st-n{display:flex;align-items:center;gap:.3rem}
-.mob-stats b{color:var(--green);font-size:clamp(20px,6.2vw,27px);font-variant-numeric:tabular-nums}
-.mob-stats small{display:block;color:var(--muted);font-size:clamp(9.5px,2.75vw,11.5px);margin-top:2px}
+.mob-stats b{color:#fff;font-size:clamp(20px,6.2vw,27px);font-variant-numeric:tabular-nums}
+.mob-stats small{display:block;color:#c6dfc8;font-size:clamp(9.5px,2.75vw,11.5px);margin-top:2px}
 .mob-stats svg.lucide{color:var(--orange);font-size:clamp(17px,5.2vw,23px)}
 .mob-stats .star{display:inline-flex}
 .mob-stats .star svg{fill:currentColor}
@@ -343,6 +356,8 @@ section.block{padding:clamp(72px,10vw,130px) 0}
 .mob-photos{margin-top:.4rem;overflow:hidden}
 .mob-dog{animation:dog-rise 1.1s cubic-bezier(.22,1,.36,1) .5s both}
 .mob-dog img{display:block;width:100%;height:auto}
+/* picture nur als Hülle für die Bildauswahl (Handy/Desktop), soll das Layout nicht beeinflussen */
+.stage picture{display:contents}
 @media(max-width:767px){.hero+.marquee{margin-top:-1px}}
 
 /* ---------- Marquee ---------- */
@@ -732,9 +747,6 @@ footer{overflow:hidden}
   #bewertungen .dots{margin-bottom:.6rem}
   /* Bilder zoomen beim Einblenden sanft heraus */
   .cat.in img,.tip.in .tip-img img{animation:kb 1.8s var(--ease) both}
-  /* Strich vor den Überschriften wächst beim Einblenden */
-  .eyebrow.rv::before{width:0;transition:width .7s var(--ease) .35s}
-  .eyebrow.rv.in::before{width:22px}
   /* Nachricht-Button macht beim ersten Einblenden der Leiste kurz auf sich aufmerksam */
   .mbar.show .hl{animation:ring 1.3s ease-out .5s 2}
 }
@@ -783,7 +795,7 @@ footer{overflow:hidden}
       <!-- Seitenkarten ohne Schweben/Parallax (Kundenwunsch), nur einmaliges Einfahren -->
       <a href="#shop" data-filter="barf" class="side l animate-slide-in-left delay-600">
         <div class="pcard-img">
-          <img src="foto-hund-wartet.jpg" alt="Hund wartet auf sein Futter" />
+          <picture><source media="(max-width:767px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img src="foto-hund-wartet.jpg" alt="Hund wartet auf sein Futter" /></picture>
           <span class="corner"><i data-lucide="arrow-up-right"></i></span>
         </div>
         <div class="pcard-name">BARF Komplettmenü Rind</div>
@@ -791,7 +803,7 @@ footer{overflow:hidden}
 
       <a href="https://www.youtube.com/watch?v=kMEoih41Uj0" target="_blank" rel="noopener" aria-label="Video über Meine Futterkiste auf YouTube ansehen (neues Fenster)" class="side r animate-slide-in-right delay-700">
         <div class="vcard-img">
-          <img src="hero-video-vorschau.jpg" alt="" />
+          <picture><source media="(max-width:767px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img src="hero-video-vorschau.jpg" alt="" /></picture>
           <div class="vcard-body">
             <span class="play"><i data-lucide="play"></i></span>
             Meine Futterkiste im Video
@@ -801,7 +813,7 @@ footer{overflow:hidden}
 
       <div class="photos">
         <div class="ph s px animate-pet-pop delay-700" style="--k:8px;--bd:.3s">
-          <img src="hero-dackel.png" alt="" />
+          <picture><source media="(max-width:767px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img src="hero-dackel-870.webp" srcset="hero-dackel-560.webp 560w, hero-dackel-870.webp 870w" sizes="31vw" alt="" width="870" height="762" /></picture>
           <div class="ov ov-stat animate-scale-in delay-1000">
             <div class="stack">
               <span class="si" style="background:var(--orange)"><i data-lucide="heart-handshake"></i></span>
@@ -811,14 +823,14 @@ footer{overflow:hidden}
           </div>
         </div>
         <div class="ph c px animate-pet-pop delay-600" style="--k:4px">
-          <img src="hero-aussie.png" alt="" />
+          <picture><source media="(max-width:767px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img src="hero-aussie-1100.webp" srcset="hero-aussie-700.webp 700w, hero-aussie-1100.webp 1100w" sizes="39vw" alt="" width="1100" height="1152" fetchpriority="high" /></picture>
           <div class="ov ov-center animate-scale-in delay-1100">
             <h3>Gesund füttern.<br />Fair beraten.</h3>
             <a href="#sortiment" class="btn btn-orange">Sortiment entdecken <i data-lucide="arrow-right"></i></a>
           </div>
         </div>
         <div class="ph s px animate-pet-pop delay-800" style="--k:8px;--bd:.6s">
-          <img src="hero-golden.png" alt="" />
+          <picture><source media="(max-width:767px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img src="hero-golden-870.webp" srcset="hero-golden-560.webp 560w, hero-golden-870.webp 870w" sizes="31vw" alt="" width="870" height="843" /></picture>
           <a href="#bewertungen" class="ov ov-rate animate-scale-in delay-1200">
             <span class="star"><i data-lucide="star"></i></span>
             <b>5,0</b><span>Google</span>
@@ -827,29 +839,30 @@ footer{overflow:hidden}
       </div>
     </div>
 
-    <!-- Mobile: Titel mit Kennzahlen links/rechts neben „liebt“, Button, Aussie über die ganze Breite (Balken geht in den Ticker über) -->
+    <!-- Mobile: Titel, Button, Aussie über die ganze Breite (Balken geht in den Ticker über), Kennzahlen untereinander im grünen Balken zwischen den Pfoten -->
     <div class="mob">
       <div class="mob-top">
         <h1><span class="w animate-word-pop delay-100">Alles,</span> <span class="w animate-word-pop delay-200">was</span> <span class="w animate-word-pop delay-300">Ihr</span> <span class="w animate-word-pop delay-400">Hund</span><br /><span class="w animate-word-pop delay-500">liebt</span></h1>
-        <div class="mob-stats animate-fade-up delay-700">
-          <div class="st">
-            <span class="st-n"><i data-lucide="heart-handshake"></i><b>100%</b></span>
-            <small>markenunabhängig</small>
-          </div>
-          <span class="mid" aria-hidden="true">liebt</span>
-          <a href="#bewertungen" class="st" aria-label="5,0 Sterne bei Google">
-            <span class="st-n"><span class="star"><i data-lucide="star"></i></span><b>5,0</b></span>
-            <small>Google</small>
-          </a>
-        </div>
       </div>
       <div class="mob-cta">
         <a href="#sortiment" class="btn btn-orange animate-fade-up delay-600">Sortiment entdecken <i data-lucide="arrow-right"></i></a>
       </div>
       <!-- Eigene Bildvariante: Balken auf Tickerfarbe #1a3d1a umgefärbt, unten 3px beschnitten.
-           loading=lazy, damit der Desktop (.mob ausgeblendet) die Datei gar nicht erst lädt -->
+           Kein lazy (größtes Element mobil, früh laden); der leere source sorgt dafür, dass der Desktop die Datei nicht lädt -->
       <div class="mob-photos">
-        <div class="mob-dog"><img src="hero-aussie-mobil.png" alt="" width="1100" height="1149" loading="lazy" /></div>
+        <div class="mob-dog">
+          <picture><source media="(min-width:768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /><img src="hero-aussie-mobil-800.webp" srcset="hero-aussie-mobil-800.webp 800w, hero-aussie-mobil-1100.webp 1100w" sizes="100vw" alt="" width="1100" height="1149" fetchpriority="high" /></picture>
+          <div class="mob-stats animate-fade-up delay-700">
+            <div class="st">
+              <span class="st-n"><i data-lucide="heart-handshake"></i><b>100%</b></span>
+              <small>markenunabhängig</small>
+            </div>
+            <a href="#bewertungen" class="st" aria-label="5,0 Sterne bei Google">
+              <span class="st-n"><span class="star"><i data-lucide="star"></i></span><b>5,0</b></span>
+              <small>Google</small>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1227,6 +1240,8 @@ footer{overflow:hidden}
 
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span></span></div>
 
+<!-- Icons erst hier laden: blockiert so nicht mehr den Seitenaufbau, steht aber vor dem Skript, das createIcons aufruft -->
+<script src="lucide.min.js?v=0.460.0"></script>
 <script>
 (function(){
   const $ = s => document.querySelector(s);
@@ -1349,12 +1364,14 @@ footer{overflow:hidden}
     ]},
     // photo:true = Stimmungsfoto statt freigestellter Packung, füllt die Kachel wie die übrigen Shopfotos
     'pollux': {n:'Pollux', logo:'pollux.png', p:[
-      {id:111,cat:'barf',n:'Pollux: Rind, Spessartforelle & Saibling',m:'1000 g, Mix vom kompletten Rind mit Forelle und Saibling aus dem Spessart, tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'pollux-barf-forelle.webp'},
+      {id:111,cat:'barf',n:'Pollux: Rind, Spessartforelle & Saibling',m:'1000 g, Mix vom kompletten Rind mit Forelle und Saibling aus dem Spessart, tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'pollux-rind-spessartforelle.webp'},
+      {id:120,cat:'barf',n:'Pollux: Forelle',m:'Spessartforelle aus regionaler Zucht im Spessart, roh und tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'pollux-barf-forelle.webp'},
       {id:112,cat:'futter',n:'Pollux: Lammallerlei & Süßkartoffel',m:'Nassfutter in der Dose, 400 g oder 800 g, für Allergiker geeignet',bg:'#f4f4f2',photo:true,src:'pollux-lammallerlei.webp'},
-      {id:113,cat:'barf',n:'Pollux: Mix vom kompletten Rind',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Innereien, Knorpel und Sehnen, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-barf-rind.webp'},
-      {id:114,cat:'barf',n:'Pollux: Mix vom kompletten Schaf',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Knorpel und Sehnen vom Schaf, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-schaf-mix.webp'},
+      {id:113,cat:'barf',n:'Pollux: Mix vom kompletten Rind',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Innereien, Knorpel und Sehnen, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-schaf-mix.webp'},
+      {id:157,cat:'barf',n:'Pollux: Rind Barf',m:'Rindfleisch zum Barfen, roh und tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-barf-rind.webp'},
       {id:115,cat:'barf',n:'Pollux: Mix vom kompletten Geflügel',m:'600 g oder 1000 g, Muskelfleisch, Innereien und Karkassen, reich an Calcium, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-gefluegel-mix.webp'},
       {id:116,cat:'barf',n:'Pollux: Rind-Fertigmenü',m:'600 g oder 1000 g, Fleisch, Pansen, Innereien, Knorpel und Sehnen mit Gemüseanteil, tiefgekühlt',bg:'#1d1d1b',tag:'Menü',photo:true,src:'pollux-rind-fertigmenue.webp'},
+      {id:119,cat:'barf',n:'Pollux: Rind & Fisch-Fertigmenü',m:'600 g oder 1000 g, Rind mit Spessart- und Lachsforelle, Obst und Gemüse, tiefgekühlt',bg:'#1d1d1b',tag:'Menü',photo:true,src:'pollux-rind-fertigmenue.webp'},
       {id:117,cat:'barf',n:'Pollux: Kopffleisch vom Rind',m:'600 g oder 1000 g, Backen und Lefzen, fettarm und purinarm, fein gewolft',bg:'#1d1d1b',photo:true,src:'pollux-kopffleisch-rind.webp'},
       {id:118,cat:'barf',n:'Pollux: Grüner Pansen',m:'600 g oder 1000 g, vom Rind, reich an Ballaststoffen und Enzymen, gut für die Darmflora',bg:'#f4f4f2',photo:true,src:'pollux-gruener-pansen.jpg'}
     ]},
@@ -1366,7 +1383,7 @@ footer{overflow:hidden}
       {id:127,cat:'barf',n:'Paul und Paulina: Barf n’ Roll Complete Pute',m:'500 g, Pute mit Süßkartoffel, Apfel, Banane und Kurkuma, tiefgekühlt',bg:'#eeebe6',tag:'Menü',photo:true,src:'paul-paulina-complete-pute.jpg'},
       {id:128,cat:'barf',n:'Paul und Paulina: Barf n’ Roll Complete Kaninchen',m:'500 g, Kaninchen mit Kartoffel, Karotte und Löwenzahn, tiefgekühlt',bg:'#eeebe6',tag:'Menü',photo:true,src:'paul-paulina-complete-kaninchen.jpg'},
       {id:129,cat:'barf',n:'Paul und Paulina: Komplettmenü vom Huhn in Würfel',m:'1000 g, Huhn mit Steckrübe, Banane, Aprikose, Rosmarin und Kurkuma, tiefgekühlt',bg:'#eeebe6',tag:'Menü',photo:true,src:'paul-paulina-komplettmenue-huhn.jpg'},
-      {id:121,cat:'barf',n:'Paul und Paulina: Lamm-Muskelfleisch in Würfel',m:'1000 g, reines Muskelfleisch vom Lamm, geschnetzelt, auch für Ausschlussdiäten',bg:'#eeebe6',photo:true,src:'paul-paulina-fleischmix.jpg'},
+      {id:121,cat:'barf',n:'Paul und Paulina: Lamm-/Schaffleisch in Würfeln',m:'1000 g, reines Lamm- und Schaffleisch, roh, gut für sensible Hunde und Ausschlussdiäten',bg:'#eeebe6',photo:true,src:'paul-paulina-fleischmix.jpg'},
       {id:130,cat:'barf',n:'Paul und Paulina: Wild-Muskelfleisch in Würfel',m:'1000 g, geschnetzelt, leicht verdaulich und reich an B-Vitaminen',bg:'#2a2a2a',photo:true,src:'paul-paulina-wild-muskelfleisch.jpg'},
       {id:151,cat:'barf',n:'Paul und Paulina: Hirschfleisch in Würfeln',m:'1000 g, reines Muskelfleisch vom Hirsch, roh, auch für Ausschlussdiäten',bg:'#2a2a2a',photo:true,src:'paul-paulina-hirsch-wuerfel.jpg'},
       {id:152,cat:'barf',n:'Paul und Paulina: Rindfleisch durchwachsen in Würfel',m:'1000 g, fettreiches Muskelfleisch vom Rind, viel Energie und Kauspaß',bg:'#2a2a2a',photo:true,src:'paul-paulina-rind-durchwachsen.jpg'},
@@ -1391,7 +1408,16 @@ footer{overflow:hidden}
       {id:139,cat:'snacks',n:'Qchefs: Zahnputzflips',m:'35 g, kleine Käsesticks zur Zahnpflege für kleine Hunde',bg:'#efe6da',tag:'Zahnpflege',src:'q-pet-zahnputzflips.png'},
       {id:162,cat:'snacks',n:'Qchefs: Zahnputzkohle',m:'80 g, Zahnputzflocken mit Pflanzenkohle und Vitamin B, für saubere Zähne und gesunden Darm',bg:'#e3efe4',tag:'Zahnpflege',src:'q-pet-zahnputzkohle.png'},
       {id:140,cat:'snacks',n:'Qchefs: Puffed Cracker',m:'75 g, gepuffter Kauknochen für Schlinger und Kauer, getreidefrei',bg:'#e3efe4',src:'q-pet-puffed-cracker.png'},
+      {id:163,cat:'snacks',n:'Qchefs: Puffed Cheese',m:'72 g, gepuffter Kauknochen aus Hüttenkäse und Reis, glutenfrei',bg:'#efe6da',src:'q-pet-puffed-cheese.png'},
+      {id:164,cat:'snacks',n:'Qchefs: Puffed Stick',m:'Gepuffte Kaustange mit Buchweizen und Johannisbrot, laktosefrei',bg:'#f1ece4',src:'q-pet-puffed-stick.png'},
       {id:161,cat:'snacks',n:'Qchefs: Hard Cracker',m:'72 g, lange, harte Käsesticks für Knabberer',bg:'#f1ece4',src:'q-pet-hard-cracker.png'}
+    ]},
+    // Zubehör: keine Einzelprodukte geliefert, nur die Marke; Logo dient als Produktbild
+    'hunter': {n:'Hunter', logo:'hunter.png', logoPhoto:true, p:[
+      {id:171,cat:'zubehoer',n:'Hunter: Zubehör',m:'Produkte von Hunter: Halsbänder, Leinen, Geschirre und Spielzeug, Auswahl im Laden',bg:'#e3efe4',src:'hunter-zubehoer.png'}
+    ]},
+    'portapet': {n:'Portapet', logo:'portapet.png', p:[
+      {id:172,cat:'zubehoer',n:'Portapet: Zubehör',m:'Produkte von Portapet: Spielzeug, Näpfe, Futterboxen und Hundebekleidung, Auswahl im Laden',bg:'#f4f4f2',src:'portapet-zubehoer.png'}
     ]}
   };
   let brand = '';
@@ -1601,7 +1627,8 @@ footer{overflow:hidden}
       m = Math.max(base, m + d); aboutTag.style.marginTop = m + 'px';
     }
   }
-  alignAboutTag();
+  // erster Abgleich im nächsten Frame, nicht mitten im Skript (sonst erzwungener Umbruch)
+  requestAnimationFrame(alignAboutTag);
   addEventListener('load', alignAboutTag);
   addEventListener('resize', alignAboutTag);
   document.fonts && document.fonts.ready.then(alignAboutTag);
