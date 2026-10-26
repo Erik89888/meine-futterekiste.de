@@ -202,6 +202,7 @@ svg.lucide{width:1em;height:1em;stroke-width:2}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
 .h2{font-family:'DM Serif Display',serif;font-weight:400;color:var(--green);font-size:clamp(34px,4.6vw,60px);line-height:1;letter-spacing:-.01em;margin:.6rem 0 1rem}
 .lead{color:var(--muted);font-size:1.05rem;line-height:1.65;max-width:56ch}
+.lead .hl{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
 section.block{padding:clamp(72px,10vw,130px) 0}
 
 /* ---------- Hinweisleiste ---------- */
@@ -999,12 +1000,12 @@ footer{overflow:hidden}
       <div>
         <span class="eyebrow rv">Unser Sortiment</span>
         <h2 class="h2 rv" style="--d:.1s">Werfen Sie einen Blick in unsere Regale.</h2>
-        <p class="lead rv" style="--d:.2s">Hier sehen Sie eine Auswahl aus unserem Laden. Merken Sie sich Ihre Favoriten mit dem Stern und schauen Sie zu unseren Öffnungszeiten vorbei. Suchen Sie etwas Bestimmtes, fragen Sie uns einfach.</p>
+        <p class="lead rv" style="--d:.2s">Hier sehen Sie <strong class="hl">eine Auswahl</strong> aus unserem Laden. Merken Sie sich Ihre Favoriten mit dem Stern und schauen Sie zu unseren Öffnungszeiten vorbei. Suchen Sie etwas Bestimmtes, fragen Sie uns einfach.</p>
       </div>    </div>
     <div class="shop-tools rv">
-      <button class="chip on" data-cat="alle">Alle</button>
+      <button class="chip on" data-cat="highlights">Highlights</button>
       <button class="chip" data-cat="barf">BARF</button>
-      <button class="chip" data-cat="futter">Futter</button>
+      <button class="chip" data-cat="futter">Futter &amp; Dosen</button>
       <button class="chip" data-cat="snacks">Snacks</button>
       <button class="chip" data-cat="zubehoer">Zubehör</button>
       <button class="chip" data-cat="favs"><i data-lucide="star" style="vertical-align:-2px"></i> Merkliste</button>
@@ -1329,12 +1330,8 @@ footer{overflow:hidden}
   $('#marquee').innerHTML = one + one;
 
   /* ---------- Produkte ----------
-     Beispielprodukte ohne Marke (Unsplash-Fotos, lokal gespeichert). Die Markenprodukte aus BRANDS kommen unten dazu,
-     erscheinen unter „Alle“, in ihrer Rubrik und in der Merkliste und lassen sich zusätzlich per Marken-Menü filtern. */
-  const EXAMPLES = [
-    {id:4,cat:'barf',n:'Gemüse-Obst-Mix',m:'500 g, püriert',bg:'#fde3cf',photo:true,src:'produkt-gemuese-obst-mix.jpg'},
-    {id:5,cat:'futter',n:'Trockenfutter getreidefrei',m:'12 kg, Lamm und Kartoffel',bg:'#e7ecf8',tag:'Tipp',photo:true,src:'produkt-trockenfutter.jpg'}
-  ];
+     Nur Markenprodukte aus BRANDS: erscheinen in ihrer Rubrik, in der Merkliste und ausgewählt unter „Highlights“
+     und lassen sich zusätzlich per Marken-Menü filtern. */
 
   /* Markenprodukte: cat = Rubrik für die Filter-Chips; id wird unten vergeben (ab 101, damit alte Merklisten-Einträge nicht auf falsche Produkte zeigen) */
   const BRANDS = {
@@ -1367,6 +1364,12 @@ footer{overflow:hidden}
       {id:111,cat:'barf',n:'Pollux: Rind, Spessartforelle & Saibling',m:'1000 g, Mix vom kompletten Rind mit Forelle und Saibling aus dem Spessart, tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'pollux-rind-spessartforelle.webp'},
       {id:120,cat:'barf',n:'Pollux: Forelle',m:'Spessartforelle aus regionaler Zucht im Spessart, roh und tiefgekühlt',bg:'#1d1d1b',tag:'Fisch',photo:true,src:'pollux-barf-forelle.webp'},
       {id:112,cat:'futter',n:'Pollux: Lammallerlei & Süßkartoffel',m:'Nassfutter in der Dose, 400 g oder 800 g, für Allergiker geeignet',bg:'#f4f4f2',photo:true,src:'pollux-lammallerlei.webp'},
+      // Dosen seit 2026-10-26 (ids ab 185): Kundenfotos auf Quadrat erweitert, damit beide Dosengrößen ganz zu sehen sind
+      {id:185,cat:'futter',n:'Pollux: Geflügel & Gemüse',m:'Nassfutter in der Dose, Alleinfutter für ausgewachsene Hunde, ohne Konservierungs-, Lock- und Farbstoffe',bg:'#f4f4f2',photo:true,src:'pollux-dose-gefluegel-gemuese.jpg'},
+      {id:186,cat:'futter',n:'Pollux: Pferd & Pastinake',m:'Nassfutter in der Dose, Alleinfutter aus natürlichen Fleischstücken, ohne Tiermehl',bg:'#f4f4f2',photo:true,src:'pollux-dose-pferd-pastinake.jpg'},
+      {id:187,cat:'futter',n:'Pollux: Pferd pur',m:'Nassfutter in der Dose, reines Pferdefleisch als Einzelfutter, ohne Konservierungs-, Lock- und Farbstoffe',bg:'#f4f4f2',photo:true,src:'pollux-dose-pferd-pur.jpg'},
+      {id:188,cat:'futter',n:'Pollux: Rind & Gemüse',m:'Nassfutter in der Dose, Alleinfutter für ausgewachsene Hunde, ohne Konservierungs-, Lock- und Farbstoffe',bg:'#f4f4f2',photo:true,src:'pollux-dose-rind-gemuese.jpg'},
+      {id:189,cat:'futter',n:'Pollux: Wild & Kartoffel',m:'Nassfutter in der Dose, Alleinfutter für ausgewachsene Hunde, ohne Konservierungs-, Lock- und Farbstoffe',bg:'#f4f4f2',photo:true,src:'pollux-dose-wild-kartoffel.jpg'},
       {id:113,cat:'barf',n:'Pollux: Mix vom kompletten Rind',m:'600 g oder 1000 g, Muskelfleisch, Pansen, Innereien, Knorpel und Sehnen, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-schaf-mix.webp'},
       {id:157,cat:'barf',n:'Pollux: Rind Barf',m:'Rindfleisch zum Barfen, roh und tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-barf-rind.webp'},
       {id:115,cat:'barf',n:'Pollux: Mix vom kompletten Geflügel',m:'600 g oder 1000 g, Muskelfleisch, Innereien und Karkassen, reich an Calcium, tiefgekühlt',bg:'#1d1d1b',photo:true,src:'pollux-gefluegel-mix.webp'},
@@ -1392,7 +1395,12 @@ footer{overflow:hidden}
       {id:155,cat:'barf',n:'Paul und Paulina: Forelle in Würfel',m:'1000 g, ganze Forellen gewolft, reich an Jod, Selen und Vitamin D, tiefgekühlt',bg:'#eeebe6',tag:'Fisch',photo:true,src:'paul-paulina-forelle.jpg'},
       {id:156,cat:'barf',n:'Paul und Paulina: Weißfisch geschnetzelt und gedünstet',m:'1000 g, magerer Fisch, schonend gedünstet, tiefgekühlt',bg:'#eeebe6',tag:'Fisch',photo:true,src:'paul-paulina-weissfisch.jpg'},
       {id:123,cat:'barf',n:'Paul und Paulina: Vitalmix in Würfel',m:'1000 g, Zucchini, Kopfsalat, Karotte und Gurke mit Kurkuma, tiefgekühlt',bg:'#eeebe6',photo:true,src:'paul-paulina-gemuesemix.jpg'},
-      {id:122,cat:'barf',n:'Paul und Paulina: Gipfelstürmer + Dorsch',m:'250 ml, kaltgepresste Ölmischung aus Lein-, Hanf- und Schwarzkümmelöl mit Dorschlebertran',bg:'#5a4a3e',tag:'Öl',photo:true,src:'paul-paulina-gipfelstuermer.jpg'}
+      {id:122,cat:'barf',n:'Paul und Paulina: Gipfelstürmer + Dorsch',m:'250 ml, kaltgepresste Ölmischung aus Lein-, Hanf- und Schwarzkümmelöl mit Dorschlebertran',bg:'#5a4a3e',tag:'Öl',photo:true,src:'paul-paulina-gipfelstuermer.jpg'},
+      // Dosen seit 2026-10-26 (ids ab 181), Fotos wie die übrigen mittig quadratisch beschnitten
+      {id:181,cat:'futter',n:'Paul und Paulina: Bio Huhn mit Süßkartoffel',m:'Nassfutter in der Dose, Bio-Huhn mit Süßkartoffel, Roter Bete, Apfel, Birne und Lichtyams',bg:'#eeebe6',tag:'Bio',photo:true,src:'paul-paulina-dose-bio-huhn.jpg'},
+      {id:182,cat:'futter',n:'Paul und Paulina: Bio Schwein mit Kartoffel und Karotte',m:'Nassfutter in der Dose, Bio-Schweinefleisch mit Kartoffel und Karotte, in zwei Dosengrößen',bg:'#eeebe6',tag:'Bio',photo:true,src:'paul-paulina-dose-bio-schwein.jpg'},
+      {id:183,cat:'futter',n:'Paul und Paulina: Green Veggie Bowl',m:'Vegetarisches Nassfutter in der Dose, Obst und Gemüse aus Bayern, ohne Getreide und Zusätze',bg:'#eeebe6',tag:'Vegetarisch',photo:true,src:'paul-paulina-green-veggie-bowl.jpg'},
+      {id:184,cat:'futter',n:'Paul und Paulina: Ziege pur',m:'Nassfutter in der Dose, 100 % Ziegenfleisch als einzige Fleischsorte',bg:'#eeebe6',photo:true,src:'paul-paulina-dose-ziege-pur.jpg'}
     ]},
     'q-pet': {n:'Q-Pet', logo:'q-pet.png?v=2', logoPhoto:true, p:[
       // Q-Pet GmbH verkauft unter der Marke Qchefs
@@ -1412,6 +1420,11 @@ footer{overflow:hidden}
       {id:164,cat:'snacks',n:'Qchefs: Puffed Stick',m:'Gepuffte Kaustange mit Buchweizen und Johannisbrot, laktosefrei',bg:'#f1ece4',src:'q-pet-puffed-stick.png'},
       {id:161,cat:'snacks',n:'Qchefs: Hard Cracker',m:'72 g, lange, harte Käsesticks für Knabberer',bg:'#f1ece4',src:'q-pet-hard-cracker.png'}
     ]},
+    // Trockenfutter seit 2026-10-26 (ids ab 191), Säcke freigestellt; Logo von caninutrix.de
+    'caninutrix': {n:'Caninutrix', logo:'caninutrix.png', p:[
+      {id:191,cat:'futter',dry:true,n:'Caninutrix: Function Plus',m:'Trockenfutter für ausgewachsene Hunde, 14,5 kg, glutenfrei',bg:'#fdf1d6',tag:'Glutenfrei',src:'caninutrix-function-plus.png'},
+      {id:192,cat:'futter',dry:true,n:'Caninutrix: Hunter’s Best',m:'Trockenfutter für ausgewachsene Hunde, Standardfutter',bg:'#e3efe4',src:'caninutrix-hunters-best.png'}
+    ]},
     // Zubehör: keine Einzelprodukte geliefert, nur die Marke; Logo dient als Produktbild
     'hunter': {n:'Hunter', logo:'hunter.png', logoPhoto:true, p:[
       {id:171,cat:'zubehoer',n:'Hunter: Zubehör',m:'Produkte von Hunter: Halsbänder, Leinen, Geschirre und Spielzeug, Auswahl im Laden',bg:'#e3efe4',src:'hunter-zubehoer.png'}
@@ -1421,10 +1434,16 @@ footer{overflow:hidden}
     ]}
   };
   let brand = '';
-  // Gesamtliste: erst die Beispiele (Gemüse-Obst-Mix, Trockenfutter), dann die Markenprodukte je Marke gruppiert; brand/bn für Filter und Suche
-  const P = [...EXAMPLES, ...Object.entries(BRANDS).flatMap(([k,b]) => b.p.map(x => ({...x, brand:k, bn:b.n})))];
+  // Gesamtliste: Markenprodukte je Marke gruppiert; brand/bn für Filter und Suche
+  const P = Object.entries(BRANDS).flatMap(([k,b]) => b.p.map(x => ({...x, brand:k, bn:b.n})));
+  // Highlights statt „Alle“ (damit nicht alles auf einmal erscheint): je Marke 2–3 Produkte, Marken abwechselnd, Reihenfolge = Anzeige
+  const HIGHLIGHTS = [
+    141, 111, 124, 131, 191, 171,   // Graf Barf, Pollux, Paul und Paulina, Qchefs, Caninutrix, Hunter
+    104, 116, 154, 133, 192, 172,   // Graf Barf, Pollux, Paul und Paulina, Qchefs, Caninutrix, Portapet
+    107, 186, 183, 162              // Graf Barf, Pollux, Paul und Paulina, Qchefs
+  ].map(id => P.find(x => x.id === id)).filter(Boolean);
 
-  let cat='alle', q='';
+  let cat='highlights', q='';
   let favs = store.get('mfk-favs', []);
   // Früher gespeicherte Vorbestellungen aus dem Browser entfernen (Funktion gibt es nicht mehr)
   try { localStorage.removeItem('mfk-cart') } catch(e) {}
@@ -1433,8 +1452,12 @@ footer{overflow:hidden}
 
   function renderGrid(animate = true){
     // Marke gewählt: nur deren Produkte; sonst Rubrik bzw. Merkliste. Suche gilt in beiden Fällen (auch nach Markenname)
-    const list = P.filter(x => (brand ? x.brand===brand : cat==='alle' || (cat==='favs' ? favs.includes(x.id) : x.cat===cat))
-      && (x.n+' '+x.m+' '+(x.bn||'')).toLowerCase().includes(q));
+    // Highlights: ohne Suche nur die Auswahl, mit Suche das ganze Sortiment
+    const hit = x => (x.n+' '+x.m+' '+(x.bn||'')).toLowerCase().includes(q);
+    const list = !brand && cat==='highlights' ? (q ? P.filter(hit) : HIGHLIGHTS)
+      : P.filter(x => (brand ? x.brand===brand : cat==='favs' ? favs.includes(x.id) : x.cat===cat) && hit(x));
+    // Rubrik Futter & Dosen: Trockenfutter (dry:true) vor den Dosen, sonst Reihenfolge wie in BRANDS
+    if (!brand && cat==='futter') list.sort((a,b) => !!b.dry - !!a.dry);
     const empty = brand ? 'Kein Produkt gefunden. Fragen Sie uns gerne direkt.'
       : cat==='favs' ? 'Noch nichts gemerkt. Tippen Sie auf den Stern an einem Produkt.'
       : q ? 'Kein Produkt gefunden. Fragen Sie uns gerne direkt.'
@@ -1504,7 +1527,7 @@ footer{overflow:hidden}
     <li role="option" tabindex="-1" data-brand="${k}" aria-selected="false">
       ${b.logo ? `<span class="bm-logo${b.logoPhoto?' photo':''}"><img src="${b.logo}" alt="" /></span>`
         : `<span class="bm-ini">${b.n.split(/[\s-]+/).filter(w=>w!=='und').map(w=>w[0]).join('').slice(0,2).toUpperCase()}</span>`}
-      <span class="bm-n">${b.n}<small>${b.p.length} Produkte</small></span>
+      <span class="bm-n">${b.n}<small>${b.p.length} ${b.p.length === 1 ? 'Produkt' : 'Produkte'}</small></span>
       <i data-lucide="check" class="bm-check"></i>
     </li>`).join('');
   const bOpts = () => $$('#brandList li');
@@ -1525,7 +1548,7 @@ footer{overflow:hidden}
     else if (e.key==='Tab') brandMenu(false);
   });
   document.addEventListener('click', e=>{ if (!bPick.contains(e.target)) brandMenu(false); });
-  $('#brandReset').addEventListener('click', ()=>{ setBrand(''); setCat('alle'); });
+  $('#brandReset').addEventListener('click', ()=>{ setBrand(''); setCat('highlights'); });
 
   function setCat(c){ cat=c; setBrand(''); renderGrid(); }
   $$('.chip').forEach(b=>b.addEventListener('click',()=>setCat(b.dataset.cat)));
@@ -1536,9 +1559,9 @@ footer{overflow:hidden}
 
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') $('#mnav').classList.remove('open'); });
 
-  /* ---------- Kontaktformular: geht per kontakt.php direkt an bestellungen@ ---------- */
+  /* ---------- Kontaktformular: geht per kontakt.php direkt an info@ (Empfänger in config.php) ---------- */
   const cf = $('#contactForm'), cfNote = $('#formNote'), cfBtn = cf.querySelector('button[type=submit]'), cfNoteHtml = cfNote.innerHTML;
-  const FAIL = 'Das hat leider nicht geklappt. Bitte rufen Sie uns an (<a href="tel:+497144208362">07144 208362</a>) oder schreiben Sie an <a href="mailto:bestellungen@meine-futterkiste.de">bestellungen@meine-futterkiste.de</a>.';
+  const FAIL = 'Das hat leider nicht geklappt. Bitte rufen Sie uns an (<a href="tel:+497144208362">07144 208362</a>) oder schreiben Sie an <a href="mailto:info@meine-futterkiste.de">info@meine-futterkiste.de</a>.';
   const note = (html, cls) => { cfNote.innerHTML = html; cfNote.className = cls || ''; };
   cf.addEventListener('submit', async e=>{
     e.preventDefault();
