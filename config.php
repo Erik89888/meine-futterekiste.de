@@ -69,4 +69,20 @@ return array(
     'smtp_benutzer'         => 'bestellungen@meine-futterkiste.de',
     'smtp_passwort'         => '',                  // Postfach-Passwort hier eintragen
 
+    /* -----------------------------------------------------------------
+     * Öffnungszeiten aus Google (hours.php)
+     * -----------------------------------------------------------------
+     * Schlüssel aus der Google Cloud Console (APIs & Dienste >
+     * Anmeldedaten), dort beschränkt auf "Places API (New)".
+     * Solange er leer ist, zeigt die Seite die festen Zeiten aus
+     * index.html.
+     *
+     * google_place_id darf leer bleiben: hours.php sucht den Laden dann
+     * einmalig über google_suche und merkt sich die ID. Wer sie kennt
+     * (beginnt meist mit "ChIJ"), trägt sie direkt ein.
+     * ----------------------------------------------------------------- */
+    'google_api_key'  => '',
+    'google_place_id' => '',
+    'google_suche'    => 'Meine Futterkiste, Obere Seewiesen 56, 71711 Steinheim',
+
 );
