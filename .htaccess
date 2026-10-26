@@ -22,6 +22,27 @@ AddType video/mp4 .mp4
     RewriteCond %{QUERY_STRING} (^|&)p=[0-9]+ [OR]
     RewriteCond %{QUERY_STRING} (^|&)page_id=[0-9]+
     RewriteRule ^$ /? [R=301,L]
+
+    # Unterseiten der alten Website (WordPress und Baukasten davor), die Google
+    # noch als Sitelinks zeigt: per 301 auf den passenden Abschnitt der neuen Seite
+    RewriteRule ^(home/)?impressum/?$ /impressum.html [R=301,L]
+    RewriteRule ^(home/)?datenschutz/?$ /datenschutz.html [R=301,L]
+    RewriteRule ^beratung(/|\.html)?$ /#beratung [R=301,NE,L]
+    RewriteRule ^(ernaehrung|zubehoer)(/|\.html)?$ /#sortiment [R=301,NE,L]
+    RewriteRule ^(futter|hundefutter|katzenfutter|nagerfutter|spezialfutter|angebote)\.html$ /#sortiment [R=301,NE,L]
+    RewriteRule ^rohfleisch\.html$ /#barf [R=301,NE,L]
+    RewriteRule ^(so-finden-sie-uns|oeffnungszeiten)(/|\.html)?$ /#besuch [R=301,NE,L]
+    RewriteRule ^kontakt(/|\.html)?$ /#kontakt [R=301,NE,L]
+    RewriteRule ^wir-ueber-uns(/|\.html)?$ /#ueber-uns [R=301,NE,L]
+    RewriteRule ^(start/home|start/news)/?$ / [R=301,L]
+    RewriteRule ^sitemap\.html$ / [R=301,L]
+
+    # Was es nicht mehr gibt (Bienenfutter, Lieferservice, Blog-Archive, alte
+    # Bilder): 410 Gone, damit Google die Adressen schneller vergisst als bei 404
+    RewriteRule ^(bienenfutter|lieferservice)(/|\.html)?$ - [G,L]
+    RewriteRule ^(tag|category|author|[0-9]{4})/ - [G,L]
+    RewriteRule ^(interessante-links|partner-links|apifonda|apiinvert)\.html$ - [G,L]
+    RewriteRule ^(mediapool|designs)/ - [G,L]
 </IfModule>
 
 # ── Sicherheits-Header ─────────────────────────────────────────────────────
@@ -59,8 +80,11 @@ Options -Indexes
     ExpiresByType image/svg+xml     "access plus 1 year"
     ExpiresByType font/woff2        "access plus 1 year"
     ExpiresByType video/mp4         "access plus 1 month"
-    ExpiresByType text/css          "access plus 1 week"
-    ExpiresByType application/javascript "access plus 1 week"
+    # CSS/JS ändern sich selten; bei neuer Version im Link ?v= hochzählen (z. B. lucide.min.js?v=0.460.0)
+    ExpiresByType text/css          "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript   "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
     ExpiresByType text/html         "access plus 0 seconds"
     ExpiresByType application/json  "access plus 0 seconds"
 </IfModule>

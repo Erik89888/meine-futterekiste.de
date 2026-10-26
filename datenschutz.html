@@ -6,16 +6,14 @@
 <meta name="theme-color" content="#EFFDF0" />
 <meta name="format-detection" content="telephone=yes" />
 <title>Datenschutz | Meine Futterkiste Steinheim-Höpfigheim</title>
-<link rel="icon" href="favicon.png" type="image/png" sizes="192x192" />
-<link rel="apple-touch-icon" href="favicon.png" />
+<link rel="icon" href="favicon.png?v=3" type="image/png" sizes="192x192" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" />
 <meta name="description" content="Datenschutzerklärung von Meine Futterkiste, Gabriele und Frank Hess GbR, Steinheim-Höpfigheim: Hosting bei STRATO, Google Maps und Kontaktformular." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://meine-futterkiste.de/datenschutz.html" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="fonts.css" />
+<script src="lucide.min.js"></script>
 
 <style>
 :root{
@@ -65,7 +63,6 @@ svg.lucide{width:1em;height:1em;stroke-width:2}
 .circle-green{background:var(--green);color:#fff}
 .circle-green:hover{background:var(--green-h)}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
-.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
 .h2{font-family:'DM Serif Display',serif;font-weight:400;color:var(--green);font-size:clamp(40px,5.4vw,72px);line-height:1;letter-spacing:-.01em;margin:.6rem 0 1rem}
 .lead{color:var(--muted);font-size:1.05rem;line-height:1.65;max-width:56ch}
 
@@ -173,7 +170,7 @@ footer{background:var(--green);color:#c6dfc8;padding:4rem 0 2rem;margin-top:clam
           <li><a href="#kontakt">Kontakt &amp; Kontaktformular</a></li>
           <li><a href="#speicher">Speicherung im Browser</a></li>
           <li><a href="#maps">Google Maps</a></li>
-          <li><a href="#extern">Schriften &amp; externe Inhalte</a></li>
+          <li><a href="#extern">Schriften, Bilder &amp; Videos</a></li>
           <li><a href="#rechte">Ihre Rechte</a></li>
           <li><a href="#beschwerde">Beschwerderecht</a></li>
           <li><a href="#sicherheit">Datensicherheit</a></li>
@@ -230,6 +227,7 @@ footer{background:var(--green);color:#c6dfc8;padding:4rem 0 2rem;margin-top:clam
           <p>Wenn Sie uns anrufen oder eine E-Mail schreiben, verarbeiten wir Ihre Angaben (zum Beispiel Name, Kontaktdaten, Anliegen) ausschließlich zur Bearbeitung Ihrer Anfrage und für mögliche Rückfragen. Wir geben diese Daten nicht ohne Ihre Einwilligung weiter.</p>
           <h4>Kontaktformular</h4>
           <p>Wenn Sie uns über das Kontaktformular schreiben, werden Ihre Angaben (Name, Telefonnummer oder E-Mail-Adresse, Anliegen, optional Name und Gewicht Ihres Hundes sowie Ihre Nachricht) verschlüsselt an unseren Webserver bei STRATO übertragen und von dort als E-Mail an unser Postfach gesendet. Wir nutzen die Angaben ausschließlich, um Ihre Anfrage zu beantworten. Eine Speicherung in einer Datenbank auf der Website findet nicht statt.</p>
+          <p>Zum Schutz vor massenhaften Spam-Anfragen legt der Server für jede Anfrage einen nicht rückrechenbaren Prüfwert (Hash) Ihrer IP-Adresse mit dem Zeitpunkt ab. So lässt sich die Zahl der Anfragen je Stunde begrenzen. Ist der Eintrag älter als eine Stunde, wird er bei der nächsten Formularanfrage automatisch gelöscht. Rechtsgrundlage ist unser berechtigtes Interesse an einem funktionierenden, missbrauchsfreien Kontaktformular (Art. 6 Abs. 1 lit. f DSGVO).</p>
           <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage mit einem Vertrag zusammenhängt, im Übrigen unser berechtigtes Interesse an der Bearbeitung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO). Wir löschen die Daten, sobald Ihre Anfrage abschließend bearbeitet ist, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
         </div>
 
@@ -250,14 +248,15 @@ footer{background:var(--green);color:#c6dfc8;padding:4rem 0 2rem;margin-top:clam
         </div>
 
         <div class="sec" id="extern">
-          <h3><span class="num">07</span><span>Schriften &amp; externe Inhalte</span></h3>
-          <p>Für eine einheitliche Darstellung lädt diese Website einige Inhalte von Servern externer Anbieter. Dabei wird technisch bedingt Ihre IP-Adresse an den jeweiligen Anbieter übertragen, damit dieser die Inhalte an Ihren Browser ausliefern kann. Rechtsgrundlage ist unser berechtigtes Interesse an einer einheitlichen, ansprechenden und schnell ladenden Darstellung (Art. 6 Abs. 1 lit. f DSGVO).</p>
-          <h4>Google Fonts</h4>
-          <p>Wir verwenden Schriftarten von Google Fonts (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Beim Aufruf einer Seite lädt Ihr Browser die Schriften von Servern von Google; eine Übertragung in die USA ist dabei nicht ausgeschlossen. Google ist nach dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen: <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts FAQ</a>.</p>
-          <h4>jsDelivr (Symbole)</h4>
-          <p>Die auf der Website verwendeten Symbole (Icon-Bibliothek „Lucide“) werden über das Content Delivery Network jsDelivr geladen, betrieben von der Volentio JSD Limited, Vereinigtes Königreich. Für das Vereinigte Königreich besteht ein Angemessenheitsbeschluss der EU-Kommission. Weitere Informationen: <a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Datenschutzerklärung von jsDelivr</a>.</p>
+          <h3><span class="num">07</span><span>Schriften, Bilder &amp; Videos</span></h3>
+          <p>Schriften, Symbole, Fotos und Videos dieser Website liegen auf unserem eigenen Webspace bei STRATO und werden von dort ausgeliefert. Beim Aufruf entsteht dafür keine Verbindung zu externen Anbietern; es fallen lediglich die unter „Hosting bei STRATO“ beschriebenen Server-Log-Daten an. Die einzige Ausnahme ist die Karte von Google Maps (siehe Abschnitt 06).</p>
+          <h4>Schriften und Symbole</h4>
+          <p>Wir verwenden die Schriftarten „DM Serif Display“, „Inter“ und „Kaushan Script“ sowie die Symbol-Bibliothek „Lucide“. Alle sind lokal auf unserem Server gespeichert; es werden keine Daten an Google Fonts oder an ein Content Delivery Network übertragen.</p>
           <h4>Bilder und Videos</h4>
-          <p>Einige Fotos und Videos werden direkt von den Servern der Anbieter geladen, über die wir sie lizenziert haben: Unsplash (Unsplash Inc., Kanada; <a href="https://unsplash.com/privacy" target="_blank" rel="noopener">Datenschutz</a>), Mixkit (Envato Pty Ltd, Australien; <a href="https://envato.com/privacy/" target="_blank" rel="noopener">Datenschutz</a>). Beim Laden dieser Inhalte wird Ihre IP-Adresse an den jeweiligen Anbieter übermittelt; bei Anbietern außerhalb der EU kann dies eine Übermittlung in ein Drittland bedeuten.</p>
+          <p>Einige Fotos stammen von Unsplash, das Video im Bereich „Mit Herz und Verstand“ von Mixkit. Beide sind lokal gespeichert und werden von unserem Webspace geladen. Dabei entsteht keine Verbindung zu Unsplash oder Mixkit.</p>
+          <h4>Markenlogos und Produktbilder</h4>
+          <p>Im Bereich „Unser Sortiment“ zeigen wir über die Markenauswahl Logos und Produktbilder der Marken Graf Barf, Pollux, Paul &amp; Paulina, Qchefs (Q-Pet GmbH), Caninutrix, Hunter und Portapet. Diese Bilder liegen auf unserem eigenen Webspace bei STRATO und werden von dort ausgeliefert. Beim Anzeigen entsteht keine Verbindung zu Servern der Hersteller, und es werden keine Daten an die Markeninhaber übermittelt. Es fallen lediglich die unter „Hosting bei STRATO“ beschriebenen Server-Log-Daten an.</p>
+          <p>Wir verwenden die Logos und Produktbilder mit entsprechender Lizenz. Die Marken- und Bildrechte liegen bei den jeweiligen Inhabern.</p>
           <h4>Video auf YouTube</h4>
           <p>Unser Video ist nicht auf dieser Website eingebettet. Die Vorschau ist ein einfacher Link, der das Video auf YouTube (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) in einem neuen Fenster öffnet. Eine Verbindung zu YouTube entsteht erst, wenn Sie darauf klicken; ab dann gilt die <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
         </div>
@@ -311,7 +310,7 @@ footer{background:var(--green);color:#c6dfc8;padding:4rem 0 2rem;margin-top:clam
       </div>
       <div>
         <h4>Entdecken</h4>
-        <ul><li><a href="index.html#sortiment">Sortiment</a></li><li><a href="index.html#barf">BARF-Rechner</a></li><li><a href="index.html#shop">Shop</a></li><li><a href="index.html#ratgeber">Ratgeber</a></li></ul>
+        <ul><li><a href="index.html#barf">BARF-Rechner</a></li><li><a href="index.html#shop">Sortiment</a></li><li><a href="index.html#ratgeber">Ratgeber</a></li></ul>
       </div>
       <div>
         <h4>Öffnungszeiten</h4>
